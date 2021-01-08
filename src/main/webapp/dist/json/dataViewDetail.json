@@ -1,0 +1,67 @@
+{
+	"kwitansi": {
+		"no": "",
+		"terima": "Nama Distributor",
+		"uang": "terbilang",
+		"peruntukan": "Informasi Kwitansi",
+		"jumlah": "Nominal"
+	},
+	"pembayaran": {
+		"metode": "POXX",
+		"proses": "Disposisi Bayar",
+		"note": "Disposisi Hold"
+	},
+	"dcv_terkait": [
+		"NP22329LG-1",
+		"NP22329LG-2",
+		"NP22329LG-3",
+		"NP22329LG-4",
+		"NP22329LG-5"
+	],
+	"attchment": {
+		"berita_acara": "beritaAcara.xsl",
+		"rekap_retur": "rekapRetur.xls",
+		"kwitansi": "kwitansi.xls",
+		"faktur_pajak": "fakturPajak.xls",
+		"resi_kwitansi": "resiKwitansi.xls",
+		"bukti_pph": "buktiPPH.xls"
+	},
+	"dokumen_pendukung": [ 
+		{
+			"noPO": "XXXX",
+			"noGR": "YYYY",
+			"noInvoiceAP": "ZZZZ",
+			"noPayment": "JJJJ"
+		},
+		{
+			"noPO": "XXXX",
+			"noGR": "YYYY",
+			"noInvoiceAP": "ZZZZ",
+			"noPayment": "JJJJ"
+		},
+		{
+			"noPO": "XXXX",
+			"noGR": "YYYY",
+			"noInvoiceAP": "ZZZZ",
+			"noPayment": "JJJJ"
+		},
+		{
+			"noPO": "XXXX",
+			"noGR": "YYYY",
+			"noInvoiceAP": "ZZZZ",
+			"noPayment": "JJJJ"
+		},
+		{
+			"noPO": "XXXX",
+			"noGR": "YYYY",
+			"noInvoiceAP": "ZZZZ",
+			"noPayment": "JJJJ"
+		},
+		{
+			"noPO": "XXXX",
+			"noGR": "YYYY",
+			"noInvoiceAP": "ZZZZ",
+			"noPayment": "JJJJ"
+		}
+	]
+}

@@ -1,0 +1,49 @@
+<div>
+	<br /><br />
+	<section class="content">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-primary">
+					<div class="box-header with-border" style="height:65px">
+		             	<h3 class="box-title">Form Penambahan Adjustment</h3>
+		             	<span class="label label-danger pull-right" ng-click="vm.backToIndex()()">Cancel</span></th>
+		           	</div>
+					<table>
+						<tr>
+							<td class="col-sm-6">
+								<button type="button" class="btn btn-primary btn-sm pull-center"
+									ng-click="vm.tambahAdj()">Add</button> <!-- <button type="button" class="btn btn-danger btn-sm pull-center" ng-click="vm.hapus()">Delete</button> -->
+								<button type="button" class="btn btn-primary btn-sm pull-center"
+									ng-click="vm.simpanAdj()">Save</button>
+								
+								<select name="selectDcvID"
+								ng-options="param.adjType + ' - ' + param.nilai + ' - '+ param.notes for param in vm.dataAdjust track by param.id "
+								ng-model="vm.adjId"> <option value="" disabled>-- Pilih Data yang akan di hapus--</option> </select>
+								<button type="button" class="btn btn-danger btn-sm pull-center" ng-click="vm.deleteData(vm.adjId)">Delete</button>
+							</td>
+						</tr>
+					</table>
+					<table id="dcvAdjustmentTabel" class="table table-striped"
+						cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<th style="width: 50px;">Aksi</th>
+								<th style="width: 200px;">Type Adjustment</th>
+								<th style="width: 250px;">Notes</th>
+								<th>Value</th>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<th class="custom-font-table">&nbsp;&nbsp;</th>
+								<th id="gtTypeAdj" class="custom-font-table">&nbsp;&nbsp;</th>
+								<th id="gtNoteAdj" class="custom-font-table">&nbsp;&nbsp;</th>
+								<th id="gtValueAdj" class="custom-font-table">&nbsp;&nbsp;</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

@@ -1,0 +1,46 @@
+<div ng-controller="DcvRoleAddController as vm">
+	<br /><br />
+	<section class="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="box box-primary" style="margin-top: 10px;">
+						<div class="box-header with-border">
+			             	<h3 class="box-title">Tambah DCV Role</h3>
+			             	<span class="label label-warning pull-right" ng-click="vm.back()">Back</span></th>
+			           	</div>
+			           	<form name="formSetSLAEdit" role="form" class="form-horizontal" novalidate>
+			           		<div class="box-header with-border">
+			           			<div class="form-group">
+			           				<label class="col-sm-3 control-label-custom2">Role Code</label>
+				                	<div class="col-sm-9" style="margin: 0 0 2px">
+			           					<input type="text" ng-model="vm.rolecode" class="form-control input-sm" placeholder="masukkan role code">
+			           				 </div>
+			           				<label class="col-sm-3 control-label-custom2">Keterangan</label>
+				                	<div class="col-sm-9" style="margin: 0 0 2px">
+				                		<input type="text" ng-model="vm.keterangan" class="form-control input-sm" placeholder="masukkan keterangan">
+				                	</div>
+				                	<label class="col-sm-3 control-label-custom2">Bagian</label>
+				                	<div class="col-sm-9">
+				                		<!-- <input type="text" ng-model="vm.bagian" class="form-control input-sm" placeholder="masukkan Bagian">-->
+				                		<select name="selectParamJenis" class="form-control input-sm"
+											ng-model="vm.bagian"
+											ng-options="item for item in bagians">
+											<option value="" disabled>-- Pilih --</option>
+										</select>
+				                	</div>
+			           			</div>
+			           			<div class="form-group">
+			           				<div  class="col-sm-9"></div>
+				                	<div  class="col-sm-3">
+				                		<button type="submit" class="btn btn-primary btn-sm pull-right" ng-click="vm.submit()">Submit</button>
+				                	</div>
+			           			</div>
+			           		</div>
+		           		</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

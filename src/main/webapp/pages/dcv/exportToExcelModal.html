@@ -1,0 +1,104 @@
+<div>
+	<!-- <section class="content-header"></section> -->
+	<br />
+	<section class="content">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-primary">
+					<form name="formSearch" role="form" class="form-horizontal" novalidate>
+						<div class="box-header with-border" style="height:65px">
+							<h3 class="content-title">Export To XLS</h3>
+						</div>
+						<!-- <div class="box-header with-border">
+			            </div> -->
+			            <div class="box-body">
+			            	<table id="excelDasborh" class="table table-striped table-bordered">
+			            		<thead>
+			            			<tr>
+			            				<td>Column</td>
+			            				<!-- <td>Sort On</td> -->
+			            				<td>Order by</td>
+			            			</tr>
+			            		</thead>
+			            		<tbody>
+			            			<tr>
+				            			<td>
+				            				<label class="col-sm-4 control-label">Sort by</label>
+							                <div class="col-sm-8">
+							                	<select name="selectParam" class="form-control input-sm"
+													ng-model="vm.PARAMColumn[0]"
+													ng-options="param.PARAM_NAME for param in vm.sortList track by param.PARAM_VALUE"
+													id="selectParamColumnId">
+													<option value="" disabled>-- Select an option--</option>
+												</select>
+							                </div>
+				            			</td>
+				            			<!-- <td class="col-sm-2">
+							                <div class="col-sm-12">
+							                	<input type="input" ng-model="vm.noKeyPC[0]" class="form-control" id="newDCVFormAdd_noKeyPC" placeholder="Enter No.Key PC">
+							                </div>
+				            			</td> -->
+				            			<td>
+							                <div class="col-sm-12">
+							                	<select name="selectParam" class="form-control input-sm"
+													ng-model="vm.PARAMOrder[0]"
+													ng-options="param.PARAM_NAME for param in vm.orderList track by param.PARAM_VALUE"
+													id="selectParamOrderId">
+													<option value="" disabled>-- Select an option--</option>
+												</select>
+							                </div>
+				            			</td>
+				            		</tr>
+			            			<tr ng-repeat="data in vm.loopingSort">
+				            			<td>
+				            				<label class="col-sm-4 control-label">Then by</label>
+							                <div class="col-sm-8">
+							                	<select name="selectParam" class="form-control input-sm"
+													ng-model="vm.PARAMColumn[$index+1]"
+													ng-options="param.PARAM_NAME for param in vm.sortList track by param.PARAM_VALUE"
+													ng-attr-id="{{'selectParamColumnId' + $index}}">
+													<option value="" disabled>-- Select an option--</option>
+												</select>
+							                </div>
+				            			</td>
+				            			<!-- <td class="col-sm-2">
+							                <div class="col-sm-12">
+							                	<input type="input" ng-model="vm.noKeyPC[$index+1]" class="form-control" id="newDCVFormAdd_noKeyPC" placeholder="Enter No.Key PC">
+							                </div>
+				            			</td> -->
+				            			<td>
+							                <div class="col-sm-12">
+							                	<select name="selectParam" class="form-control input-sm"
+													ng-model="vm.PARAMOrder[$index+1]"
+													ng-options="param.PARAM_NAME for param in vm.orderList track by param.PARAM_VALUE"
+													ng-attr-id="{{'selectParamOrderId' + $index}}">
+													<option value="" disabled>-- Select an option--</option>
+												</select>
+							                </div>
+				            			</td>
+				            		</tr>
+			            		</tbody>
+			            	</table>
+			            </div>
+			            <div class="box-footer with-border">
+			            	<table>
+		           				<tr>
+		           					<td class="col-sm-3"></td>
+		           					<td class="col-sm-3"></td>
+		           					<td class="col-sm-3" align="right">
+		           						<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.print()">
+		           							<span>Ok</span>
+		           						</button>
+		           						<button type="button" class="btn btn-success btn-sm pull-center" ng-click="vm.backToIndex()">
+		           							<span>Cancel<span>
+		           						</button>
+		           					</td>
+			           			<tr>
+		           			</table>
+			            </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

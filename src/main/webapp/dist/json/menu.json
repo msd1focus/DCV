@@ -1,0 +1,87 @@
+[
+  {
+    "ID": "21",
+    "SEQUENCE": "17",
+    "TITLE": "Settings",
+    "URL": "#",
+    "PARENT": null,
+    "FA_ICON": "fa fa-wrench",
+    "HIDDEN": "0",
+    "children": [
+      {
+        "ID": "32",
+        "SEQUENCE": "179",
+        "TITLE": "Dealer",
+        "URL": "home.dealer",
+        "PARENT": "21",
+        "FA_ICON": null,
+        "HIDDEN": "0"
+      },
+      {
+        "ID": "165",
+        "SEQUENCE": "190",
+        "TITLE": "Set Holiday",
+        "URL": "home.set-holiday({\"DOMAIN\":\"swift\"})",
+        "PARENT": "21",
+        "FA_ICON": "#",
+        "HIDDEN": "0"
+      },
+      {
+        "ID": "29",
+        "SEQUENCE": "176",
+        "TITLE": "System Parameter",
+        "URL": "home.param",
+        "PARENT": "21",
+        "FA_ICON": null,
+        "HIDDEN": "0"
+      },
+      {
+        "ID": "35",
+        "SEQUENCE": "182",
+        "TITLE": "User Management",
+        "URL": "#",
+        "PARENT": "21",
+        "FA_ICON": null,
+        "HIDDEN": "0",
+        "children": [
+          {
+            "ID": "36",
+            "SEQUENCE": "1821",
+            "TITLE": "List User",
+            "URL": "home.user",
+            "PARENT": "35",
+            "FA_ICON": null,
+            "HIDDEN": "0"
+          },
+          {
+            "ID": "37",
+            "SEQUENCE": "1822",
+            "TITLE": "Menu",
+            "URL": "home.menu",
+            "PARENT": "35",
+            "FA_ICON": null,
+            "HIDDEN": "0"
+          },
+          {
+            "ID": "38",
+            "SEQUENCE": "1823",
+            "TITLE": "Role",
+            "URL": "home.role",
+            "PARENT": "35",
+            "FA_ICON": null,
+            "HIDDEN": "0"
+          },
+          {
+            "ID": "39",
+            "SEQUENCE": "1824",
+            "TITLE": "User Access Matrix",
+            "URL": "home.user-role",
+            "PARENT": "35",
+            "FA_ICON": null,
+            "HIDDEN": "0"
+          }
+        ]
+      }
+    ]
+  }
+]

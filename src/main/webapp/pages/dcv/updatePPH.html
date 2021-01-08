@@ -1,0 +1,58 @@
+<div>
+	<br />
+	<section class="content">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-primary">
+					<form name="formPPH" role="form" class="form-horizontal" novalidate>
+						<div class="box-body">
+		           			<div class="text-center text-danger" ng-if="vm.error">
+			                    <span ng-bind="vm.message"></span>
+			                </div>
+			                <div class="form-group">
+			                  <label class="col-sm-5 control-label">Nama PPH</label>
+			                  <div class="col-sm-7">
+			                  	<!-- <select name="selectParam" class="form-control input-sm"
+									ng-model="vm.pph.name"
+									ng-options="param.PARAM_NAME for param in vm.jenisPPH track by param.PARAM_VALUE"
+									id="selectParamId">
+									<option value="" disabled>-- Pilih --</option>
+								</select> -->
+								<select name="selectParam" class="form-control input-sm"
+									ng-change="vm.selectPph()"
+									ng-model="vm.pph.name"
+									ng-options="param.kodePPH for param in vm.jenisPPH"
+									id="selectParamId">
+									<option value="" disabled>-- Pilih --</option>
+								</select>
+			                  </div>
+			                  <label class="col-sm-5 control-label-custom2" ng-if="vm.pph.name.flat == 'Y'">Kalkulasi</label>
+		                	  <div class="col-sm-7" ng-if="vm.pph.name.flat == 'Y'">
+		                  		<input type="text" ng-model="vm.pph.cal" class="form-control input-sm" disabled>
+		                	  </div>
+			                  <label class="col-sm-5 control-label-custom2">Nilai PPH</label>
+		                	  <div class="col-sm-7">
+		                  		<input type="text" ng-model="vm.pph.nilai" class="form-control input-sm">
+		                	  </div>
+			                </div>
+		           		</div>
+		           		<div class="box-footer with-border">
+			            	<table>
+		           				<tr>
+		           					<td class="col-sm-6" align="right">
+		           						<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.saveTo()">
+		           							<span>Ok</span>
+		           						</button>
+		           						<button type="button" class="btn btn-success btn-sm pull-center" ng-click="vm.backToIndex()">
+		           							<span>Cancel<span>
+		           						</button>
+		           					</td>
+			           			<tr>
+		           			</table>
+			            </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

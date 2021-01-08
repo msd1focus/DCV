@@ -1,0 +1,150 @@
+<div ng-controller="TCApprovalController as vm">
+	<br /><br />
+	<section class="content">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+		             	<h3 class="box-title">Monitoring DCV-View Detail-TC Approval</h3>
+		             	<span class="label label-warning pull-right" ng-click="vm.back()">Back</span></th>
+		           	</div>
+		           	<div class="form-group">
+		             	<!-- <label for="viewDtl_noDCV" class="col-sm-12 custom-font-table pull-left">{{ vm.tcApp.kodeDist }}, {{ vm.tcApp.region }}</label> -->
+		             	<label for="viewDtl_noDCV" class="col-sm-12 custom-font-table pull-left">{{ vm.tcApp.region }}</label>
+		           	</div>
+		           	<form name="formTcApp" role="form" class="form-horizontal" novalidate>
+		           		<div class="box-header with-border">
+		           			<table>
+		           				<tr>
+		           					<td class="col-sm-6">
+		           						<div class="form-group">
+		           							<label for="tcApp_noDCV" class="col-sm-4 control-label-custom">No.DCV</label>
+						                	<div class="col-sm-8">
+						                  		<input type="input" ng-model="vm.tcApp.noDCV" class="view-workflow" id="tcApp_noDCV" ng-disabled="true">
+						                	</div>
+						                	<label for="tcApp_linePC" class="col-sm-4 control-label-custom">NoPC+LinePC</label>
+						                	<div class="col-sm-8">
+						                  		<input type="input" ng-model="vm.tcApp.linePC" class="view-workflow" id="tcApp_linePC" ng-disabled="true">
+						                	</div>
+						                	<label for="tcApp_linePCKor" class="col-sm-4 control-label-custom">NoPC+LinePC(Koreksi TC)</label>
+						                	<div class="col-sm-8">
+						                  		<input type="input" ng-model="vm.tcApp.linePCKor" class="view-workflow" id="tcApp_linePCKor" ng-disabled="true">
+						                	</div>
+						                	<label for="tcApp_flagPCKor" class="col-sm-4 control-label-custom">Flag PC(Koreksi TC)</label>
+						                	<div class="col-sm-8">
+						                  		<input type="input" ng-model="vm.tcApp.flagPCKor" class="view-workflow" id="tcApp_flagPCKor" ng-disabled="true">
+						                	</div>
+		           						</div>
+		           					</td>
+		           					<td class="col-sm-6">
+		           						<div class="form-group">
+		           							<label for="tcApp_prodClass" class="col-sm-3 control-label-custom">Prod Class</label>
+						                	<div class="col-sm-7">
+						                  		<input type="input" ng-model="vm.tcApp.prodClass" class="view-workflow" id="tcApp_prodClass" ng-disabled="true">
+						                	</div>
+						                	<label for="tcApp_prodBr" class="col-sm-3 control-label-custom">Prod Brand</label>
+						                	<div class="col-sm-7">
+						                  		<input type="input" ng-model="vm.tcApp.prodBr" class="view-workflow" id="tcApp_prodBr" ng-disabled="true">
+						                	</div>
+						                	<label for="tcApp_prodExt" class="col-sm-3 control-label-custom">Prod Ext</label>
+						                	<div class="col-sm-7">
+						                  		<input type="input" ng-model="vm.tcApp.prodExt" class="view-workflow" id="tcApp_prodExt" ng-disabled="true">
+						                	</div>
+						                	<label for="tcApp_prodPack" class="col-sm-3 control-label-custom">Prod Packaging</label>
+						                	<div class="col-sm-7">
+						                  		<input type="input" ng-model="vm.tcApp.prodPack" class="view-workflow" id="tcApp_prodPack" ng-disabled="true">
+						                	</div>
+		           						</div>
+		           					</td>
+		           				</tr>
+		           			</table>
+		           		</div>
+		           		
+		           		<div class="box-header with-border">
+		           			<table>
+		           				<tr>
+		           					<td class="col-sm-6">
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" id="tambahTcApproval" ng-click="vm.tambah()">Add</button>
+			           					<!-- <button type="button" class="btn btn-danger btn-sm pull-center" ng-click="vm.hapus()">Delete</button> -->
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" id="simpanTcApproval" ng-click="vm.simpan()">Save</button>
+			           				</td>
+		           				</tr>
+		           			</table>
+		           			
+		           			<table id="tcApproval" class="table table-striped" cellspacing="0" width="100%">
+		           				<thead>
+		           					<tr>
+		           						<th rowspan="2">No</th>
+		           						<th rowspan="2">Aksi</th>
+		           						<th rowspan="2">No PO</th>
+		           						<th rowspan="2">line PO</th>
+		           						<th rowspan="2">PC Pengganti-Line</th>
+		           						<th rowspan="2">PC Tambahan-Line</th>
+		           						<th rowspan="2">Kode Prod</th>
+		           						<th rowspan="2">Nama</th>
+		           						<th rowspan="2">Flag Budget</th>
+		           						<th colspan="8">TC Approval</th>
+		           					</tr>
+		           					<tr>
+		           						<!-- 
+		           						<th>Aksi</th>
+		           						<th>No PO</th>
+		           						<th>line PO</th>
+		           						<th>PC Pengganti-Line</th>
+		           						<th>PC Tambahan-Line</th>
+		           						<th>Kode Prod</th>
+		           						<th>Nama</th>
+		           						<th>Flag Budget</th> -->
+		           						<th class="custom-font-table">QTY</th>
+		           						<th class="custom-font-table">UOM QTY</th>
+		           						<th class="custom-font-table">Unit Price Exclude</th>
+		           						<th class="custom-font-table">Total Exclude</th>
+		           						<th class="custom-font-table">Note</th>		           						
+		           						<th class="custom-font-table">Supplier</th>
+		           						<th >PoId</th>
+		           						<th >PoDesc</th>
+		           						<th >SiteCode</th>
+		           						<th >NoPr</th>
+		           						<th >LinePr</th>
+		           						<th >PcPenggantiPPId</th>
+		           						<th >PcTambahanPPId</th>
+		           						<th >PoPPN</th>
+		           						<th >QtyPo</th>
+		           					</tr>
+		           				</thead>
+		           				<tfoot>
+		           					<tr>
+		           						<th></th>
+						                <th></th>
+						                <th></th>
+						                <th></th>
+						                <th></th>
+						                <th></th>
+						                <th></th>
+						                <th></th>
+						                <th></th>
+						                <th id="gtQty"></th>
+						                <th></th>
+						                <th id="gtUntP"></th>
+						                <th id="gtTotalPrice"></th>
+						                <th></th>
+						                <th></th>
+						                <th ></th>
+						                <th ></th>
+						                <th ></th>
+						                <th ></th>
+						                <th ></th>
+						                <th ></th>
+						                <th ></th>
+						                <th ></th>
+						                <th ></th>
+						            </tr>
+		           				</tfoot>
+		           			</table>
+		           		</div>
+		           	</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

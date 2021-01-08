@@ -1,0 +1,29 @@
+[
+  {
+    "DEALER_CODE": "MDRPST",
+    "DEALER_NAME": "CV.Sanjaya Putra",
+    "CTL_INS_BY": null,
+    "CTL_INS_DTM": null,
+    "CTL_UPD_BY": null,
+    "CTL_UPD_DTM": null,
+    "TOTAL": "17"
+  },
+  {
+    "DEALER_CODE": "DLRCD8",
+    "DEALER_NAME": "CV.Agus Semilar",
+    "CTL_INS_BY": null,
+    "CTL_INS_DTM": null,
+    "CTL_UPD_BY": null,
+    "CTL_UPD_DTM": null,
+    "TOTAL": "17"
+  },
+  {
+    "DEALER_CODE": "DLRCD10",
+    "DEALER_NAME": "PT.UNILEVER",
+    "CTL_INS_BY": null,
+    "CTL_INS_DTM": null,
+    "CTL_UPD_BY": null,
+    "CTL_UPD_DTM": null,
+    "TOTAL": "17"
+  }
+]

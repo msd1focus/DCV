@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" ng-app="myApp">
+  <head>
+  	<link rel="shortcut icon" href="favicon.ico">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DCV</title>
+    <meta name="description" content="">
+    <meta name="google" value="notranslate">
+    
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap_3_3_7.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="bootstrap/css/font-awesome.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.css">
+    <link rel="stylesheet" href="dist/css/jquery-ui-v1-10-4.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
+    <!-- Datatable -->
+    <link rel="stylesheet" href="plugins/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="plugins/FixedColumns-3.3.0/css/fixedColumns.bootstrap.min.css" type='text/css' media='all'/>
+	<!-- tableExport -->
+	<link rel="stylesheet" href="dist/css/tableexport.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="dist/css/custom-style.css">
+    <link rel="stylesheet" href="dist/css/login3.css">
+    
+    <link rel="stylesheet" href="dist/css/select2.min.css">
+  </head>
+  
+  <body class="ng-cloak" ng-cloak>
+  	<div id="loading-bar-container"></div>
+  	<div ui-view autoscroll='true'></div>
+  	
+    <script src="dist/js/jquery-3.4.1.min.js"></script>
+    <script src="downloadedJS/jquery-ui.min.js"></script>
+    <script src = "dist/js/jquery-1.10.2.js"></script>
+    <script src = "dist/js/jquery-ui-v1-10-4.js"></script>
+    
+    <script src="plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>  
+    
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="bootstrap/js/bootstrap_3_3_7.min.js"></script>
+    <!-- datepicker -->
+    <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
+    <!-- Slimscroll -->
+    <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/app.js"></script>
+  	
+    <!-- CUSTOM SCRIPT -->
+    <script src="resource/jslib/angular/angular.min.js"></script>
+    <script src="resource/jslib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="resource/jslib/FileSaver/FileSaver.min.js"></script>
+    <script src="resource/jslib/oclazyload/dist/ocLazyLoad.min.js"></script>
+    <script src="resource/jslib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="resource/jslib/angular-cookies/angular-cookies.js"></script>
+    <script src="resource/jslib/ngStorage/ngStorage.min.js"></script>
+    <script src="resource/jslib/angular/angular-locale_id-id.js"></script>
+    
+    <script src="resource/js/app.js"></script>
+	<script src="resource/js/Config.js"></script>
+	<script src="resource/js/Auth.js"></script>
+	<script src="resource/js/CommonService.js"></script>
+	<script src="resource/js/TemplateService.js"></script>
+	<script src="resource/js/FilterService.js"></script>
+	<script src="resource/js/PoolingService.js"></script>
+	<script src="resource/js/Directives.js"></script>
+	<script src="resource/js/Providers.js"></script>
+	<script src="resource/js/RouteService.js"></script>
+	<script src="resource/js/Filters.js"></script>
+	<script src="resource/js/HttpServices.js"></script>
+	<script src="resource/js/SessionService.js"></script>
+	<script src="resource/js/DynamicFormService.js"></script>
+	<script src="resource/js/InterceptorService.js"></script>
+	<script src="resource/js/LogServices.js"></script>
+	
+	<script src="resource/jslib/angular/angular-animate.min.js"></script>
+	<script src="resource/jslib/angular/angular-aria.min.js"></script>
+	<script src="resource/jslib/angular/angular-messages.min.js"></script>
+	
+	<!-- Sweet Alert -->
+  	<script src="resource/js/sweetalert2.js"></script>
+	
+	<!-- ANGULAR MATERIAL -->
+	<script src="resource/jslib/angular/angular-material.js"></script>
+	<link rel="stylesheet" type="text/css" href="resource/jslib/angular/angular-material.css"/>
+	
+	<!-- Angular growl -->
+	<script src="resource/jslib/angular-growl-2/angular-growl.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="resource/jslib/angular-growl-2/angular-growl.min.css" />
+	
+	<!-- Angular loading bar -->
+	<script type='text/javascript' src="resource/jslib/loadingbar/loading-bar.min.js"></script>
+	<link rel="stylesheet" href="resource/jslib/loadingbar/loading-bar.min.css" type='text/css' media='all' />
+	
+	<!-- Angular Bootstrap Calendar -->
+	<script type="text/javascript" src="resource/jslib/angular-bootstrap-calendar/moment.min.js"></script>
+	<script type="text/javascript" src="resource/jslib/angular-bootstrap-calendar/angular-bootstrap-calendar-tpls.min.js"></script>
+	<script type="text/javascript" src="resource/jslib/angular-bootstrap-calendar/interact.min.js"></script>
+	<link rel="stylesheet" href="resource/jslib/angular-bootstrap-calendar/angular-bootstrap-calendar.min.css" type='text/css' media='all' />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.4.7/angular-locale_id.js"></script>
+	
+	<!-- chart js -->
+	<script type="text/javascript" src="resource/jslib/angular-chart/Chart.js"></script>
+	<script type="text/javascript" src="resource/jslib/angular-chart/angular-chart.min.js"></script>
+	
+	<!-- Tree Grid  -->
+	<script src="resource/jslib/tree-grid/tree-grid-directive.js"></script>
+	<link rel="stylesheet" href="resource/jslib/tree-grid/treeGrid.css" type='text/css' media='all' />
+	
+	<!-- ng-file-upload -->
+	<!-- shim is needed to support non-HTML5 FormData browsers (IE8-9)-->
+	<script src="resource/jslib/ng-file-upload/ng-file-upload-shim.min.js"></script>
+	<script src="resource/jslib/ng-file-upload/ng-file-upload.min.js"></script>
+	
+	<!-- ivh-treeview -->
+	<script src="resource/jslib/ivh-treeview/ivh-treeview.min.js"></script>
+	<link rel="stylesheet" href="resource/jslib/ivh-treeview/ivh-treeview.min.css" type='text/css' media='all' />
+	<link rel="stylesheet" href="resource/jslib/ivh-treeview/ivh-treeview-theme-basic.css" type='text/css' media='all' />
+	
+	<!-- ng-idle -->
+	<script src="resource/jslib/ng-idle/angular-idle.min.js"></script>
+	
+	<!-- ng-currency -->
+	<script src="resource/jslib/ng-currency/ng-currency.js"></script>
+	
+	<!-- tableExport -->
+	<script src="dist/js/xlsx.full.min.js"></script>
+	<script src="dist/js/jspdf.min.js"></script>
+
+	<!-- datatable -->
+	<script src="plugins/angular-datatables-0.6.2/dist/angular-datatables.min.js"></script>
+	<script src="plugins/angular-datatables-0.6.2/dist/plugins/columnfilter/angular-datatables.columnfilter.min.js"></script>
+	<script src="plugins/angular-datatables-0.6.2/dist/plugins/scroller/angular-datatables.scroller.min.js"></script>
+	<script src="plugins/angular-datatables-0.6.2/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.min.js"></script>
+<!-- 	<script src="dist/js/jquery.dataTables.columnFilter.js"></script> -->
+	<script src="plugins/FixedColumns-3.3.0/js/dataTables.fixedColumns.min.js"></script>
+	
+	<script src="dist/js/select2.min.js"></script>
+</body>
+</html>

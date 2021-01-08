@@ -1,0 +1,144 @@
+<div class="modal-header">
+	<h3 class="modal-title" id="modal-title">INFO UPLOAD JISDOR OR SPECIAL RATE</h3>
+</div>
+	
+<div class="modal-body" id="modal-body">
+	<section class="content">
+		<form name="fReference" role="form" novalidate>
+			<div class="box-body no-padding">
+				<div class="row">
+					<div class="col-sm-12">
+						<h3><b>STATUS : </b></h3> {{$ctrl.data.status}}
+					</div>
+				</div>
+				
+				<br />
+				
+				<div class="row" ng-hide="$ctrl.data.status == 'Success'">
+					<div class="col-sm-12">
+						<h3><b>Error Message : </b></h3> <pre>{{$ctrl.data.statusList}}</pre>
+					</div>
+				</div>
+				
+				<!-- header info -->
+				<hr />
+				<div class="row">
+					<div class="col-sm-12">
+						<h3><b>Upload Info</b></h3>
+					</div>
+				</div>
+				<br />
+				
+				<!-- body -->
+				
+				<!--  info jisdor -->
+				<div class="row">
+					<div class="col-sm-6">
+						<h4><b>Jisdor</b></h4>
+					</div>
+				</div>
+				
+				<br />
+				
+				<div class="row">
+					<div class="col-sm-6">
+						<b>		Jumlah Row</b>
+					</div>
+					<div class="col-sm-6">
+						<label ng-bind="$ctrl.info.totRowJisdor"></label>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-6">
+						<b>		Amount</b>
+					</div>
+					<div class="col-sm-6">
+						<label ng-bind="$ctrl.info.totAmountJisdor | number"></label>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-6">
+						<b>		Rate</b>
+					</div>
+					<div class="col-sm-6">
+						<label ng-bind="$ctrl.info.totRateJisdor | currency"></label>
+					</div>
+				</div>
+				
+				<br />
+				
+				<!-- info Special Rate -->
+				<div class="row">
+					<div class="col-sm-6">
+						<h4><b>Special</b></h4>
+					</div>
+				</div>
+				
+				<br />
+				
+				<div class="row">
+					<div class="col-sm-6">
+						<b>		Jumlah Row</b>
+					</div>
+					<div class="col-sm-6">
+						<label ng-bind="$ctrl.info.totRowSpecial"></label>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-6">
+						<b>		Amount</b>
+					</div>
+					<div class="col-sm-6">
+						<label ng-bind="$ctrl.info.totAmountSpecial | number"></label>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-6">
+						<b>		Rate</b>
+					</div>
+					<div class="col-sm-6">
+						<label ng-bind="$ctrl.info.totRateSpecial | currency"></label>
+					</div>
+				</div>
+				
+				<br />
+				
+				<div class="row">
+					<div class="col-sm-6">
+						<h4><b>Total Row</b></h4>
+					</div>
+					<div class="col-sm-6">
+						<label ng-bind="$ctrl.info.totRow"></label>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-6">
+						<h4><b>Total Amount</b></h4>
+					</div>
+					<div class="col-sm-6">
+						<label ng-bind="$ctrl.info.totAmount | number"></label>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-6">
+						<h4><b>Total Rate</b></h4>
+					</div>
+					<div class="col-sm-6">
+						<label ng-bind="$ctrl.info.totRate | currency"></label>
+					</div>
+				</div>
+			</div>
+		</form>
+	</section>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-default pull-left" ng-click="$ctrl.closeModal()">Reject</button>
+  <button type="button" class="btn btn-primary" ng-click="$ctrl.save(fReference.$valid)" ng-disabled="  $ctrl.data.status != 'Success'">Process</button>
+</div>

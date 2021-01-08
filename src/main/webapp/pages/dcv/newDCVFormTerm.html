@@ -1,0 +1,156 @@
+<div ng-controller="NewDCVFormTermController as vm">
+	<!-- <section class="content-header"></section> -->
+	<br /><br />
+	<section class="content">
+		<div class="row">
+			<!-- left column -->
+        	<div class="col-md-12">
+        		<!-- general form elements -->
+          		<div class="box box-primary">
+          			<div class="box-header with-border">
+		             	<h3 class="box-title">Form DCV Term & Condition</h3>
+		           	</div>
+		           	<form name="formDoc" role="form" class="form-horizontal">
+		           		<div class="box-header with-border">
+		           			<table>
+		           				<tr>
+			           				<td class="col-sm-6">
+			           					<button type="button" class="btn btn-warning btn-sm pull-center" ng-click="vm.backToAdd()">Cancel</button>
+			           					<button type="submit" class="btn btn-primary btn-sm pull-center" ng-click="vm.goToDetail()">Detail DCV</button>
+			           				</td>
+			           			<tr>
+		           			</table>
+			            </div>
+		           		<div class="box-body">
+		           			<table>
+		           				<tr>
+			           				<td class="col-sm-5">
+			           					<div class="form-group">
+						                  <label for="newDCVForm_noPC" class="col-sm-3 control-label-custom2">No.PC</label>
+						                  <div class="col-sm-7">
+						                  	<input type="input" ng-model="vm.display.noPC" class="view-workflow" id="newDCVFormTerm_noPC" ng-disabled="true">
+						                  </div>
+						                  <label for="newDCVForm_noKeyPC" class="col-sm-3 control-label-custom2">No.Key PC</label>
+						                  <div class="col-sm-7">
+						                  	<input type="input" ng-model="vm.display.keyPC" class="view-workflow" id="newDCVFormTerm_noKeyPC" ng-disabled="true">
+						                  </div>
+						                 <!--  <label for="newDCVFormAdd_dcvPeriodePC" class="col-sm-3 control-label-custom2">DCV Periode PC</label>
+						                  <div class="col-sm-3">
+						                  	<input type="input" ng-model="vm.display.dcvDateFrom" class="view-workflow" id="newDCVFormTerm_selectedDate" ng-disabled="true">
+			            				  </div>
+			            				  <div class="col-sm-1">
+			            				  	<label control-label">s/d</label>
+			            				  </div>
+			            				  <div class="col-sm-3">
+			            					<input type="input" ng-model="vm.display.dcvDateTo" class="view-workflow" id="newDCVFormTerm_selectedDate2" ng-disabled="true">
+			            				  </div> -->
+			            				  <label for="newDCVForm_katPC" class="col-sm-3 control-label-custom2">Kategori PC</label>
+						                  <div class="col-sm-7">
+						                  	<input type="input" ng-model="vm.display.kategoriPC" class="view-workflow" id="newDCVFormTerm_katPC" ng-disabled="true">
+						                  </div>
+			            				  <label for="newDCVForm_tipePC" class="col-sm-3 control-label-custom2">Tipe PC</label>
+						                  <div class="col-sm-7">
+						                  	<input type="input" ng-model="vm.display.tipePC" class="view-workflow" id="newDCVFormTerm_tipePC" ng-disabled="true">
+						                  </div>
+						                  <label for="newDCVFormAdd_PeriodePC" class="col-sm-3 control-label-custom2">Periode PC</label>
+						                  <div class="col-sm-3">
+			            					<input type="input" ng-model="vm.display.periodPCFrom" class="view-workflow" id="newDCVFormTerm_selectedDate3" ng-disabled="true">
+			            				  </div>
+			            				  <div class="col-sm-1">
+			            				  	<label control-label">s/d</label>
+			            				  </div>
+			            				  <div class="col-sm-3">
+			            					<input type="input" ng-model="vm.display.periodPCTo" class="view-workflow" id="newDCVFormTerm_selectedDate4" ng-disabled="true">
+			            				  </div>
+						                </div>
+			           				</td>
+			           				<td class="col-sm-4">
+			           					<div class="box-body">
+		           							<h4 class="box-title">Term & Condition DCV</h4>
+					           				<div class="form-group">
+					           					<div class="col-sm-12">
+					           						<label class="control-label-custom">
+					           							<input type="checkbox" ng-model="vm.syarat1" disabled>
+					           							{{ vm.display.syarat1 }}
+					           						</label>
+					           					</div>
+					           					<div class="col-sm-12" style="margin-top: 4px">
+					           						<label class="control-label-custom">
+					           							<input type="checkbox" ng-model="vm.syarat2" disabled>
+					           							 {{ vm.display.syarat2 }}
+					           						</label>
+					           					</div>
+					           					<div class="col-sm-12" style="margin-top: 4px">
+					           						<label class="control-label-custom">
+					           							<input type="checkbox" ng-model="vm.syarat3" disabled>
+					           							Upload detail rekapan faktur
+					           						</label>
+					           					</div>
+					           					
+					           				</div>
+					           			</div>
+			           				</td>
+			           				<td class="col-sm-4">
+			           					<div class="box-body">
+			           						<div class="col-sm-12">
+			           							<br /><br /><br />
+			           						</div>
+			           						
+			           						<div class="col-sm-12" style="margin-top: 4px" ng-if="!vm.showBtnSyarat2">
+			           							<!-- 
+			           							<input type="file" class="form-control input-sm" name="uploadFile2" 
+													id="uploadFileId2" ngf-select ng-model="vm.doc2.file" 
+													ngf-max-size="100MB" ngf-pattern="'.xls,.xlsx,.pdf,.rar,.zip,.jpg,.png'" required ng-Change="vm.fileEnabled(vm.doc2.file, 2)"/> 
+												<div ng-if="formDoc.uploadFile2.$error.pattern">
+													<span class="text-danger">File tidak didukung, mohon unggah : xls, xlsx, pdf, rar, zip, jpg, png </span>
+												</div> -->												
+												
+												<input type="file" class="form-control input-sm" name="uploadFile2" 
+													id="uploadFileId2" ngf-select ng-model="vm.doc2.file" required ng-Change="vm.fileEnabled(vm.doc2.file, 2)"/> 
+												
+												<div ng-if="formDoc.uploadFile2.$error.maxSize">
+													<span class="text-danger">File terlalu besar, Max adalah 100 MB</span>
+												</div>
+												
+												<div ng-if="formDoc.$submitted
+														&& formDoc.uploadFile2.$error.required">
+													<span class="text-danger">Upload File tidak boleh kosong</span>
+												</div>
+				           					</div>
+				           					<div class="col-sm-12" ng-if="vm.showBtnSyarat2">
+				           						<br /><br />
+				           					</div>
+				           					
+				           					<div class="col-sm-12" style="margin-top: 4px">
+												<!-- <input type="file" class="form-control input-sm" name="uploadFile" 
+													id="uploadFileId" ngf-select ng-model="vm.doc.file" 
+													ngf-max-size="100MB" ngf-pattern="'.xls,.xlsx,.pdf,.rar,.zip,.jpg,.png'" required ng-Change="vm.fileEnabled(vm.doc.file, 3)"/> 
+												<div ng-if="formDoc.uploadFile.$error.pattern">
+													<span class="text-danger">File tidak support(xls,pdf,zip,jpg)</span>
+												</div> -->
+												
+												<input type="file" class="form-control input-sm" name="uploadFile" 
+													id="uploadFileId" ngf-select ng-model="vm.doc.file" 
+													required ng-Change="vm.fileEnabled(vm.doc.file, 3)"/> 
+												<div ng-if="formDoc.uploadFile.$error.pattern">
+												
+												<div ng-if="formDoc.uploadFile.$error.maxSize">
+													<span class="text-danger">File terlalu besar, Max adalah 100 MB</span>
+												</div>
+												
+												<div ng-if="formDoc.$submitted
+														&& formDoc.uploadFile.$error.required">
+													<span class="text-danger">Upload File tidak boleh kosong</span>
+												</div>
+				           					</div>
+			           					</div>
+			           				</td>
+		           				</tr>
+		           			</table>
+		           		</div>
+		           	</form>
+          		</div>
+        	</div>
+		</div>
+	</section>
+</div>

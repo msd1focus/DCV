@@ -1,0 +1,161 @@
+<div ng-controller="ReportSlaController as vm">
+	<br /><br />
+	<section class="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7">
+					<div class="box box-primary" style="margin-top: 10px;">
+						<div class="box-header with-border">
+			             	<h3 class="box-title">Report SLA</h3>
+			           	</div>
+			           	<form name="acctDist" role="form" class="form-horizontal">
+							<div class="box-body">
+							
+								<div class="form-group col-sm-12" id="internalSla"> 
+									<label for="region" class="col-sm-5 control-label-custom2">Region</label>
+				                	<div class="col-sm-7" style="margin: 0 0 10px">
+				                  		<input type="text" ng-model="vm.sla.region" class="form-control input-sm" placeholder="Region" id="region" >
+				                	</div>
+				                	<label for="area" class="col-sm-5 control-label-custom2">Area</label>
+				                	<div class="col-sm-7" style="margin: 0 0 10px">
+				                  		<input type="text" ng-model="vm.sla.area" class="form-control input-sm" placeholder="Area" id="area" disabled>
+				                	</div>
+				                	<label for="location" class="col-sm-5 control-label-custom2">Location</label>
+				                	<div class="col-sm-7" style="margin: 0 0 10px">
+				                  		<input type="text" ng-model="vm.sla.location" class="form-control input-sm" placeholder="Location" id="location" disabled>
+				                	</div>
+				                	<label for="distributor_start" class="col-sm-5 control-label-custom2">Distributor</label>
+				                	<div class="col-sm-7" style="margin: 0 0 10px">
+				                  		<input type="text" ng-model="vm.sla.distributorstart" class="form-control input-sm" style="margin: 0 0 10px" placeholder="Distributor Start" id="distributor_start">
+				                  		<input type="text" ng-model="vm.sla.distributorend" class="form-control input-sm" placeholder="Distributor End" id="distributor_end">
+				                	</div>
+				                	<label for="jenis_formula" class="col-sm-5 control-label-custom2">Jenis Formula</label>
+	          							<div class="col-sm-7" style="margin: 0 0 10px">
+				                  		<select name="jenisformula" class="form-control input-sm"
+											ng-model="vm.sla.jenisformula"
+											ng-options="param.PARAM_NAME for param in vm.prmFormula track by param.PARAM_VALUE"
+											id="jenisformula">
+											<option value="" disabled>-- Pilih --</option>
+										</select>
+				                	</div>
+				                	<label for="jenis_periode" class="col-sm-5 control-label-custom2">Jenis Periode</label>
+	          							<div class="col-sm-7" style="margin: 0 0 10px">
+				                  		<select name="jenis_periode" class="form-control input-sm"
+											ng-model="vm.sla.jenisperiode"
+											ng-options="param.PARAM_NAME for param in vm.prmPeriode track by param.PARAM_VALUE"
+											id="jenis_periode">
+											<option value="" disabled>-- Pilih --</option>
+										</select>
+				                	</div>
+				                	<label for="periode_start" class="col-sm-5 control-label-custom2">Periode</label>
+	          							<div class="col-sm-7" style="margin: 0 0 10px;"">
+	          								<div class="input-group" style="display: inline;">
+												<input class="form-control input-sm" ng-model="vm.periodestart" type="date" placeholder="Periode Start"/>
+											</div>
+				                  		<!-- <input type="text" ng-model="vm.sla.periodestart" class="form-control input-sm" placeholder="2020-July" id="periode_start">
+				                  		<input type="text" ng-model="vm.sla.periodeend" class="form-control input-sm" placeholder="2020-July" id="periode_end"> -->
+				                  		<!-- 
+				                  		<p class="input-group">
+				                  			<input type="text" class="form-control pull-right input-sm"
+				                  				uib-datepicker-popup="MM/yyyy"
+				                  				ng-model="vm.sla.periodestart"
+				                  				is-open="vm.popup.opened1" datepicker-options="vm.dateOptions"
+				                  				show-button-bar="false" ng-click="vm.open('1')" placeholder="Periode Start"
+				                  			/>
+				                  			<span class="input-group-btn">
+				                  				<button type="button" class="btn btn-default btn-sm" ng-click="vm.open('1')">
+				                  					<i class="glyphicon glyphicon-calendar"></i>
+				                  				</button>
+				                  			</span>
+				                  		</p>
+				                  		<p class="input-group">
+				                  			<input type="text" class="form-control pull-right input-sm"
+				                  				uib-datepicker-popup="MM/yyyy"
+				                  				ng-model="vm.sla.periodeend"
+				                  				is-open="vm.popup.opened2" datepicker-options="vm.dateOptions"
+				                  				show-button-bar="false" ng-click="vm.open('2')" placeholder="Periode End"
+				                  			/>
+				                  			<span class="input-group-btn">
+				                  				<button type="button" class="btn btn-default btn-sm" ng-click="vm.open('2')">
+				                  					<i class="glyphicon glyphicon-calendar"></i>
+				                  				</button>
+				                  			</span>
+				                  		</p>
+				                  		 -->
+				                	</div>
+				                	<label for="layoutsla" class="col-sm-5 control-label-custom2">Layout</label>
+	          							<div class="col-sm-7" style="margin: 0 0 10px">
+				                  		<select name="layoutsla" class="form-control input-sm"
+											ng-model="vm.sla.layout"
+											ng-options="param.PARAM_NAME for param in vm.prmLayout track by param.PARAM_VALUE"
+											id="layoutsla">
+											<option value="" disabled>-- Pilih --</option>
+										</select>
+				                	</div>
+				                	<label for="devisi" class="col-sm-5 control-label-custom2">Devisi</label>
+	          							<div class="col-sm-7" style="margin: 0 0 10px">
+				                  		<select name="devisi" class="form-control input-sm"
+											ng-model="vm.sla.devisi"
+											ng-options="param.PARAM_NAME for param in vm.prmDevisi track by param.PARAM_VALUE"
+											id="devisi">
+											<option value="" disabled>-- Pilih --</option>
+										</select>
+				                	</div>
+				                	<div class="col-sm-5"></div>
+				                	<div class="col-sm-7">
+				                		<button id="submitInter" type="button" class="btn btn-primary btn-sm pull-right" ng-click="vm.submitInter()">Submit</button>
+				                	</div>
+								</div>
+								
+								<div class="form-group col-sm-12" id="distSla">									
+									<label for="periode_start_distributor" class="col-sm-3 control-label-custom2">Periode</label>
+	         						<div class="col-sm-9" style="margin: 0 0 10px">
+	         							<div class="input-group" style="margin: 0 0 2px; display: inline;">
+											<input class="form-control input-sm" ng-model="vm.periodestartdist" type="date" placeholder="Periode Start"/>
+										</div>
+										<!-- 
+										<div class="input-group">
+											<input class="form-control input-sm" id="dateDistributor2" ng-model="vm.sladist.periodeenddist" type="date" placeholder="Periode End"/>
+										</div> -->
+										
+										<!--
+				                  		<p class="input-group">
+				                  			<input type="text" class="form-control pull-right input-sm"
+				                  				uib-datepicker-popup="MM/yyyy"
+				                  				ng-model="vm.sladist.periodestartdist"
+				                  				is-open="vm.popup.opened3" datepicker-options="vm.dateOptions"
+				                  				show-button-bar="false" ng-click="vm.open('3')" placeholder="Periode Start"
+				                  			/>
+				                  			<span class="input-group-btn">
+				                  				<button type="button" class="btn btn-default btn-sm" ng-click="vm.open('3')">
+				                  					<i class="glyphicon glyphicon-calendar"></i>
+				                  				</button>
+				                  			</span>
+				                  		</p>
+				                  		<p class="input-group">
+				                  			 <input type="text" class="form-control pull-right input-sm"
+				                  				uib-datepicker-popup="MM/yyyy"
+				                  				ng-model="vm.sladist.periodeenddist"
+				                  				is-open="vm.popup.opened4" datepicker-options="vm.dateOptions"
+				                  				show-button-bar="false" ng-click="vm.open('4')" placeholder="Periode End"
+				                  			/>
+				                  			<span class="input-group-btn">
+				                  				<button type="button" class="btn btn-default btn-sm" ng-click="vm.open('4')">
+				                  					<i class="glyphicon glyphicon-calendar"></i>
+				                  				</button>
+				                  			</span> 
+				                  		</p>-->
+				                	</div>
+				                	<div class="col-sm-3"></div>
+				                	<div class="col-sm-9">
+				                		<button id="submitDist" type="button" class="btn btn-primary btn-sm pull-right" ng-click="vm.submitDist()">Submit</button>
+				                	</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

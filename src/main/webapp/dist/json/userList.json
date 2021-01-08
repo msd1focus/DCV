@@ -1,0 +1,32 @@
+[
+  {
+    "USER_ID": "2017091800254",
+    "USERNAME": "MOR001",
+    "FIRST_NAME": "Mora",
+    "LAST_NAME": "mor mor",
+    "USER_EMAIL": "moraaa@mandiri.co.id",
+    "USER_LAST_LOGIN_DTM": "2019-07-17 16:34:16.575",
+    "IS_LOGIN": "0",
+    "USER_FAILED_LOGIN_ATTEMPT": "0",
+    "EXPIRED_PASSWORD": "2019-07-23 00:00:00",
+    "CTL_INS_DTM": "2017-09-18 14:09:11",
+    "CTL_UPD_DTM": "2019-04-23 15:10:18",
+    "TOTAL": 98,
+    "RNUM": "1"
+  },
+  {
+    "USER_ID": "2019031500701",
+    "USERNAME": "CTOM03",
+    "FIRST_NAME": "CTOM",
+    "LAST_NAME": "03",
+    "USER_EMAIL": "cto03@gmail.com",
+    "USER_LAST_LOGIN_DTM": "2019-05-17 15:58:43.816",
+    "IS_LOGIN": "0",
+    "USER_FAILED_LOGIN_ATTEMPT": "4",
+    "EXPIRED_PASSWORD": "2019-06-15 00:00:00",
+    "CTL_INS_DTM": "2019-03-15 15:32:44",
+    "CTL_UPD_DTM": "2019-03-15 15:32:44",
+    "TOTAL": 98,
+    "RNUM": "2"
+  }
+]

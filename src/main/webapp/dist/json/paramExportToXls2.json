@@ -1,0 +1,10 @@
+[
+  {
+    "PARAM_NAME": "Smallest to Largest",
+    "PARAM_VALUE": "asc"
+  },
+  {
+    "PARAM_NAME": "Largest to Smallest",
+    "PARAM_VALUE": "desc"
+  }
+]

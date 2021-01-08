@@ -1,0 +1,110 @@
+<div ng-controller="StaticDashboradController as vm">
+	<!-- <section class="content-header"></section> -->
+	<br /><br />
+  	<section class="content">
+  		<div class="box box-primary">
+  		<form name="formMonitoring" role="form" class="form-horizontal" novalidate>
+  			<div class="box-header with-border">
+				<h3 class="box-title">Monitoring DCV</h3>
+			</div>
+  			<div class="box-body">
+  				<div class="row">
+	            	<div class="col-sm-12">
+	            		
+            			<div class="box-body">
+            				<table>
+            					<tr>
+            						<td class="col-sm-4">
+            							<div class="form-group">
+            								<label class="col-sm-3 control-label-custom2" for="selectParamId" style="text-align:left;" >Basic Filter</label>
+				 							<div class="col-sm-8">
+												<select name="selectParam" class="form-control input-sm"
+													ng-model="vm.PARAM"
+													ng-options="param.PARAM_NAME for param in vm.paramList track by param.PARAM_VALUE"
+													id="selectParamId">
+													<option value="" disabled>-- Select an option--</option>
+												</select>
+											</div>
+											<label class="col-sm-3 control-label-custom2" style="text-align:left;">Periode submit</label>
+					           				<div class="col-sm-4">
+					           					<p class="input-group">
+					           						<input type="text" class="form-control pull-right input-sm" 
+					           							uib-datepicker-popup="dd/MM/yyyy"
+					                               		ng-model="vm.selectedDate"
+					                               		is-open="vm.popup.opened1" datepicker-options="vm.dateOptions" 
+					                               		show-button-bar="false" ng-click="vm.open('1')" placeholder="Start"/>
+					                                   <span class="input-group-btn">
+					                                   	<button type="button" class="btn btn-default btn-sm" 
+					                                   		ng-click="vm.open('1')"><i class="glyphicon glyphicon-calendar"></i>
+					                                   	</button>
+					                                   </span>
+					           					</p>
+					           				</div>
+					           				<div class="col-sm-4">
+					           					<p class="input-group">
+					           						<input type="text" class="form-control pull-right input-sm" 
+					           							uib-datepicker-popup="dd/MM/yyyy"
+					                               		ng-model="vm.selectedDate2"
+					                               		is-open="vm.popup.opened2" datepicker-options="vm.dateOptions" 
+					                               		show-button-bar="false" ng-click="vm.open('2')" placeholder="End"/>
+					                                   <span class="input-group-btn">
+					                                   	<button type="button" class="btn btn-default btn-sm" 
+					                                   		ng-click="vm.open('2')"><i class="glyphicon glyphicon-calendar"></i>
+					                                   	</button>
+					                                   </span>
+					           					</p>
+					           				</div>
+            							</div>
+            						</td>
+            						<td class="col-sm-4">
+            							<div class="form-group">
+            								<div class="col-sm-6">
+				           						<button class="btn btn-primary btn-sm pull-center" ng-click="vm.loadSelected()">
+					            					<span class="fa fa-search"></span>&nbsp; <span>Search</span>
+					            				</button>
+					            				<button class="btn btn-sm btn-danger pull-center" ng-click="vm.reset()">
+					            					<span>Reset</span>
+					            				</button>
+					            				<button type="button" class="btn btn-success btn-sm pull-center" ng-click="vm.eksportXLS()">Export XLS</button>
+				           					</div>
+            							</div>
+            						</td>
+            					</tr>
+            				</table>
+            			</div>
+	            		
+  					</div>
+  				</div>
+  				
+  				<table id="example" class="table table-striped" cellspacing="0" width="100%">
+				  <thead>
+				    <tr>
+				      <th>Aksi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+				      <th>No.DCV</th>
+				      <!-- <th>Start Date</th>
+				      <th>End Date</th> -->
+				      <th>Periode Submit</th>
+				      <th>Kode Customer</th>
+				      <th>Name Customer</th>
+				      <th>Region</th>
+				      <th>Area</th>
+				      <th>Location</th>
+				      <th>No.PC</th>
+				      <th>Periode PC (Start)</th>
+				      <th>Periode PC (End)</th>
+				      <th>Kategori PC</th>
+				      <th>Tipe PC</th>
+				      <th>DCV Value</th>
+				      <th>DCV Value Approved</th>
+				      <th>Disposisi</th>
+				      <th>No.Seri FP</th>
+				      <th>Last Action</th>
+				      <th>Current Action</th>
+				    </tr>
+				  </thead>
+				</table>
+  			</div>
+  		</form>
+  		</div>
+  	</section>
+</div>

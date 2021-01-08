@@ -1,0 +1,39 @@
+<div ng-controller="UserDCVUploadController as vm">
+	<br /><br />
+	<section class="content">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+		             	<h3 class="box-title">Form User Upload</h3>
+		             	<span class="label label-warning pull-right" ng-click="vm.back()">Cancel</span></th>
+		           	</div>
+		           	<form name="acctDist" role="form" class="form-horizontal">
+		           		<div class="box-header with-border">
+		           			<table>
+		           				<tr>
+			           				<td class="col-sm-3">
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.submit()">Submit </button>
+			           				</td>
+			           			<tr>
+		           			</table>
+		           		</div>
+		           		<div class="box-body">
+		           			<div class="form-group">
+			                  <label class="col-sm-3 control-label-custom2">Browse File</label>
+			                  <div class="col-sm-7">
+		                		<input type="file" class="form-control input-sm" name="uploadFile" 
+										id="uploadFileId" ngf-select ng-model="vm.doc.file" 
+										ngf-max-size="100MB" ngf-pattern="'.xls,.xlsx'" required /> 
+								<div ng-if="acctDist.uploadFile.$error.pattern">
+									<span class="text-danger">File tidak support(Excel)</span>
+								</div>
+		                	  </div>
+			                </div>
+		           		</div>
+		           	</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

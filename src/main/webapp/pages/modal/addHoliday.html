@@ -1,0 +1,119 @@
+<div class="row">
+	<div class="col-sm-12">
+		<div class="box box-info">
+			<div class="box-header with-border">
+				<h3 id="modal-title" ng-if="!$mdl.isEdit">Add Holiday</h3>
+				<h3 id="modal-title" ng-if="$mdl.isEdit">Update Holiday</h3>
+			</div> <!-- box header -->
+			
+		<form name="fHoliday" role="form" class="form-horizontal" novalidate>
+			<div class="box-body" id="modal-body">
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="idHolidayName" style="text-align:left;">Label</label>
+					<div class="col-sm-10" >
+						<input type="text" id="idHolidayName" class="form-control input-sm" 
+							ng-model="$mdl.holiday.HOLIDAY_LABEL" ng-required="true" name="nholidayName" />
+						<span class="text-danger" ng-show="(fHoliday.$submitted || fHoliday.nholidayName.$touched)
+							&& fHoliday.nholidayName.$error.required">Holiday Name must not empty</span>
+					</div>
+				</div>
+			
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="idFullDay" style="text-align:left;">Full Day</label>
+					<div class="col-sm-10">
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" id="idFullDay" ng-model="$mdl.isFullDay" />
+							</label>
+						</div>
+					</div>
+				</div>
+			
+				<div class="form-group">
+		  				<label class="control-label col-sm-2" style="text-align:left;">Date</label>
+		  				<div class="col-sm-5">
+		  					<p class="input-group">
+		  						<input type="text" class="form-control pull-right input-sm" 
+		  							uib-datepicker-popup="{{$mdl.formatDate}}"
+		                      		ng-model="$mdl.INPUT_DATE1"
+		                      		is-open="$mdl.popup.opened1" datepicker-options="$mdl.dateOptions" 
+		                      		show-button-bar="false" ng-click="$mdl.open('1')" placeholder="Start Date"
+									ng-required = "true" name="nInputDate1"
+		                          	 />
+		                          <span class="input-group-btn">
+		                          	<button type="button" class="btn btn-default btn-sm" 
+		                          		ng-click="$mdl.open('1')"><i class="glyphicon glyphicon-calendar"></i>
+		                          	</button>
+		                          </span>
+		  					</p>
+							<span class="text-danger" ng-show="(fHoliday.$submitted || fHoliday.nInputDate1.$touched)
+								&& fHoliday.nInputDate1.$error.required">Start Date must not empty</span>
+		  				</div>
+		  				<div class="col-sm-5" ng-if="!$mdl.isFullDay">
+		  					<p class="input-group">
+		  						<input type="text" class="form-control pull-right input-sm" 
+		  							uib-datepicker-popup="{{$mdl.formatDate}}"
+		                      		ng-model="$mdl.INPUT_DATE2"
+		                      		is-open="$mdl.popup.opened2" datepicker-options="$mdl.dateOptions" 
+		                      		show-button-bar="false" ng-click="$mdl.open('2')" placeholder="End"
+									name="nInputDate2"
+		                          	 />
+		                          <span class="input-group-btn">
+		                          	<button type="button" class="btn btn-default btn-sm" 
+		                          		ng-click="$mdl.open('2')"><i class="glyphicon glyphicon-calendar"></i>
+		                          	</button>
+		                          </span>
+		  					</p>
+							<span class="text-danger" ng-show="(fHoliday.$submitted || fHoliday.nInputDate2.$touched)
+								&& fHoliday.nInputDate2.$error.required">Start Date must not empty</span>
+		  				</div>
+		  			</div>
+				
+		  			<div class="form-group" ng-if="!$mdl.isFullDay">
+						<label class="control-label col-sm-2" style="text-align:left;"></label>
+						<div class="col-sm-5">
+							<div uib-timepicker show-meridian="false" align="center" ng-model="$mdl.time1" ></div>
+						</div>
+						<div class="col-sm-5">
+							<div uib-timepicker show-meridian="false" align="center" ng-model="$mdl.time2"></div>
+						</div>
+					</div>	
+		  		
+				<div class="form-group" ng-show='false'>
+					<label class="control-label col-sm-2" for="idPeriod" style="text-align:left;">
+						Period
+					</label>
+					<div class="col-sm-10">
+						<label class="radio-inline" for="idNone">
+							<input type="radio" ng-model="$mdl.holiday.HOLIDAY_PERIOD" value="0" id="idNone">None
+						</label>
+						<label class="radio-inline" for="idmonthly">
+							<input type="radio" ng-model="$mdl.holiday.HOLIDAY_PERIOD" value="1" id="idmonthly">Monthly
+						</label>
+						<label class="radio-inline" for="yearly">
+							<input type="radio" ng-model="$mdl.holiday.HOLIDAY_PERIOD" value="2" id="yearly">Yearly
+						</label>
+					</div>
+				</div>
+				
+				</div><!-- box body -->
+				<div class="box-footer with-border">
+					<div align="center">
+							<button class="btn btn-sm btn-danger pull-center" ng-click="$mdl.cancel()">
+								<span>Cancel</span>
+							</button>
+							<button class="btn btn-primary btn-sm pull-center" ng-click="$mdl.saveHoliday(fHoliday.$valid)">
+								<span ng-if="!$mdl.isEdit">Submit</span>
+								<span ng-if="$mdl.isEdit">Update</span>
+							</button>
+							<button class="btn btn-warning btn-sm pull-center" 
+								ng-click="$mdl.deleteHoliday(fHoliday.$valid)"
+								ng-if="$mdl.isEdit">
+								<span>Delete</span>
+							</button>
+						</div> 
+				</div><!-- box footer -->
+			</form>
+		</div> <!-- box -->
+	</div>
+</div>

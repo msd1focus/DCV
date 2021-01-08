@@ -1,0 +1,60 @@
+<div ng-controller="UserRoleListController as vm">
+	<section class="content-header">
+		<!-- <h1>User Role</h1> -->
+	</section>
+	
+	<section class="content">
+		<h1>User Role</h1>
+		<div class="box">
+			<div class="box-body">
+				<div align="center">
+					<ul uib-pagination total-items="vm.totalItems" ng-model="vm.pageNumber" 
+						items-per-page="vm.itemPerpage" ng-change="vm.pageChanged()" max-size="vm.maxSize" 
+						class="pagination-sm" boundary-link-numbers="true" rotate="false" />
+				</div>
+				
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Action</th>
+								<th>Username</th>
+		                        <th>Full Name</th>
+		                        <th>Roles</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-if="vm.userRoleList == undefined"><td colspan="9">No Record found</td></tr>
+							<tr ng-repeat="data in vm.userRoleList" ng-if="vm.userRoleList != undefined && vm.userRoleList.length > 0" ng-click="vm.viewUserRole(data)">
+								<td ng-bind="data.ROWNUM"></td>
+		                        <td>
+									<div>
+										<button type="button" class="mr btn btn-success btn-xs" 
+											ng-click="vm.editUserRole(data); $event.stopPropagation();" data-toggle="tooltip" title="Edit User Role">
+											<i class="fa fa-pencil"></i>
+										</button>
+										&nbsp;
+									</div>
+								</td>
+		                        <td ng-bind="data.USERNAME" />
+								<td ng-bind="data.FULLNAME" />
+		                        <td>
+		                        	<span ng-if="data.ROLES == undefined || data.ROLES.length < 1">No Roles Found</span>
+		                            <span ng-repeat="dataRole in data.ROLES" ng-if="data.ROLES != undefined && data.ROLES.length > 0">{{dataRole.ROLE_DESC}}; &nbsp;</span>
+		                        </td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<div align="center">
+					<ul uib-pagination total-items="vm.totalItems" ng-model="vm.pageNumber" 
+						items-per-page="vm.itemPerpage" ng-change="vm.pageChanged()" max-size="vm.maxSize" 
+						class="pagination-sm" boundary-link-numbers="true" rotate="false" />
+				</div>
+			</div>
+		</div>
+	</section>
+  	
+</div>

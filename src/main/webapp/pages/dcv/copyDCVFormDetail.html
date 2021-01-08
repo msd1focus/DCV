@@ -1,0 +1,79 @@
+<div ng-controller="CopyDCVFormDetailController as vm">
+	<!-- <section class="content-header"></section> -->
+	<br /><br />
+	<section class="content">
+		<div class="row">
+  			<div class="col-md-12">
+  				<div class="box box-primary">
+  					<div class="box-header with-border">
+		             	<h3 class="box-title">Form DCV Baru dari Copy/Terminated</h3>
+		             	<span class="label label-warning pull-right" ng-click="vm.back()">Back</span></th>
+		           	</div>
+		           	<form role="form" class="form-horizontal">
+		           		<div class="box-header with-border">
+		           			<table>
+		           				<tr>
+		           					<td class="col-sm-6">
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.submitData()">Submit DCV</button>
+			           				<!-- 	<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.dcvTrk()">DCV Terkaits</button> -->
+			           				</td>
+			           			<tr>
+		           			</table>
+			            </div>
+			            <div class="box-body">
+							<table id="copyDCV" class="table table-striped table-bordered" datatable="ng" dt-options="vm.dtOptions" dt-instance="vm.dtInstance"  width="100%" dt-column-defs="vm.dtColumnDefs">
+							    <thead>
+							      <tr>
+							      	<th></th>        
+							         <th>Line PC</th>
+							         <th>Prod Class</th>
+							         <th>Prod Brand</th>
+							         <th>Prod Ext</th>
+							         <th>Prod Packaging</th>
+							         <th>Prod Variant</th>
+							         <th>Prod Item</th>
+							         <th>DCV Qty</th>
+							         <th>Satuan</th>
+							         <th>DCV Value Excl</th>
+							         <th>Notes</th>
+							      </tr>
+							    </thead>
+							    <tbody>
+							      <tr ng-repeat="data in vm.dataDetail">
+							        <td><input id="vm.checkbox[$index]" type="checkbox" ng-model="vm.checkbox[$index]"  ng-click="vm.editMember($index, data)"></td>
+							        <td ng-bind="data.noLinePc"></td>
+							        <td ng-bind="data.productClassDesc"></td>
+							        <td ng-bind="data.productBrandDesc"></td>
+							        <td ng-bind="data.productExtDesc"></td>
+							         <td ng-bind="data.productPackDesc"></td>
+							        <td><textarea id="prodVariant" ng-bind="data.productVariantDesc" cols="20" style="border: none" disabled></textarea></td>				       
+							        <td><textarea id="prodItem" ng-bind="data.productItemDesc" cols="30" style="border: none" disabled></textarea></td>
+							        <td>
+							          <div style="text-align:center"><input type="text" id="dcvQty" value={{data.qty}} class="form-control pull-center input-sm" size="6" disabled="true"></div>
+							        </td>
+							        <td>
+							          <div style="text-align:center">
+							          	<select id="satuan" class="form-control" disabled="true">
+							          		<!-- <option value="none">--Pilih--</option> -->
+							          		<option value={{data.satuan}} selected>{{data.satuan}}</option>
+							          	</select>
+							          </div>
+							        </td>
+							        <td>
+							          <div style="text-align:center"><input type="text" id="dcvValueExcl" value={{data.valueExt}} class="form-control pull-center input-sm" size="6" disabled="true"></div>
+							        </td>
+							        <td>
+							          <div style="text-align:center"><input type="text" id="notes" value={{data.notes}} class="form-control pull-center input-sm" size="6" disabled="true"></div>
+							        </td>
+							      </tr>
+							    </tbody>
+							  </table>
+							  <!-- <table id="copyDCV" class="table table-striped table-bordered" datatable dt-options="vm.dtOptions" dt-instance="vm.dtInstance"  width="100%" dt-columns="vm.dtColumns">
+							  </table> -->
+			            </div>
+		           	</form>
+  				</div>
+  			</div>
+  		</div>
+	</section>
+</div>

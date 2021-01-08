@@ -1,0 +1,55 @@
+<div ng-controller="RoleListController as vm">
+	<section class="content-header">
+		<!-- <h1>Role</h1> -->
+	</section>
+	
+	<section class="content">
+		<h1>Role</h1>
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				<div align="right">
+					<button type="button" class="btn  btn-primary mb" ng-click="vm.addRole()" ripple="">
+						<span class=""> <i class="fa fa-plus"></i></span>
+						<span>Tambah</span>
+					</button>			
+				</div>
+				<div align="center">
+					<ul uib-pagination total-items="vm.totalItems" ng-model="vm.pageNumber" 
+						items-per-page="vm.itemPerpage" ng-change="vm.pageChanged()" max-size="vm.maxSize" 
+						class="pagination-sm" boundary-link-numbers="true" rotate="false" />
+				</div>
+			</div><!-- box header -->
+			<div class="box-body table-responsive">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Action</th>
+							<th>Title</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-if="vm.roleList == undefined"><td colspan="6">No Record found</td></tr>
+						<tr ng-repeat="data in vm.roleList" ng-if="vm.roleList != undefined && vm.roleList.length > 0" ng-click="vm.viewRole(data)">
+							<td ng-bind="$index+1"></td>
+							<td>
+								<div>
+									<button type="button" class="mr btn btn-success btn-xs" ng-click="vm.editRole(data); $event.stopPropagation();" data-toggle="tooltip" title="Edit Role">
+										<i class="fa fa-pencil"></i>
+									</button>
+									&nbsp;
+									<button type="button" class="mr btn btn-danger btn-xs" ng-click="vm.deleteRole(data); $event.stopPropagation();" data-toggle="tooltip" title="Delete Role" ng-disabled="true">
+										<i class="fa fa-times"></i>
+									</button>
+								</div>
+							</td>
+							<td ng-bind="data.ROLE_NAME"></td>
+							<td ng-bind="data.ROLE_DESC"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div><!--box body-->
+		</div>	
+	</section>
+</div>

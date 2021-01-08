@@ -1,0 +1,130 @@
+<div ng-controller="ViewWorkflowController as vm">
+	<br /><br />
+	<section class="content">
+		<div class="box box-primary">
+			<form name="formWf" role="form" class="form-horizontal" novalidate>
+				<div class="box-header with-border">
+					<h3 class="box-title">Monitoring DCV-View Workflow</h3>
+					<span class="label label-warning pull-right" ng-click="vm.back()">Back</span></th>
+				</div>
+				<div class="box-body">
+					<div class="row">
+						<div class="col-sm-10">
+							<div class="box-body">
+								<div class="form-group">
+				                  <label for="viewWf_noPC" class="col-sm-5 control-label-custom2">Detail No.DCV</label>
+				                  <div class="col-sm-5">
+				                  	<input type="input" ng-model="vm.viewWf.noPC" class="view-workflow" id="viewWf_noPC" ng-disabled="true">
+				                  </div>
+				                  <label for="viewWf_kodeDist" class="col-sm-5 control-label-custom2">Kode-Nama Distributor</label>
+				                  <div class="col-sm-5">
+				                  	<input type="input" ng-model="vm.viewWf.kodeDist" class="view-workflow" id="viewWf_kodeDist" ng-disabled="true">
+				                  </div>
+				                  <label for="viewWf_region" class="col-sm-5 control-label-custom2">Region-Area-Location</label>
+				                  <div class="col-sm-5">
+				                  	<input type="input" ng-model="vm.viewWf.region" class="view-workflow" id="viewWf_region" ng-disabled="true">
+				                  </div>
+				                  <label for="viewWf_last" class="col-sm-5 control-label-custom2">Last Action</label>
+				                  <div class="col-sm-5">
+				                  	<input type="input" ng-model="vm.viewWf.last" class="view-workflow" id="viewWf_last" ng-disabled="true">
+				                  </div>
+				                  <label for="viewWf_current" class="col-sm-5 control-label-custom2">Current Action</label>
+				                  <div class="col-sm-5">
+				                  	<input type="input" ng-model="vm.viewWf.current" class="view-workflow" id="viewWf_current" ng-disabled="true">
+				                  </div>
+				                </div>
+							</div>
+						</div>
+					</div>
+					
+					<table id="workflow" class="table table-striped nowrap" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+				                <th rowspan="2" style="width: 34px;">No</th>
+				                <th rowspan="2" style="width: 178px;">Step</th>
+				                <th rowspan="2">User Name</th>
+				                <th colspan="2">Target</th>
+				                <th colspan="3">Waktu Process</th>
+				                <th rowspan="2">Catatan</th>
+				                <th colspan="4">Total Durasi Waktu Process</th>
+				            </tr>
+							<tr>
+								<th>SLA Hari</th>
+				                <th>Tgl Target</th>
+				                <th>Hari</th>
+				                <th>Tanggal</th>
+				                <th>Jam</th>
+				                <th>Jml.Hari</th>
+				                <th>Jml.Jam</th>
+				                <th>Jml.Menit</th>
+				                <th>Jml.Detik</th>
+				            </tr>
+						</thead>
+						<tbody></tbody>
+						<tfoot>
+				            <tr>
+				                <th colspan="10" style="text-align:right">Total DCV:</span></th>
+				                <th colspan="3" style="text-align:right"><label id="totDCV"></label></th>
+				            </tr>
+				            <tr>
+				            	<th colspan="10" style="text-align:right">Total Payment:</th>
+				            	<th colspan="3" style="text-align:right"><label id="totPay"></th>
+				            </tr>
+				            <tr>
+				            	<th colspan="10" style="text-align:right">Sisa DCV yang belom dibayar:</th>
+				            	<th colspan="3" style="text-align:right"><label id="totSisa"></th>
+				            </tr>
+				        </tfoot>
+					</table>
+					<br><br>
+					<table id="paymentEbsHistFix" class="table table-striped nowrap" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+				                <th rowspan="2" style="width: 34px;">No</th>
+				                <th rowspan="2" style="width: 178px;">Step</th>
+				                <th rowspan="2">User Name</th>
+				                <th colspan="2">Target</th>
+				                <th colspan="3">Waktu Process</th>
+				                <th rowspan="2">Catatan</th>
+				                <th colspan="4">Total Durasi Waktu Process</th>
+				            </tr>
+							<tr>
+								<th>SLA Hari</th>
+				                <th>Tgl Target</th>
+				                <th>Hari</th>
+				                <th>Tanggal</th>
+				                <th>Jam</th>
+				                <th>Jml.Hari</th>
+				                <th>Jml.Jam</th>
+				                <th>Jml.Menit</th>
+				                <th>Jml.Detik</th>
+				            </tr>
+						</thead>
+						<tbody></tbody>
+						<tfoot>
+				            <tr>
+				            	<th rowspan="2" colspan="8" style="vertical-align : middle;text-align:center;background-color: #A9A9A9"><label id="prosesComp"></label></th>
+				                <th><label id="flagD10"></label></th>
+				                <th><label id="flagD11"></label></th>
+				                <th><label id="flagD12"></label></th>
+				                <th><label id="flagD13"></label></th>
+				                <th><label id="flagD14"></label></th>
+				            </tr>
+				            <tr>
+				            	<th><label id="flagD20"></label></th>
+				            	<th><label id="flagD21"></label></th>
+				            	<th><label id="flagD22"></label></th>
+				            	<th><label id="flagD23"></label></th>
+				            	<th><label id="flagD24"></label></th>
+				            </tr>
+				        </tfoot>
+						
+					</table>
+					
+					<!-- <table id="workflow2" class="table table-striped nowrap" cellspacing="0" width="100%"></table> -->
+					
+				</div>
+			</form>
+		</div>
+	</section>
+</div>

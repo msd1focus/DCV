@@ -1,0 +1,60 @@
+<div ng-controller="UserListController as vm">
+	<section class="content-header">
+		<br /><br />
+	</section>
+  	<section class="content">
+  		<div class="box box-primary">
+  			<div class="box-header with-border" style="height:65px">
+				<h3 class="content-title">User DCV</h3>
+			</div>
+  			<div class="box-body table-responsive">
+  				<!-- <button type="button" class="btn  btn-primary mb" ng-click="vm.addUser()">
+					<span class=""> <i class="fa fa-plus"></i></span>
+					<span>Tambah</span>
+				</button> -->
+  				<div align="center">
+	                <ul uib-pagination total-items="vm.totalItems" ng-model="vm.pageNumber" 
+	                    items-per-page="vm.itemPerpage" ng-change="vm.pageChanged()" max-size="vm.maxSize"
+	                    class="pagination-sm" boundary-link-numbers="true" rotate="false" />
+	            </div>
+  				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Action</th>
+							<th>UserName</th>
+							<th>Name</th>
+							<th>Role</th>
+							<th>Aktif To</th>
+							<th>Direct SPV</th>
+							<th>Division</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-if="vm.userList == undefined"><td colspan="7">No Record found</td></tr>
+						<tr ng-repeat="data in vm.userList" ng-if="vm.userList != undefined && vm.userList.length > 0" ng-click="vm.viewUser(data)">
+							<td ng-bind="data.id"></td>
+							<td>
+								<div>
+									<button type="button" class="mr btn btn-success btn-xs" ng-click="vm.editUser(data);$event.stopPropagation();" data-toggle="tooltip" title="Edit User">
+										<i class="fa fa-pencil"></i>
+									</button>
+									&nbsp;
+									<!-- <button type="button" class="mr btn btn-danger btn-xs" ng-click="vm.deleteUser(data);$event.stopPropagation();" data-toggle="tooltip" title="Delete User" ng-disabled="true">
+										<i class="fa fa-times"></i>
+									</button> -->
+								</div>
+							</td>
+							<td ng-bind="data.userName"></td>
+	                        <td ng-bind="data.fullName"></td>
+							<td ng-bind="data.role.roleName"></td>
+							<td ng-bind="data.activePeriodTo"></td>
+							<td ng-bind="data.directSpv"></td>
+							<td ng-bind="data.userDivision"></td>
+						</tr>
+					</tbody>
+				</table>
+  			</div>
+  		</div>
+  	</section>
+</div>

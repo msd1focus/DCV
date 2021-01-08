@@ -1,0 +1,134 @@
+[
+  {
+    "PARAM_NAME": "Company",
+    "PARAM_VALUE": "dcvh_company"
+  },
+  {
+    "PARAM_NAME": "Customer Code",
+    "PARAM_VALUE": "dcvh_cust_code"
+  },
+  {
+    "PARAM_NAME": "Customer Name",
+    "PARAM_VALUE": "dcvh_cust_name"
+  },
+  {
+    "PARAM_NAME": "Region",
+    "PARAM_VALUE": "dcvh_region"
+  },
+  {
+    "PARAM_NAME": "Area",
+    "PARAM_VALUE": "dcvh_area"
+  },
+  {
+    "PARAM_NAME": "Location",
+    "PARAM_VALUE": "dcvh_location"
+  },
+  {
+    "PARAM_NAME": "No DCV",
+    "PARAM_VALUE": "dcvh_no_dcv"
+  },
+  {
+    "PARAM_NAME": "Submit Time",
+    "PARAM_VALUE": "dcvh_submit_time"
+  },
+  {
+    "PARAM_NAME": "No PC",
+    "PARAM_VALUE": "dcvh_no_pc"
+  },
+  {
+    "PARAM_NAME": "Key PC",
+    "PARAM_VALUE": "dcvh_key_pc"
+  },
+  {
+    "PARAM_NAME": "Periode PC(Start)",
+    "PARAM_VALUE": "dcvh_periode_pc_start"
+  },
+  {
+    "PARAM_NAME": "Periode PC(End)",
+    "PARAM_VALUE": "dcvh_periode_pc_end"
+  },
+  {
+    "PARAM_NAME": "Kategori PC",
+    "PARAM_VALUE": "dcvh_pc_kategori"
+  },
+  {
+    "PARAM_NAME": "Tipe PC",
+    "PARAM_VALUE": "dcvh_pc_tipe"
+  },
+  {
+    "PARAM_NAME": "DCV Value",
+    "PARAM_VALUE": "dcvh_value"
+  },
+  {
+    "PARAM_NAME": "DCV Value Approved",
+    "PARAM_VALUE": "dcvh_appv_value"
+  },
+  {
+    "PARAM_NAME": "DCV Status",
+    "PARAM_VALUE": "dcvh_dcv_status"
+  },
+  {
+    "PARAM_NAME": "Prod Class Desc",
+    "PARAM_VALUE": "dcvl_prod_class_desc"
+  },
+  {
+    "PARAM_NAME": "Prod Brand Desc",
+    "PARAM_VALUE": "dcvl_prod_brand_desc"
+  },
+  {
+    "PARAM_NAME": "Prod Ext Desc",
+    "PARAM_VALUE": "dcvl_prod_ext_desc"
+  },
+  {
+    "PARAM_NAME": "QTY",
+    "PARAM_VALUE": "dcvl_qty"
+  },
+  {
+    "PARAM_NAME": "UOM",
+    "PARAM_VALUE": "dcvl_uom"
+  },
+  {
+    "PARAM_NAME": "Value Exc",
+    "PARAM_VALUE": "dcvl_val_exc"
+  },
+  {
+    "PARAM_NAME": "Approve Value Ecx",
+    "PARAM_VALUE": "dcvl_appv_val_exc"
+  },
+  {
+    "PARAM_NAME": "Selisih",
+    "PARAM_VALUE": "dcvl_selisih"
+  },
+  {
+    "PARAM_NAME": "Catatan TC",
+    "PARAM_VALUE": "dcvl_catatan_tc"
+  },
+  {
+    "PARAM_NAME": "PPN",
+    "PARAM_VALUE": "dcvl_ppn_val"
+  },
+  {
+    "PARAM_NAME": "PPH",
+    "PARAM_VALUE": "dcvl_pph_val"
+  },
+  {
+    "PARAM_NAME": "Total Value Appv Inc",
+    "PARAM_VALUE": "dcvl_total_val_appv_inc"
+  },
+  {
+    "PARAM_NAME": "TC Prod Code",
+    "PARAM_VALUE": "prod_code"
+  },
+  {
+    "PARAM_NAME": "TC Harga Satuan",
+    "PARAM_VALUE": "harga_satuan"
+  },
+  {
+    "PARAM_NAME": "TC Nilai Total",
+    "PARAM_VALUE": "nilai_total"
+  },
+  {
+    "PARAM_NAME": "TC Notes",
+    "PARAM_VALUE": "notes"
+  }
+]

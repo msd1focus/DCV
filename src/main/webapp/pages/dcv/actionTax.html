@@ -1,0 +1,136 @@
+<div ng-controller="ActionTaxController as vm">
+	<br /><br />
+	<section class="content">
+		<div class="row">
+			<div class="col-md-10">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+		             	<h3 class="box-title">Form Tax Action</h3>
+		             	<span class="label label-danger pull-right" ng-click="vm.back()">Cancel</span></th>
+		           	</div>
+		           	<form name="acctTax" role="form" class="form-horizontal">
+		           		<div class="box-body">
+		           			<table>
+		           				<tr>
+		           					<td class="col-sm-6">
+		           						<div class="form-group">
+		           							<label class="col-sm-5 control-label-custom2"><u>Upload Dokumen</u></label>
+						                	<div class="col-sm-7"></div>
+		           						</div>
+		           						<div class="form-group">
+		           							<label for="acctTxForm_jenis" class="col-sm-5 control-label-custom2">Jenis Dokumen</label>
+						                	<div class="col-sm-7" style="margin: 0 0 2px">
+						                  		<select name="selectParamJenis" class="form-control input-sm"
+													ng-model="vm.txAcc.jenis"
+													ng-options="param.docDesc for param in vm.jenisDoc track by param.docCode"
+													id="selectParamIdJenis">
+													<option value="" disabled>-- Pilih --</option>
+												</select>
+						                	</div>
+						                	<label for="acctTxForm_doc" class="col-sm-5 control-label-custom2">Lampiran Dokumen</label>
+						                	<div class="col-sm-7" style="margin: 0 0 2px">
+						                		<input type="file" class="form-control input-sm" name="uploadFile" 
+														id="uploadFileId" ngf-select ng-model="vm.txAcc.file" required /> 
+												<div ng-if="acctDist.uploadFile.$error.pattern">
+													<span class="text-danger">File tidak support</span>
+												</div>
+						                		<!-- <input type="file" class="form-control input-sm" name="uploadFile" 
+														id="uploadFileId" ngf-select ng-model="vm.txAcc.file" 
+														ngf-max-size="100MB" ngf-pattern="'.xls,.xlsx,.pdf,.rar,.zip,.jpg,.png'" required /> 
+												<div ng-if="acctDist.uploadFile.$error.pattern">
+													<span class="text-danger">File tidak support</span>
+												</div> -->
+						                	</div>
+						                	<div id="hiddenReadyFile" hidden>
+							                	<label class="col-sm-5 control-label-custom2"></label>
+							                	<div class="col-sm-7" style="margin: 0 0 2px">
+							                		<input type="text" id="readyFileUpload" class="form-control input-sm" disabled/>
+							                	</div>
+						                	</div>
+						                	<label for="acctTxForm_tgl" class="col-sm-5 control-label-custom2">Tanggal Dokumen</label>
+						                	<div class="col-sm-7" style="margin: 0 0 2px">
+					           					<px class="input-group">
+					           						<input type="text" class="form-control pull-right input-sm" 
+					           							uib-datepicker-popup="dd/MM/yyyy"
+					                               		ng-model="vm.txAcc.tgl"
+					                               		is-open="vm.popup.opened1" datepicker-options="vm.dateOptions" 
+					                               		show-button-bar="false" ng-click="vm.open('1')" placeholder="Tanggal {{ vm.disclaimer }}"/>
+				                                   	<span class="input-group-btn">
+				                                   		<button type="button" class="btn btn-default btn-sm" 
+				                                   			ng-click="vm.open('1')"><i class="glyphicon glyphicon-calendar"></i>
+				                                   		</button>
+				                                   	</span>
+					           					</px>
+					           				</div>
+						                	<label for="acctTxForm_no" class="col-sm-5 control-label-custom2">Nomer Dokumen</label>
+						                	<div class="col-sm-7" style="margin: 0 0 2px">
+						                  		<input type="text" ng-model="vm.txAcc.no" placeholder="No {{ vm.disclaimer }}" class="form-control input-sm" id="acctTxForm_no">
+						                	</div>
+		           						</div>
+		           					</td>
+		           					<td class="col-sm-6">
+		           						<div class="form-group">
+		           							<label for="acctTxForm_last" class="col-sm-3 control-label-custom2">Last action</label>
+						                	<div class="col-sm-9" style="margin: 0 0 2px">
+						                  		<input type="text" ng-model="vm.txAcc.last" class="form-control input-sm" id="acctTxForm_last" readonly="true">
+						                	</div>
+						                	<label for="acctTxForm_curr" class="col-sm-3 control-label-custom2">Current action</label>
+						                	<div class="col-sm-9" style="margin: 0 0 2px">
+						                  		<input type="text" ng-model="vm.txAcc.current" class="form-control input-sm" id="acctTxForm_curr" readonly="true">
+						                	</div>
+		           						</div>
+		           					</td>
+		           				</tr>
+		           				<tr>
+		           					<td class="col-sm-5">
+		           						<div class="form-group">
+		           							<label for="acctTxForm_infoKw" class="col-sm-5 control-label-custom2">Info Kwitansi</label>
+					                	<div class="col-sm-7" style="margin: 0 0 2px">
+					                  		<textarea class="form-control input-sm" id="acctTxForm_infoKw" ng-model="vm.txAcc.infoKw" rows="3" cols="25" ng-disabled="true"></textarea>
+					                	</div>
+					                	<label for="acctTxForm_flag" class="col-sm-5 control-label-custom2">Flag PPN</label>
+					                	<div class="col-sm-7" style="margin: 0 0 2px">
+					                		<input type="text" ng-model="vm.txAcc.flag" class="form-control input-sm" id="txAccFlag" readonly="true">
+					                  		<!-- <select name="selectParamJenis" class="form-control input-sm"
+												ng-model="vm.txAcc.flag"
+												ng-options="param.PARAM_NAME for param in vm.flagPPN track by param.PARAM_VALUE"
+												id="selectParamId" ng-disabled="true">
+												<option value="" disabled>-- Pilih --</option>
+											</select> -->
+					                	</div>
+		           						</div>
+		           					</td>
+		           					<td class="col-sm-7">
+		           						<div class="form-group">
+		           							<label for="acctTxForm_action" class="col-sm-3 control-label-custom2">Action</label>
+						                	<div class="col-sm-9" style="margin: 0 0 2px">
+												<select name="selectParamAc" class="form-control input-sm"
+													ng-model="vm.txAcc.action"
+													ng-options="param.description for param in vm.listAksi track by param.pilihan"
+													id="selectParamId">
+													<option value="" disabled>-- Pilih --</option>
+												</select>
+											</div>
+											<label for="acctTxForm_noteAcc" class="col-sm-3 control-label-custom2">Note Action</label>
+						                	<div class="col-sm-9" style="margin: 0 0 2px">
+						                  		<textarea class="form-control input-sm" id="acctTxForm_noteAcc" ng-model="vm.txAcc.noteAcc" rows="3" cols="45"></textarea>
+						                	</div>
+		           						</div>
+		           					</td>
+		           				</tr>
+		           				<tr>
+			           				<td class="col-sm-5">
+			           					<button id="update" type="button" class="btn btn-primary btn-sm pull-right" ng-click="vm.update()">Update</button>
+			           				</td>
+			           				<td class="col-sm-7">
+			           					<button id="goOn" type="button" class="btn btn-primary btn-sm pull-right" ng-click="vm.submit()">Submit Action</button>
+			           				</td>
+			           			<tr>
+		           			</table>
+		           		</div>
+		           	</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

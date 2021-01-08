@@ -1,0 +1,76 @@
+<div ng-controller="NewDCVFormDetailController as vm">
+	<!-- <section class="content-header"></section> -->
+	<br /><br />
+  	<section class="content">
+  		<div class="row">
+  			<div class="col-md-12">
+  				<div class="box box-primary">
+  					<div class="box-header with-border">
+		             	<h3 class="box-title">Form DCV Detail</h3>
+		             	<span class="label label-warning pull-right" ng-click="vm.back()">Back</span></th>
+		           	</div>
+		           	<form role="form" class="form-horizontal">
+		           		<div class="box-header with-border">
+		           			<table>
+		           				<tr>
+		           					<td class="col-sm-6">
+			           					<button type="submit" class="btn btn-primary btn-sm pull-center" ng-click="vm.submitData()">Submit DCV</button>
+			           				<!-- 	<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.dcvTrk()">DCV Terkait</button> -->
+			           				</td>
+			           			<tr>
+		           			</table>
+			            </div>
+			            <div class="box-body">
+							<table id="copyDCV" class="table table-striped table-bordered" datatable="ng" dt-options="vm.dtOptions" dt-instance="vm.dtInstance"  width="100%" dt-column-defs="vm.dtColumnDefs">
+							    <thead>
+							      <tr>
+							      	 <th></th>        
+							         <th>Line PC</th>
+							         <th>Prod Class</th>
+							         <th>Prod Brand</th>
+							         <th>Prod Ext</th>
+							         <th>Prod Packaging</th>
+							         <th>Prod Variant</th>
+							         <th>Prod Item</th>
+							         <th>DCV Qty</th>
+							         <th>Satuan</th>
+							         <th>DCV Value Excl</th>
+							         <th>Notes</th>
+							         <th></th>
+							      </tr>
+							    </thead>
+							    <tbody>
+							      <tr ng-repeat="data in vm.dataDetail">
+							        <td><input id="vm.checkbox[$index]" type="checkbox" ng-model="vm.checkbox[$index]"  ng-click="vm.editMember($index, data)" class="checkboxClass"></td>
+							        <td ng-bind="data.noLinePC"></td>
+							        <td ng-bind="data.prodClassDesc"></td>
+							        <td ng-bind="data.prodBrandDesc"></td>
+							        <td ng-bind="data.prodExtDesc"></td>
+							         <td ng-bind="data.prodPackDesc"></td>
+							        <td><textarea id="prodVariant" ng-bind="data.prodVariantDesc" cols="20" style="border: none" disabled></textarea></td>
+							        <td><textarea id="prodItem" ng-bind="data.prodItemDesc" cols="30" style="border: none" disabled></textarea></td>
+							        <td>
+ 							          <div style="text-align:center"><input type="text" id="dcvQty{{$index}}" class="form-control pull-right input-sm qtyNumberRegex" size="6" disabled="true">
+							        </td>
+							        <td>
+							          <div style="text-align:center"><select id="satuan{{$index}}" cols="10" style="border: none" class="form-control" disabled="true">
+							        </td>
+							        <td>
+							          <div style="text-align:center"><input type="text" id="dcvValueExcl{{$index}}" class="form-control pull-right input-sm dcvValueRegex" size="6" disabled="true">
+							        </td>
+							        <td>
+							          <div style="text-align:center"><input type="text" id="notes{{$index}}" class="form-control pull-right input-sm" size="6" disabled="true">
+							        </td>
+							        <td>
+							        	<button type="button" id="proditembtn" class="mr btn btn-info btn-xs" style="margin-left: 2px">Product Item</button>
+							        </td>
+							      </tr>
+							    </tbody>
+							  </table>
+			            </div>
+		           	</form>
+  				</div>
+  			</div>
+  		</div>
+  	</section>
+</div>

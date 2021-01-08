@@ -1,0 +1,262 @@
+<div ng-controller="ViewDetailController as vm">
+	<br /><br />
+	<section class="content">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+		             	<h3 class="box-title">Monitoring DCV-View Detail</h3>
+		             	<span class="label label-warning pull-right" ng-click="vm.back()">Back</span></th>
+		             	<span class="label pull-right">&nbsp;</span></th>
+		             	<span class="label label-info pull-right" ng-click="vm.linkReport()">Link Report</span></th>
+		           	</div>
+		           	<div class="form-group">
+		             	<!-- <label for="viewDtl_noDCV" class="col-sm-12 custom-font-table pull-left">{{ vm.viewDtl.kodeDist }}, {{ vm.viewDtl.region }}</label> -->
+		             	<label for="viewDtl_noDCV" class="col-sm-12 custom-font-table pull-left">{{ vm.viewDtl.region }}</label>
+		           	</div>
+		           	<form name="formViewDtl" role="form" class="form-horizontal" novalidate>
+		           		<div class="box-header with-border">
+		           			<table>
+		           				<tr>
+		           					<td class="col-sm-4">
+		           						<div class="form-group">
+		           						  <label for="viewDtl_noDCV" class="col-sm-3 control-label-custom">Detail No.DCV</label>
+						                  <div class="col-sm-9">
+						                  	<input type="input" ng-model="vm.viewDtl.noDCV" class="view-workflow" id="viewDtl_noDCV" ng-disabled="true">
+						                  </div>
+	           							  <label for="viewDtl_noDCV" class="col-sm-3 control-label-custom">Kode Distributor</label>
+						                  <div class="col-sm-9">
+						                  	<input type="input" ng-model="vm.viewDtl.kodeDist" class="view-workflow" id="viewDtl_codeDist" ng-disabled="true">
+						                  </div>
+						                  <label for="viewDtl_last" class="col-sm-3 control-label-custom">Last Action</label>
+						                  <div class="col-sm-9">
+						                  	<input type="input" ng-model="vm.viewDtl.last" class="view-workflow" id="viewDtl_last" ng-disabled="true">
+						                  </div>
+						                  <label for="viewDtl_current" class="col-sm-3 control-label-custom">Current Action</label>
+						                  <div class="col-sm-9">
+						                  	<input type="input" ng-model="vm.viewDtl.current" class="view-workflow" id="viewDtl_current" ng-disabled="true">
+						                  </div>
+						                  <label for="viewDtl_current" class="col-sm-3 control-label-custom">Lihat Kwitansi</label>
+						                  <div class="col-sm-9">
+						                  	<img src="resource/images/kwitansi_icon.jpg" class="user-image" style="width:150px;" ng-click="vm.viewKwitansi()" data-toggle="tooltip" title="Lihat Kwitansi">
+						                  </div>
+		           						</div>
+		           					</td>
+		           					<!-- 
+		           					<td class="col-sm-4">
+		           						<div class="form-group">
+		           							<label for="viewDtl_metBayar" class="col-sm-5 control-label-custom">Metode Pembayaran</label>
+						                  	<div class="col-sm-7">
+						                  		<input type="input" ng-model="vm.viewDtl.metBayar" class="view-workflow" id="viewDtl_metBayar" ng-disabled="true">
+						                  	</div>
+						                  	<label for="viewDtl_proBayar" class="col-sm-5 control-label-custom">Proses Pembayaran</label>
+						                  	<div class="col-sm-7">
+						                  		<input type="input" ng-model="vm.viewDtl.proBayar" class="view-workflow" id="viewDtl_proBayar" ng-disabled="true">
+						                  	</div>
+						                  	<label for="viewDtl_note" class="col-sm-5 control-label-custom">Note</label>
+						                  	<div class="col-sm-7">
+						                  		<input type="input" ng-model="vm.viewDtl.note" class="view-workflow" id="viewDtl_note" style="height:70px;" ng-disabled="true">
+						                  	</div>
+		           						</div>
+		           					</td> -->
+		           					 <td class="col-sm-4">
+		           					</td> 
+		           				</tr>
+		           				
+		           				<tr>
+		           					<td class="col-sm-4">
+		           						<div class="form-group">
+		           							<div class="col-sm-5">
+		           								<label class="control-label-custom">Attachment:</label>
+		           								<div class="checkbox">
+		           									<label class="control-label-custom"><input type="checkbox" ng-checked="vm.adaBA" disabled>Berita Acara</label>
+		           								</div>
+		           								<div class="checkbox">
+		           									<label class="control-label-custom"><input type="checkbox" ng-checked="vm.adaRF" disabled>Rekapan Faktur</label>
+		           								</div>
+		           								<div class="checkbox">
+		           									<label class="control-label-custom"><input type="checkbox" ng-checked="vm.adaKwi" disabled>Kwitansi</label>
+		           								</div>
+		           								<div class="checkbox">
+		           									<label class="control-label-custom"><input type="checkbox" ng-checked="vm.adaFP" disabled>Faktur Pajak</label>
+		           								</div>
+		           								<div class="checkbox">
+		           									<label class="control-label-custom"><input type="checkbox" ng-checked="vm.adaRK" disabled>No.Resi Kwitansi</label>
+		           								</div>
+		           								<div class="checkbox">
+		           									<label class="control-label-custom"><input type="checkbox" ng-checked="vm.adaBPP" disabled>No.Bukti Potong PPH</label>
+		           								</div>
+		           							</div>
+		           							<div class="col-sm-7">
+		           								<label class="control-label-custom">Download File:</label>
+		           								<input type="input" ng-model="vm.view.berita_acara" class="view-workflow" id="viewDtl_beritaAcara" role="button" 
+		           									ng-click="vm.download(vm.viewDtl.attach.berita_acara, vm.view.berita_acara)" readonly="true">
+		           								<input type="input" ng-model="vm.view.rekap_faktur" class="view-workflow" id="viewDtl_rekapRetur" role="button" 
+		           									ng-click="vm.download(vm.viewDtl.attach.rekap_faktur, vm.view.rekap_faktur)" readonly="true">
+		           								<input type="input" ng-model="vm.view.kwitansi" class="view-workflow" id="viewDtl_kwitansi" role="button" 
+		           									ng-click="vm.download(vm.viewDtl.attach.kwitansi, vm.view.kwitansi)" readonly="true">
+		           								<input type="input" ng-model="vm.view.faktur_pajak" class="view-workflow" id="viewDtl_fakturPajak" role="button" 
+		           									ng-click="vm.download(vm.viewDtl.attach.faktur_pajak, vm.view.faktur_pajak)" readonly="true">
+		           								<input type="input" ng-model="vm.view.resi_kwitansi" class="view-workflow" id="viewDtl_resiKwitansi" role="button" 
+		           									ng-click="vm.download(vm.viewDtl.attach.resi_kwitansi, vm.view.resi_kwitansi)" readonly="true">
+		           								<input type="input" ng-model="vm.view.bukti_pph" class="view-workflow" id="viewDtl_buktiPph" role="button" 
+		           									ng-click="vm.download(vm.viewDtl.attach.bukti_pph, vm.view.bukti_pph)" readonly="true">
+		           							</div>
+		           						</div>
+		           					</td>
+		           					<td class="col-sm-4" colspan="3">
+		           						<div class="form-group">
+		           							<!-- 
+		           							<div class="col-sm-5">
+		           								<label class="control-label-custom">DCV Related</label>
+		           								<select name="selectDcvTrk" multiple 
+												ng-options="param.dcvhId + '-' + param.noDCV for param in vm.viewDtl.dcv_terkait in param.dcvhId"
+												ng-model="selectedItem"
+												ng-change="vm.clickOnData(selectedItem)"
+													style="height:160px; width:84%;" disabled></select>
+		           							</div> -->
+		           							<div class="col-sm-12">
+		           								<label for="viewDtl_rincian" class="control-label-custom">Rincian Dokumen pendukung pembayaran</label>
+			           							<select name="selectDcvRin" multiple
+			           							ng-options="param for param in vm.viewDtlDoc track by param" 
+			           							ng-model="selectedItem"
+													style="overflow: scroll; height:160px; width:102%;" disabled></select>
+		           							</div>
+		           						</div>
+		           					</td>
+		           				</tr>
+		           			</table>
+		           			
+		           			<table id="viewDetail" class="table table-striped" cellspacing="0" width="100%">
+		           				<thead>
+		           					<tr>
+						                <th colspan="8">DCV LINES</th>
+						                <th colspan="3">Distributor Request</th>
+						                <th colspan="5">TC Approval &nbsp;&nbsp;
+						                	<span class="label label-info" ng-click="vm.openTcApproval()" ng-show="vm.TCOnly">Open TC Approval</span></th>
+						                <th colspan="6">Total value TC approval included</th>
+						            </tr>
+						            <tr>
+						                <th class="custom-font-table">No+LinePC</th>
+						                <th class="custom-font-table">Prod Class</th>
+						                <th class="custom-font-table">Prod Brand</th>
+						                <th class="custom-font-table">Prod Ext</th>
+						                <th class="custom-font-table">Packaging</th>
+						                <th class="custom-font-table">Prod.Variant</th>
+						                <th class="custom-font-table">Prod.Item</th>
+						                <th class="custom-font-table">Distributor</th>
+						                <th class="custom-font-table">DCV Qty</th>
+						                <th class="custom-font-table">DCV UOM</th>
+						                <th class="custom-font-table">Value Excl</th>
+						                <!-- <th class="custom-font-table">Approval Qty</th>
+						                <th class="custom-font-table">Approval UOM</th> -->
+						                <th class="custom-font-table">Approval Val.Excl</th>
+						                <th class="custom-font-table">Selisih</th>
+						                <th class="custom-font-table">Catatan TC</th>
+						                <th class="custom-font-table">Nama PPN</th>
+						                <th class="custom-font-table">Value PPN</th>
+						                <th class="custom-font-table">Total Appv.Val.Excl</th>
+						                <th class="custom-font-table">Nama PPH</th>
+						                <th class="custom-font-table">Value PPH</th>
+						                <th class="custom-font-table">Approval Net</th>
+						            </tr>
+		           				</thead>
+		           				<tfoot>
+		           					<tr>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <!-- 
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>-->
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						                <th class="custom-font-table">&nbsp;&nbsp;</th>
+						            </tr>
+								</tfoot>
+		           			</table>
+		           		</div>
+		           	 	<!-- <table id="viewAdjustmentModal" class="table table-striped" cellspacing="0" width="700%">
+		           			<thead>
+		           				<tr>
+		           					 <th style="width: 900px;">DCV Adjustment Value:</th>
+		           					  <th style="width: 175px;">
+						                	<span class="label label-info" ng-click="vm.addAdjustment()" ng-show="vm.TCOnly">Action</span>
+						              </th>
+						              <th>{{ vm.viewDtl.dcv_adjustTotal }}</th>	
+						             
+						              				             
+		           				</tr>
+		           			</thead>
+		           			
+		           		</table>
+		           		<table id="viewAdjustmentAfterAdj" class="table table-striped" cellspacing="0" width="700%">
+		           			<thead>
+		           				<tr>
+		           					 <th style="width: 775px;">Total Setelah Adjustment:</th>
+		           					  <th style="width: 175px;">
+						                {{	vm.totalSetelahAdj }}
+						              </th>
+						              	
+						             
+						              				             
+		           				</tr>
+		           			</thead>
+		           			
+		           		</table>  -->
+		           		
+		           		<div class="box-header with-border">
+	           				<table>
+		           				<tr> 
+		           					<td style="padding-right: 15px;" ng-if="vm.privs == 'DISTACT_BTN'">
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.actionDist()">Action Distributor</button>
+			           				</td>
+			           				<td style="padding-right: 15px;" ng-if="vm.privs == 'SLSACT_BTN' || vm.privAdminSales == 'SLSACT_BTN'">
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.actionSales()">Action Sales</button>
+			           				</td>
+			           				<td style="padding-right: 15px;" ng-if="vm.privs == 'TCACT_BTN' || vm.privAdminTC == 'TCACT_BTN'">
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.actionTc()">Action TC</button>
+			           				</td>
+			           				<td style="padding-right: 15px;" ng-if="vm.privs == 'TAXACT_BTN' || vm.privAdminTAX == 'TAXACT_BTN'">
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.actionTax()">Action Tax</button>
+			           				</td> 
+			           				<td style="padding-right: 15px;" ng-if="vm.privs == 'APACT_BTN' || vm.privAdminAP == 'APACT_BTN'">
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.actionAP()">Action AP</button>
+			           				</td>
+			           				<td style="padding-right: 15px;" ng-if="vm.privs == 'PRACT_BTN' || vm.privAdminPromo == 'PRACT_BTN'">
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.actionPromo()">Action Promo</button>
+			           				</td>
+			           				<!-- 
+			           				<td class="col-sm-6" ng-if="vm.roleUser == 'SUPERUSER'">
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.actionTc()">TC Action</button>
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.actionDist()">Distributor</button>
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.actionSales()">Sales</button>
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.actionAR()">AR Action</button>
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.actionAP()">AP Action</button>
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.actionPromo()">Promo</button>
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.actionTax()">Tax Action</button>
+			           					<!-- <button type="button" class="btn btn-danger btn-sm pull-center" ng-click="vm.rollBack()">Rollback</button>
+			           				</td> -->
+			           			<tr>
+		           			</table>
+	           			</div>
+		           	</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

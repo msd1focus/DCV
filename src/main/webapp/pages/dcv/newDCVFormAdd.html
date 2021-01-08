@@ -1,0 +1,98 @@
+<div ng-controller="NewDCVFormAddController as vm">
+	<!-- <section class="content-header"></section> -->
+	<br /><br />
+	<section class="content">
+		<div class="row">
+			<!-- left column -->
+        	<div class="col-md-5">
+        		<!-- general form elements -->
+          		<div class="box box-primary">
+          			<div class="box-header with-border">
+		             	<h3 class="box-title">Form DCV Baru</h3>
+		           	</div>
+		           	<form role="form" class="form-horizontal">
+		           		<div class="box-header with-border">
+		           			<table>
+		           				<tr>
+			           				<td class="col-sm-3">
+			           					<button type="button" class="btn btn-primary btn-sm pull-center" ng-click="vm.nextTerm()">Cek PC</button>
+			           				</td>
+			           				<td class="col-sm-3"></td>
+			           				<td class="col-sm-3"></td>
+			           			<tr>
+		           			</table>
+			            </div>
+		           		<div class="box-body">
+		           			<div class="text-center text-danger" ng-if="vm.error">
+			                    <span ng-bind="vm.message"></span>
+			                </div>
+		           			<div class="form-group">
+			                  <label for="newDCVForm_noPC" class="col-sm-4 control-label-custom2">Nomer PC</label>
+			                  <!-- <div class="col-sm-8">
+			                  	<md-autocomplete
+				                  ng-disabled = "vm.isDisabled"
+				                  md-no-cache = "vm.noCache"
+				                  md-selected-item = "vm.selectedItem"
+				                  md-search-text-change = "vm.searchTextChange(vm.searchText)"
+				                  md-search-text = "vm.searchText"
+				                  md-selected-item-change = "vm.selectedItemChange(item)"
+				                  md-items = "item in vm.querySearch(vm.searchText)"
+				                  md-item-text = "item.display"
+				                  md-min-length = "0"
+				                  placeholder = "Masukan No.PC">
+				                  
+				                  <md-item-template>
+				                     <span md-highlight-text = "vm.searchText"
+				                        md-highlight-flags = "^i">{{item.display}}</span>
+				                  </md-item-template>
+				                  
+				                  <md-not-found>
+				                     Data "{{vm.searchText}}" tidak ditemukan.
+				                     <a ng-click = "vm.newState(vm.searchText)">Create a new one!</a>
+				                  </md-not-found>
+				               </md-autocomplete>
+			                  </div> -->
+			                  <div class="col-sm-7">
+			                  	<input type="input" ng-model="vm.noPC" class="form-control input-sm" id="newDCVFormAdd_noPC" placeholder="Masukan Nomer PC">
+			                  </div>
+			                  <label for="newDCVForm_noKeyPC" class="col-sm-4 control-label-custom2" style="margin-top: 4px">Nomer Key PC</label>
+			                  <div class="col-sm-7" style="margin-top: 4px">
+			                  	<input type="input" ng-model="vm.noKeyPC" class="form-control input-sm" id="newDCVFormAdd_noKeyPC" placeholder="Masukan Nomer Key PC">
+			                  </div>
+			                 <!--  <label for="newDCVFormAdd_dcvPeriodePC" class="col-sm-3 control-label-custom2">DCV Periode PC</label>
+			                  <div class="col-sm-4">
+            					<p class="input-group">
+            						<input type="text" class="form-control pull-right input-sm" 
+            							uib-datepicker-popup="dd/MM/yyyy"
+                                		ng-model="vm.selectedDate"
+                                		is-open="vm.popup.opened1" datepicker-options="vm.dateOptions" 
+                                		show-button-bar="false" ng-click="vm.open('1')" placeholder="Mulai"/>
+                                    <span class="input-group-btn">
+                                    	<button type="button" class="btn btn-default btn-sm" 
+                                    		ng-click="vm.open('1')"><i class="glyphicon glyphicon-calendar"></i>
+                                    	</button>
+                                    </span>
+            					</p>
+            				  </div>
+            				  <div class="col-sm-4">
+            					<p class="input-group">
+            						<input type="text" class="form-control pull-right input-sm" 
+            							uib-datepicker-popup="dd/MM/yyyy"
+                                		ng-model="vm.selectedDate2"
+                                		is-open="vm.popup.opened2" datepicker-options="vm.dateOptions" 
+                                		show-button-bar="false" ng-click="vm.open('2')" placeholder="Akhir"/>
+                                    <span class="input-group-btn">
+                                    	<button type="button" class="btn btn-default btn-sm" 
+                                    		ng-click="vm.open('2')"><i class="glyphicon glyphicon-calendar"></i>
+                                    	</button>
+                                    </span>
+            					</p>
+            				  </div> -->
+			                </div>
+		           		</div>
+		           	</form>
+          		</div>
+        	</div>
+		</div>
+	</section>
+</div>

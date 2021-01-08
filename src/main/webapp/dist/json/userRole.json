@@ -1,0 +1,62 @@
+[
+  {
+    "USER_ID": "2018072400341",
+    "USERNAME": "admin",
+    "FULLNAME": "admin DCV",
+    "ROLES": [
+      {
+        "USER_ID": "2018072400341",
+        "ROLE_ID": "BO",
+        "CTL_INS_DTM": "2019-02-11 14:22:06",
+        "CTL_INS_BY": null,
+        "CTL_UPD_DTM": "2019-02-11 14:22:06",
+        "CTL_UPD_BY": null,
+        "ROLE_STATUS": "1",
+        "ROLE_NAME": "ADMIN DCV",
+        "ROLE_DESC": "Back Officer DCV"
+      }
+    ],
+    "TOTAL": 98,
+    "ROWNUM": "1"
+  },
+  {
+    "USER_ID": "2017050800183",
+    "USERNAME": "ADM001",
+    "FULLNAME": "Admin001",
+    "ROLES": [
+      {
+        "USER_ID": "2017050800183",
+        "ROLE_ID": "205",
+        "CTL_INS_DTM": "2018-10-31 13:29:02",
+        "CTL_INS_BY": null,
+        "CTL_UPD_DTM": "2018-10-31 13:29:02",
+        "CTL_UPD_BY": null,
+        "ROLE_STATUS": "1",
+        "ROLE_NAME": "ADMIN Sales",
+        "ROLE_DESC": "Sales DCV"
+      }
+    ],
+    "TOTAL": 98,
+    "ROWNUM": "2"
+  },
+  {
+    "USER_ID": "2017050800184",
+    "USERNAME": "ADM002",
+    "FULLNAME": "Admin002",
+    "ROLES": [
+      {
+        "USER_ID": "2017050800184",
+        "ROLE_ID": "283",
+        "CTL_INS_DTM": "2017-05-08 16:37:07",
+        "CTL_INS_BY": null,
+        "CTL_UPD_DTM": "2017-05-08 16:37:07",
+        "CTL_UPD_BY": null,
+        "ROLE_STATUS": "1",
+        "ROLE_NAME": "ADMIN Distributor",
+        "ROLE_DESC": "Distributor DCV"
+      }
+    ],
+    "TOTAL": 98,
+    "ROWNUM": "3"
+  }
+]

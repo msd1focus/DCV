@@ -1,0 +1,68 @@
+[
+  {
+    "bagian": "Distributor",
+    "step"	: "Attach Kwitansi & FP",
+    "sla1"	: 2,
+    "sla2"	: 0
+  },
+  {
+    "bagian": "Sales",
+    "step"	: "Approve",
+    "sla1"	: 2,
+    "sla2"	: 0
+  },
+  {
+    "bagian": "TC",
+    "step"	: "Approval",
+    "sla1"	: 5,
+    "sla2"	: 2
+  },
+  {
+    "bagian": "TC",
+    "step"	: "Terima Kwitansi, FP, GR, PO",
+    "sla1"	: 1,
+    "sla2"	: 0
+  },
+  {
+    "bagian": "TC",
+    "step"	: "Serah Kwitansi PO GR FP",
+    "sla1"	: 3,
+    "sla2"	: 1
+  },
+  {
+    "bagian": "Tax",
+    "step"	: "Verify Kwitansi FP",
+    "sla1"	: 3,
+    "sla2"	: 1
+  },
+  {
+    "bagian": "Promo",
+    "step"	: "Terima Kwitansi, FP",
+    "sla1"	: 1,
+    "sla2"	: 0
+  },
+  {
+    "bagian": "Promo",
+    "step"	: "Buat GR",
+    "sla1"	: 2,
+    "sla2"	: 0
+  },
+  {
+    "bagian": "Promo",
+    "step"	: "Serah Kwitansi FP PO GR",
+    "sla1"	: 2,
+    "sla2"	: 1
+  },
+  {
+    "bagian": "AP",
+    "step"	: "Proses AP",
+    "sla1"	: 5,
+    "sla2"	: 3
+  },
+  {
+    "bagian": "AR",
+    "step"	: "Proses AR",
+    "sla1"	: 4,
+    "sla2"	: 2
+  }
+]

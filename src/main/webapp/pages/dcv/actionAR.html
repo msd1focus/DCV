@@ -1,0 +1,59 @@
+<div ng-controller="ActionARController as vm">
+	<br /><br />
+	<section class="content">
+		<div class="row">
+			<div class="col-md-7">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+		             	<h3 class="box-title">Form AR Action</h3>
+		             	<span class="label label-danger pull-right" ng-click="vm.back()">Cancel</span></th>
+		           	</div>
+		           	<form name="acctSales" role="form" class="form-horizontal">
+		           		<div class="box-body">
+		           			<table>
+		           				<tr>
+		           					<td class="col-sm-6">
+		           						<div class="form-group">
+		           							<label for="acctARForm_last" class="col-sm-3 control-label-custom2">Last action</label>
+						                	<div class="col-sm-7">
+						                  		<input type="text" ng-model="vm.arAcc.last" class="form-control input-sm" id="acctARForm_last" readonly="true">
+						                	</div>
+						                	<label for="acctARForm_curr" class="col-sm-3 control-label-custom2">Current action</label>
+						                	<div class="col-sm-7">
+						                  		<input type="text" ng-model="vm.arAcc.current" class="form-control input-sm" id="acctARForm_curr" readonly="true">
+						                	</div>
+		           						</div>
+		           					</td>
+		           				</tr>
+		           				<tr>
+		           					<td class="col-sm-6">
+		           						<div class="form-group">
+		           							<label for="acctARForm_action" class="col-sm-3 control-label-custom2">Action</label>
+						                	<div class="col-sm-7">
+												<select name="selectParamAc" class="form-control input-sm"
+													ng-model="vm.arAcc.action"
+													ng-options="param.description for param in vm.listAksi track by param.pilihan"
+													id="selectParamId">
+													<option value="" disabled>-- Pilih --</option>
+												</select>
+											</div>
+											<label for="acctARForm_noteAcc" class="col-sm-3 control-label-custom2">Note Action</label>
+						                	<div class="col-sm-7">
+						                  		<textarea id="acctARForm_noteAcc" ng-model="vm.arAcc.noteAcc" rows="3" cols="54"></textarea>
+						                	</div>
+		           						</div>
+		           					</td>
+		           				</tr>
+		           				<tr>
+		           					<td class="col-sm-6">
+			           					<button id="goOn"  type="button" class="btn btn-primary btn-sm pull-right" ng-click="vm.submit()">Submit Action</button>
+			           				</td>
+		           				</tr>
+		           			</table>
+		           		</div>
+		           	</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

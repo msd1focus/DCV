@@ -1,0 +1,132 @@
+{
+  "userProfile": {
+    "username": "admin",
+    "firstName": "admin",
+    "lastName": "DCV",
+    "role": {
+      "menuList": [
+      	{
+          "ID": "22",
+          "SEQUENCE": "19",
+          "TITLE": "Management DCV",
+          "URL": "#",
+          "PARENT": null,
+          "FA_ICON": "fa fa-book",
+          "HIDDEN": "0",
+          "children": [
+	          {
+	          	"ID": "2",
+	          	"SEQUENCE": "201",
+	          	"TITLE": "New DCV",
+	          	"URL": "home.newDCVForm-add",
+	          	"PARENT": "22",
+	          	"FA_ICON": null,
+	          	"HIDDEN": "0"
+	          },
+	          {
+              	"ID": "3",
+                "SEQUENCE": "208",
+                "TITLE": "Copy DCV",
+                "URL": "home.copyDCVForm-add",
+                "PARENT": "49",
+                "FA_ICON": null,
+                "HIDDEN": "0"
+              }
+          ]
+        },
+        {
+          "ID": "65",
+          "SEQUENCE": "1",
+          "TITLE": "Monitoring",
+          "URL": "home.staticDashboard",
+          "PARENT": null,
+          "FA_ICON": "fa fa-laptop",
+          "HIDDEN": "0"
+        },
+        {
+          "ID": "21",
+          "SEQUENCE": "17",
+          "TITLE": "Settings",
+          "URL": "#",
+          "PARENT": null,
+          "FA_ICON": "fa fa-wrench",
+          "HIDDEN": "0",
+          "children": [
+            {
+              "ID": "165",
+              "SEQUENCE": "190",
+              "TITLE": "Hari Libur",
+              "URL": "home.holiday",
+              "PARENT": "21",
+              "FA_ICON": null,
+              "HIDDEN": "0"
+            },
+            {
+	          "ID": "35",
+	          "SEQUENCE": "182",
+	          "TITLE": "User Management",
+	          "URL": "#",
+	          "PARENT": "21",
+	          "FA_ICON": "null",
+	          "HIDDEN": "0",
+	          "children": [
+	            {
+	              "ID": "36",
+	              "SEQUENCE": "1821",
+	              "TITLE": "List User",
+	              "URL": "home.user",
+	              "PARENT": "35",
+	              "FA_ICON": null,
+	              "HIDDEN": "0"
+	            },
+	            {
+	              "ID": "38",
+	              "SEQUENCE": "1823",
+	              "TITLE": "Role",
+	              "URL": "home.role",
+	              "PARENT": "35",
+	              "FA_ICON": null,
+	              "HIDDEN": "0"
+	            },
+	            {
+	              "ID": "39",
+	              "SEQUENCE": "1824",
+	              "TITLE": "User Role",
+	              "URL": "home.user-role",
+	              "PARENT": "35",
+	              "FA_ICON": null,
+	              "HIDDEN": "0"
+	            }
+	          ]
+	        }
+          ]
+        }
+      ],
+      "menus": [
+        "home.user",
+        "home.role",
+        "home.user-role",
+        "home.reset-password",
+        "home.staticDashboard",
+        "home.view-workflow",
+        "home.newDCVForm-add",
+        "home.newDCVForm-term",
+        "home.newDCVForm-detail",
+        "home.copyDCVForm-add",
+        "home.copyDCVForm-detail",
+        "home.holiday",
+        "home.view-detail"
+      ],
+      "Roles": [
+        "SUPERUSER"
+      ]
+    },
+    "isValid": "true",
+    "lastSyncTask": "2019-08-05 17:40:04",
+    "userId": "2",
+    "lastSyncNotification": "2019-08-05 17:40:08",
+    "expiredPassword": "62"
+  },
+  "STATUS": "00",
+  "MESSAGE": ""
+}

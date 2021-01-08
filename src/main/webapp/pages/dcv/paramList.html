@@ -1,0 +1,79 @@
+<div ng-controller="ParamListController as vm">
+	<div class="row"><br /><br /></div>
+	<div class="content">
+		<div class="box">
+			<div class="box-header with-border" style="height:65px">
+				<h3 class="content-title">Parameter</h3>
+			</div>
+			
+			<div class="box-body">
+				<div align="left">
+					<button type="button" class="btn  btn-primary mb" ng-click="vm.addParam()" ripple="">
+						<span class=""> <i class="fa fa-plus"></i></span>
+						<span>Tambah</span>
+					</button>			
+				</div>
+				
+				<div align="center">
+					<ul uib-pagination total-items="vm.totalItems" ng-model="vm.pageNumber" 
+						items-per-page="vm.itemPerpage" ng-change="vm.pageChanged()" max-size="vm.maxSize" 
+						class="pagination-sm" boundary-link-numbers="true" rotate="false" />
+				</div>
+			
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Action</th>
+								<th>Param Id</th>
+								<th>Param Name</th>
+								<th>Param Value</th>
+								<th>Param Group</th>
+								<th>Description</th>
+								<th>Insert Date</th>
+								<th>Update Date</th>
+								<th>Insert By</th>
+								<th>Update By</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-if="vm.paramList == undefined"><td colspan="9">No Record found</td></tr>
+							<tr ng-repeat="data in vm.paramList" ng-if="vm.paramList != undefined && vm.paramList.length > 0" ng-click="vm.viewParameter(data)">
+								<td ng-bind="$index+1"></td>
+								<td>
+									<div>
+										<button type="button" class="mr btn btn-success btn-xs" 
+		                                        ng-click="vm.editParameter(data); $event.stopPropagation();" data-toggle="tooltip" title="Edit Parameter">
+											<i class="fa fa-pencil"></i>
+										</button>
+										&nbsp;
+										<button type="button" class="mr btn btn-danger btn-xs" 
+		                                        ng-click="vm.deleteParameter(data); $event.stopPropagation();" data-toggle="tooltip" title="Delete Parameter" ng-disabled="true">
+											<i class="fa fa-times"></i>
+										</button>
+									</div>
+								</td>
+		                        <td ng-bind="data.PARAM_ID" />
+								<td ng-bind="data.PARAM_NAME" />
+								<td ng-bind="data.PARAM_VALUE" />
+								<td ng-bind="data.PARAM_GROUP" />
+								<td ng-bind="data.PARAM_COMMENT" />
+								<td ng-bind="data.INSERT_CTL" />
+		                        <td ng-bind="data.UPDATE_CTL" />
+		                        <td ng-bind="data.INSERT_BY" />
+		                        <td ng-bind="data.UPDATE_BY" />
+							</tr>
+						</tbody>
+					</table>
+				</div> <!-- div table -->
+				
+				 <div align="center">
+					<ul uib-pagination total-items="vm.totalItems" ng-model="vm.pageNumber" 
+						items-per-page="vm.itemPerpage" ng-change="vm.pageChanged()" max-size="vm.maxSize" 
+						class="pagination-sm" boundary-link-numbers="true" rotate="false" />
+				</div>
+			</div><!-- box body -->
+		</div><!-- box -->
+	</div><!-- content -->
+</div>

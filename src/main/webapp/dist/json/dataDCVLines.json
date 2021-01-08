@@ -1,0 +1,61 @@
+{
+	"dcv_lines": [
+		{
+			"no_line_pc": "NLPC-12345",
+			"prod_class": "XXXXX",
+			"prod_brand": "XXXXX",
+			"prod_ext": "XXXXX",
+			"packaging": "XXXXX",
+			"prod_variant": "ABCD EFGH IJKL MNOPQ",
+			"prod_item": "ABCDEFGHIJ KLMNOPQRST UVWXYZ",
+			"distributor": "XXXXX",
+			"dcv_qty": "XXXXX",
+			"dcv_oum": "XXXXX",
+			"value_excl": "XXXXX",
+			"approval_qty": "XXXXX",
+			"approval_uom": "XXXXX",
+			"approval_val_excl": "XXXXX",
+			"selisih": "XXXXX",
+			"catatan_tc": "XXXXX",
+			"nama_ppn": "XXXXX",
+			"value_ppn": "XXXXX",
+			"total_val": "XXXXX",
+			"nama_pph": "XXXXX",
+			"value_pph": "XXXXX",
+			"approval_net": "XXXXX"
+		},
+		{
+			"no_line_pc": "NLPC-67890",
+			"prod_class": "XXXXX",
+			"prod_brand": "XXXXX",
+			"prod_ext": "XXXXX",
+			"packaging": "XXXXX",
+			"prod_variant": "ABCD EFGH IJKL MNOPQ",
+			"prod_item": "ABCDEFGHIJ KLMNOPQRST UVWXYZ",
+			"distributor": "XXXXX",
+			"dcv_qty": "XXXXX",
+			"dcv_oum": "XXXXX",
+			"value_excl": "XXXXX",
+			"approval_qty": "XXXXX",
+			"approval_uom": "XXXXX",
+			"approval_val_excl": "XXXXX",
+			"selisih": "XXXXX",
+			"catatan_tc": "XXXXX",
+			"nama_ppn": "XXXXX",
+			"value_ppn": "XXXXX",
+			"total_val": "XXXXX",
+			"nama_pph": "XXXXX",
+			"value_pph": "XXXXX",
+			"approval_net": "XXXXX"
+		}
+	],
+	"grand_total": {
+		"value_excl": "XXXXX",
+		"approval_val_excl": "XXXXX",
+		"selisih": "XXXXX",
+		"value_ppn": "XXXXX",
+		"total_val": "XXXXX",
+		"value_pph": "XXXXX",
+		"approval_net": "XXXXX"
+	}
+}

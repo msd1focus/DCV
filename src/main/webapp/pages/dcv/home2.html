@@ -1,0 +1,122 @@
+<div ng-controller="HomeController as vm">
+
+<!--Navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a ui-sref="home.staticDashboard" class="navbar-brand" role="button"><strong>DCV</strong></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <!-- dynamic menu -->
+      <ul class="nav navbar-nav">
+		<li class="dropdown" ng-repeat="dataMenu in vm.menuList" ng-include="'tree-renderer.html'"> </li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+      	<!-- task -->
+      	<!-- <li class="dropdown notifications-menu">
+      		<a role="button" class="dropdown-toggle" data-toggle="dropdown" title="inbox">
+               <i class="fa fa-envelope-o"></i>
+              <span class="label label-success" ng-bind="vm.dataPooling.response.TOTAL > 0 ? vm.dataPooling.response.TOTAL : '' "></span>
+            </a>
+      	</li> -->
+      	
+      	<!-- notification -->
+      	<!-- <li class="dropdown notifications-menu">
+      		<a role="button" class="dropdown-toggle" data-toggle="dropdown" title="notification">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning" ng-bind="vm.dataPooling.response.TOTAL_NOTIFICATION > 0 ? vm.dataPooling.response.TOTAL_NOTIFICATION : '' "></span>
+            </a>
+      	</li> -->
+      	
+      	<!-- user profile -->
+        <!-- <li class="dropdown user user-menu">
+           <a ui-sref="#" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+             <img src="resource/images/FDIicon.jpg" class="user-image" alt="User Image">
+             <span class="hidden-xs">{{vm.userProfile.username}}</span>
+           </a>
+           <ul class="dropdown-menu" role="menu">
+             User image
+             <li class="user-header">
+               <img src="resource/images/FDIicon.jpg" class="img-circle" alt="User Image">
+               <p>
+                 {{vm.userProfile.fullName + ' ' +vm.userProfile.userDivision}}
+                 <small>Member since Okt. 2019</small>
+               </p>
+             </li>
+             Menu Footer
+             <li class="user-footer">
+               <div class="pull-left">
+                 <a ui-sref="home.reset-password" class="btn btn-default btn-flat">Reset Password</a>
+               </div>
+               <div class="pull-right">
+               	<a href="" ng-click="vm.logout()" class="btn btn-default btn-flat">Sign out</a>
+               </div>
+             </li>
+           </ul>
+         </li> -->
+         
+         <!-- Standard Profile -->
+         <li class="dropdown notifications-menu">
+         	<a class="dropdown-toggle" data-toggle="dropdown">
+         		<i>Welcome {{ vm.userProfile.fullName }} ({{ vm.userProfile.userName }})</i>
+            </a>
+         </li>
+         <li class="dropdown notifications-menu" ng-show="vm.dcvUser">
+         	<a ui-sref="home.reset-password" role="button" class="dropdown-toggle" data-toggle="dropdown" title="Reset Password">
+         		<i class="fa fa-user-circle"></i>
+            </a>
+         </li>
+         <li class="dropdown notifications-menu">
+         	<a role="button" class="dropdown-toggle" data-toggle="dropdown" title="LogOut" ng-click="vm.logout()">
+         		<i class="fa fa-sign-out"></i>
+            </a>
+         </li>
+         
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div>
+	<div growl></div>
+	<div id=""></div>
+	<div ng-cloak ui-view autoscroll='true'></div>
+</div>
+
+<div class="footer">
+  <div class="pull-right hidden-xs">
+	<strong>Copyright &copy; 2019 - 2020 <a href="http://almsaeedstudio.com"></a>.</strong> All rights reserved.
+  </div>
+</div>
+
+</div>
+
+<script type="text/ng-template" id="tree-renderer.html">
+
+<a ng-if="dataMenu.children == undefined || dataMenu.children.length == 0"
+	ui-sref="{{(dataMenu.url != undefined && dataMenu.url != '') ? dataMenu.url : '#'}}" aria-haspopup="true" aria-expanded="true" role="button">
+	<span>{{dataMenu.title}}</span>
+</a>
+
+<a ng-if="dataMenu.children != undefined && dataMenu.children.length > 0" 
+	ui-sref="{{(dataMenu.url != undefined && dataMenu.url != '') ? dataMenu.url : '#'}}" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+	<span>{{dataMenu.title}}</span><i ng-class="{'coba' : dataMenu.parent != null, 'caret' : dataMenu.parent == null}" ></i>
+</a>
+
+<ul class="dropdown-menu" ng-if="dataMenu.children != undefined
+	&& dataMenu.children.length > 0">
+	<li class="dropdown dropdown-submenu" ng-repeat="dataMenu in dataMenu.children" ng-include="'tree-renderer.html'">
+	</li>
+</ul>
+            
+</script>

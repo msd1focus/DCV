@@ -1,0 +1,111 @@
+<div ng-controller="UserAddController as vm">
+	<section class="content-header">
+		<!-- <h1>User</h1> -->
+	</section>
+	<section class="content">
+		<h1>User</h1>
+		<div class="row">
+			<div class="col-md-6">
+				<form name="formUser" role="form" novalidate>
+					<div class="box box-primary">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="usernameId">Username</label>
+								<input type="text" class="form-control" name="username" 
+									ng-model="vm.user.USERNAME" ng-required="formUser.$submitted" ng-readonly="vm.viewOnly" 
+									id="usernameId" maxlength="100" />
+								<span class="text-danger" ng-if="formUser.username.$error.required">Username must not empty</span>
+							</div>
+							
+							<div class="form-group">
+								<label for="firstNameId">First Name</label>
+								<input type="text" class="form-control" name="firstName" ng-model="vm.user.FIRST_NAME" 
+									ng-required="formUser.$submitted" ng-readonly="vm.viewOnly" id="firstNameId" maxlength="100" />
+								<span class="text-danger"  ng-if="formUser.firstName.$error.required">First Name must not empty</span>
+							</div>
+							
+							<div class="form-group">
+								<label for="lastNameId">Last Name</label>
+								<input type="text" class="form-control" name="lastName" ng-model="vm.user.LAST_NAME" 
+									ng-required="formUser.$submitted" ng-readonly="vm.viewOnly" id="lastNameId" maxlength="100"/>
+								<span class="text-danger"  ng-if="formUser.lastName.$error.required">Last Name must not empty</span>
+							</div>
+							
+							<div class="form-group" ng-if='!vm.userid'>
+								<label for="passwordId">Password</label>
+								<input type="password" class="form-control" name="password" ng-model="vm.user.USER_PASSWORD" 
+									ng-required="formUser.$submitted" ng-readonly="vm.viewOnly" id="passwordId" maxlength="255"
+									complex-password />
+								<div><span class="text-danger" ng-if="formUser.password.$error.required">Password must not empty</span></div>
+								<div><span class="text-danger" ng-if="formUser.password.$error.complexity
+									&& formUser.password.$viewValue">Weak Password</span></div>
+								<div><span class="text-success" ng-if="!formUser.password.$error.complexity 
+									&& formUser.password.$viewValue">Strong Password</span></div>
+								<div><span class="text-primary">*password harus mengandung huruf besar, huruf kecil, angka, dan special karakter(!@#\$%\^&\*)</span></div>
+								<div><span class="text-primary">*panjang password minimal 8 karakter</span></div>
+							</div>
+							
+							<div class="form-group" ng-if="!vm.userid">
+								<label for="passwordId">Retype Password</label>
+								<input type="password" class="form-control" name="passwordRetype" ng-model="vm.user.USER_PASSWORD_RETYPE" 
+									ng-required="formUser.$submitted" ng-readonly="vm.viewOnly" id="passwordIdRetype"
+									matching-text="vm.user.USER_PASSWORD" maxlength="255" />
+								<div>
+									<span class="text-danger" ng-if="formUser.passwordRetype.$error.matchingText
+										&& formUser.passwordRetype.$viewValue">
+										Password doesn't match
+									</span>
+								</div>
+								<div>
+									<span class="text-danger" ng-if="formUser.passwordRetype.$error.required">
+										Retype Password must not empty
+									</span>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="emailId">Email</label>
+								<input type="email" class="form-control" name="email" ng-model="vm.user.USER_EMAIL" 
+									ng-pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z0-9]{2,}$/" maxlength="32"
+									ng-required="formUser.$submitted" ng-readonly="vm.viewOnly" id="emailId"/>
+								<span class="text-danger"  ng-if="formUser.email.$error.required  || formUser.email.$error.pattern">Email must not empty</span>
+							</div>
+						</div><!-- box body -->
+						<div class="box-footer with-border">
+							<div align="center" class="mb10">
+								<button type="button" class="btn btn-info pull-center" ng-click="vm.backToIndex()">
+									<span class="fa fa-chevron-left"></span>&nbsp;<span> Back</span>
+								</button>
+								&nbsp;
+								<button type="submit" class="btn btn-primary pull-center" ng-click="vm.saveUser(formUser.$invalid)" ng-hide="vm.viewOnly" ng-disabled="true">
+									<span class="fa fa-sign-in"></span> <span class="hidden-xs hidden-sm"> Submit</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div> <!-- col -->
+			<div class="col-md-6" ng-if="vm.userid != undefined">
+				<div class="box box-primary">
+					<div class="box-body">
+						<div class="form-group">
+							<label>ISLOCKED : </label>
+							<label ng-bind="vm.isLocked"></label>
+							<label ng-if="vm.isLocked && !vm.viewOnly"><a href="" ng-click="vm.unlock()">unlocked</a></label>
+						</div>
+						<div class="form-group">
+							<label>ISLOGIN : </label>
+							<label ng-bind="vm.isLogin"></label>
+							<label ng-if="vm.isLogin && !vm.viewOnly"><a href="" ng-click="vm.kick()">kick</a></label>
+						</div>
+						<button type="button" class="mr btn btn-default btn-xs" 
+							ng-click="vm.showModalResetPassword();" data-toggle="tooltip" title="Reset Password">
+							Reset Password
+						</button>
+					</div>
+				</div>	
+			</div>
+		</div><!-- row -->
+	</section>
+			
+</div>

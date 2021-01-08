@@ -1,0 +1,100 @@
+<div ng-controller="HistoriTerimaDokumenController as vm">
+	<br /><br />
+	<section class="content">
+		<div class="box box-primary">
+			<form name="formHistoriTerimaDok" role="form" class="form-horizontal" novalidate>
+				<div class="box-header with-border">
+					<h3 class="box-title">Histori Serah Terima Dokumen Secara Batch</h3>
+				</div>
+				<div class="box-body">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="box-body">
+								<table>
+									<tr>
+										<td class="col-sm-6">
+											<div class="form-group">
+												<label class="col-sm-3 control-label-custom2" style="text-align:left;">Action</label>
+								            	<div class="col-sm-7">
+													<select name="selectParamAc" class="form-control input-sm"
+														ng-model="vm.selectedAction"
+														ng-options="param.desc for param in vm.listAksi"
+														id="selectParamId">
+														<option value="" disabled>-- Pilih --</option>
+													</select>
+										  		</div>
+										  		<label class="col-sm-3 control-label-custom2" style="text-align:left;">Tanggal Proses</label>
+										  		<div class="col-sm-7">
+						           					<p class="input-group">
+						           						<input type="text" class="form-control pull-right input-sm" 
+						           							uib-datepicker-popup="dd/MM/yyyy"
+						                               		ng-model="vm.selectedDate"
+						                               		is-open="vm.popup.opened1" datepicker-options="vm.dateOptions" 
+						                               		show-button-bar="false" ng-click="vm.open('1')" placeholder="Pilih Tanggal"/>
+					                                   <span class="input-group-btn">
+					                                   	<button type="button" class="btn btn-default btn-sm" 
+					                                   		ng-click="vm.open('1')"><i class="glyphicon glyphicon-calendar"></i>
+					                                   	</button>
+					                                   </span>
+						           					</p>
+						           				</div>
+											</div>
+										</td>
+										<td class="col-sm-6">
+											<div class="form-group">
+	            								<div class="col-sm-7">
+					           						<button class="btn btn-primary btn-sm pull-center" ng-click="vm.loadSelected()">
+						            					<span class="fa fa-search"></span>&nbsp; <span>Search</span>
+						            				</button>
+						            				<button type="button" class="btn btn-success btn-sm pull-center" ng-click="vm.print()">Print</button>
+					           					</div>
+	            							</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					
+					<table id="historiTerimaDok" class="table table-striped" cellspacing="0" width="100%">
+					  <thead>
+				      	<tr>
+				      		<th>No DCV</th>
+				        	<th>Kode Customer</th>
+				        	<th>Nama Customer</th>
+				        	<th>Region</th>
+				        	<th>Area</th>
+				        	<th>Location</th>
+				        	<th>No PC</th>
+				        	<th>DCV Value Approved</th>
+				        	<th>No Kwitansi</th>
+				        	<th>No FP</th>
+				        	<th>No PO</th>
+				        	<th>No GR</th>
+				        	<th>Note Tolakan</th>
+				      	</tr>
+					   </thead>
+					   <tbody>
+					   	<tr ng-repeat="data in vm.dataDetail">
+								<td ng-bind="data.noDcv"></td>
+								<td ng-bind="data.custCode"></td>
+								<td ng-bind="data.custName"></td>
+								<td ng-bind="data.region"></td>
+								<td ng-bind="data.area"></td>
+								<td ng-bind="data.location"></td>
+								<td ng-bind="data.noPc"></td>
+								<td ng-bind="data.appvVal"></td>
+								<td ng-bind="data.noKwitansi"></td>
+								<td ng-bind="data.noFp"></td>
+								<td ng-bind="data.poNo"></td>
+								<td ng-bind="data.grNo"></td>
+								<td ng-bind="data.note"></td>
+							</tr>
+					   </tbody>
+					</table>
+					
+				</div>
+			</form>
+		</div>
+	</section>
+</div>

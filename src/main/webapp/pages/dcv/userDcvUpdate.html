@@ -1,0 +1,97 @@
+<div ng-controller="UserDCVUpdateController as vm">
+	<br /><br />
+	<section class="content">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+		             	<h3 class="box-title">Form User Update</h3>
+		             	<span class="label label-warning pull-right" ng-click="vm.back()">Cancel</span></th>
+		           	</div>
+		           	<form name="userUpdate" role="form" class="form-horizontal">
+		           		<div class="box-body">
+		           			<table>
+		           				<tr>
+		           					<td class="col-sm-6">
+		           						<label class="col-sm-4 control-label-custom2">User Name</label>
+		           						<div class="col-sm-8">
+					                  		<input type="text" ng-model="vm.user.userName" class="form-control input-sm" id="userName" readonly="true">
+					                	</div>
+					                	<label class="col-sm-4 control-label-custom2">Initial</label>
+		           						<div class="col-sm-8">
+					                  		<input type="text" ng-model="vm.user.userInitial" class="form-control input-sm" id="userInitial" readonly="true">
+					                	</div>
+					                	<label class="col-sm-4 control-label-custom2">Full Name</label>
+		           						<div class="col-sm-8">
+					                  		<input type="text" ng-model="vm.user.fullName" class="form-control input-sm" id="fullName" readonly="true">
+					                	</div>
+					                	<label class="col-sm-4 control-label-custom2">Title</label>
+		           						<div class="col-sm-8">
+					                  		<input type="text" ng-model="vm.user.title" class="form-control input-sm" id="title" readonly="true">
+					                	</div>
+					                	<label class="col-sm-4 control-label-custom2">Contact Number</label>
+		           						<div class="col-sm-8">
+					                  		<input type="text" ng-model="vm.user.contactNo" class="form-control input-sm" id="contactNo">
+					                	</div>
+					                	<label class="col-sm-4 control-label-custom2">Email</label>
+		           						<div class="col-sm-8">
+					                  		<input type="text" ng-model="vm.user.emailAddr" class="form-control input-sm" id="emailAddr">
+					                	</div>
+					                	<label class="col-sm-4 control-label-custom2">Role</label>
+					                	<div class="col-sm-7">
+					                  		<select name="selectParamJenis" class="form-control input-sm"
+												ng-model="vm.user.role.roleCode"
+												ng-options="param.PARAM_NAME for param in vm.jenisDivisi track by param.PARAM_VALUE"
+												id="selectParamId">
+												<option value="" disabled>-- Pilih --</option>
+											</select>
+					                	</div>
+		           					</td>
+		           					<td class="col-sm-6">
+		           						<label class="col-sm-4 control-label-custom2">Company</label>
+		           						<div class="col-sm-8">
+					                  		<input type="text" ng-model="vm.user.companyId" class="form-control input-sm" id="companyId" readonly="true">
+					                	</div>
+					                	<label class="col-sm-4 control-label-custom2">Division</label>
+		           						<div class="col-sm-7">
+					                  		<select name="selectParamJenis" class="form-control input-sm"
+												ng-model="vm.userDivision"
+												ng-options="param.PARAM_NAME for param in vm.jenisDivisi track by param.PARAM_VALUE"
+												id="selectParamId">
+												<option value="" disabled>-- Pilih --</option>
+											</select>
+					                	</div>
+					                	<label class="col-sm-4 control-label-custom2">Supervisor</label>
+		           						<div class="col-sm-7">
+					                  		<select name="selectParamJenis" class="form-control input-sm"
+												ng-model="vm.directSpvId"
+												ng-options="param.PARAM_NAME for param in vm.jenisSPV track by param.PARAM_VALUE"
+												id="selectParamId">
+												<option value="" disabled>-- Pilih --</option>
+											</select>
+					                	</div>
+					                	<label class="col-sm-4 control-label-custom2">Aktif From</label>
+		           						<div class="col-sm-8">
+					                  		<input type="text" ng-model="vm.user.activePeriodFrom" class="form-control input-sm" id="activePeriodFrom" readonly="true">
+					                	</div>
+					                	<label class="col-sm-4 control-label-custom2">To</label>
+		           						<div class="col-sm-8">
+					                  		<input type="text" ng-model="vm.user.activePeriodTo" class="form-control input-sm" id="activePeriodTo" readonly="true">
+					                	</div>
+		           					</td>
+		           				</tr>
+		           				<tr>
+			           				<td class="col-sm-5">
+			           				</td>
+			           				<td class="col-sm-7">
+			           					<button type="button" class="btn btn-primary btn-sm pull-right" ng-click="vm.update()">Update</button>
+			           				</td>
+			           			<tr>
+		           			</table>
+		           		</div>
+		           	</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

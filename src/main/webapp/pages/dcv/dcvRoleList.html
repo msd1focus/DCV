@@ -1,0 +1,42 @@
+<div ng-controller="DcvRoleListController as vm">
+	<br /><br />
+  	<section class="content">
+  		<div class="container">
+  			<div class="row">
+				<div class="col-md-12">
+					<div class="box box-primary">
+						<div class="box-header with-border">
+			             	<h3 class="box-title">Daftar DCV Role</h3>
+			           	</div>
+			           	<div class="form-group" style="padding: 10px 0px 20px 10px">
+			           		<div class="col-md-12">
+			           			<button type="submit" class="btn btn-success btn-sm pull-left" ng-click="vm.add()"><span class="glyphicon glyphicon-plus"></span> Tambah DCV Role</button>
+			           		</div>
+			           	</div>
+		           		<div class="box-header with-border">
+		           			<div class="col-md-12">
+		           				<table id="dcvRole" class="display" width="100%">
+								  <thead>
+								  	<tr>
+								      	<th>Role Code</th>
+								      	<th>Keterangan</th>
+								      	<th>Bagian</th>
+								      	<th colspan="2">Aksi</th>
+								  	</tr>
+								    <tr hidden>
+								    	<th></th>
+								      	<th></th>
+								      	<th></th>
+								      	<th></th>
+								      	<th></th>
+								    </tr>
+								  </thead>
+								</table>
+		           			</div>
+		           		</div>
+			        </div>
+			     </div>
+			  </div>
+  		</div>
+	</section>
+</div>

@@ -1,0 +1,83 @@
+<div ng-controller="UserRoleAddController as vm">
+	<section class="content-header">
+		<h1>Username : {{vm.userRole.USERNAME}}</h1>
+	</section>
+	
+	<section class="content">
+		<div align="left">
+			<button type="button" class="btn btn-info pull-center" ng-click="vm.backToIndex()">
+				<span class="fa fa-chevron-left"></span>&nbsp;<span>Back</span>
+			</button>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div class="box">
+					<div class="box-body">
+						<form name="formUserRole" role="form" novalidate>
+							<div class="form-group">
+								<label>Please select below User Role:</label>
+								<select name="role" class="form-control" ng-model="vm.role" 
+		                    		ng-options="role.ROLE_NAME for role in vm.roleList track by role.ROLE_ID" 
+		                    		ng-required="formUserRole.$submitted">
+		                    	</select>
+							</div>
+							<div class="form-group" ng-hide="vm.viewOnly">
+								<button type="submit" class="btn btn-primary btn-block" ng-click="vm.saveUserRole(formUserRole.$invalid)" ng-disabled="true">
+		                        	<span class="fa fa-sign-in"></span> 
+		                            <span class="hidden-xs hidden-sm">Add Role</span>
+		                        </button>
+							</div>
+							
+						</form>
+							
+							
+					       <div class="panel-body">
+					           <div class="table-responsive">
+					               <table class="table">
+					                   <thead>
+					                       <tr>
+					                           <th>No</th>
+					                           <th ng-hide="vm.viewOnly">Action</th>
+					                           <th>Role</th>
+					                           <th>Role Desc</th>
+					                           <th>Insert Date</th>
+					                           <th>Insert By</th>
+					                           <th>Update Date</th>
+					                           <th>Update By</th>
+					                           <th>Role Status</th>
+					                       </tr>
+					                   </thead>
+					                   <tbody>
+					                       <tr ng-if="vm.userRole.ROLES == undefined || vm.userRole.ROLES.length < 1"><td colspan="8">No Record found</td></tr>
+					                       <tr ng-repeat="data in vm.userRole.ROLES" ng-if="vm.userRole.ROLES != undefined && vm.userRole.ROLES.length > 0">
+					                           <td ng-bind="$index+1"></td>
+					                           <td ng-hide="vm.viewOnly">
+					                               <div>
+					                                   <button type="button" class="mr btn btn-danger btn-xs" 
+					                                           ng-click="vm.deleteUserRole(data); $event.stopPropagation();" data-toggle="tooltip" title="Delete User Role" ng-disabled="true">
+					                                       <i class="fa fa-times"></i>
+					                                   </button>
+					                               </div>
+					                           </td>
+					                           <td ng-bind="data.ROLE_NAME"></td>
+					                           <td ng-bind="data.ROLE_DESC"/>
+					                           <td ng-bind="data.CTL_INS_DTM" />
+					                           <td ng-bind="data.CTL_INS_BY" />
+					                           <td ng-bind="data.CTL_UPD_DTM" />
+					                           <td ng-bind="data.CTL_UPD_BY" />
+					                           <td ng-bind="data.ROLE_STATUS" />
+					                       </tr>
+					                   </tbody>
+					               </table>
+					           </div>
+					       </div>
+					</div> <!-- box bocy -->
+				</div>
+			</div>
+		</div>
+		
+	</section>
+	
+	
+</div>

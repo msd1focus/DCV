@@ -1,0 +1,76 @@
+<div ng-controller="RoleAddController as vm">
+	<section class="content-header">
+		<!-- <h1>Role</h1> -->
+	</section>
+	<section class="content">
+		<h1>Role</h1>
+		<form name="formRole" role="form" novalidate>
+			<div class="box box-primary">
+				<div class="box-body">
+					<div class="row form-group">
+						<label class="col-lg-3">Title</label>
+						<div class="col-lg-6">
+								<input type="text" class="form-control" name="title" ng-model="vm.role.ROLE_NAME" ng-required="formRole.$submitted" ng-readonly="vm.viewOnly"/>
+								<span class="text-danger"  ng-if="formRole.title.$error.required">Title must not empty</span>
+						</div>
+					</div>
+					<div class="row form-group">
+						<label class="col-lg-3">Description</label>
+						<div class="col-lg-6">
+								<input type="text" class="form-control" name="description" ng-model="vm.role.ROLE_DESC" ng-required="formRole.$submitted" ng-readonly="vm.viewOnly"/>
+								<span class="text-danger"  ng-if="formRole.description.$error.required">Description must not empty</span>
+						</div>
+					</div>												
+					<div align="center" class="mb10">
+						<button type="button" class="btn btn-info pull-center" ng-click="vm.backToIndex()">
+								<span class="fa fa-chevron-left"></span>&nbsp;<span> Back</span>
+						</button>
+						&nbsp;
+						<button type="submit" class="btn btn-primary pull-center" ng-click="vm.saveRole(formRole.$invalid)" ng-hide="vm.viewOnly"
+							ng-disabled = "vm.role.ROLE_NAME == undefined && vm.role.ROLE_DESC == undefined">
+								<span class="fa fa-sign-in"></span> 
+								<span class="hidden-xs hidden-sm"> Submit</span>
+						</button>
+					</div>
+				</div><!-- box body -->
+			</div> <!-- box -->
+			
+			<div class="box box-info" ng-if="vm.edit || vm.viewOnly">
+				<div class="box-body">
+					<div class="row">
+						<div class="col-sm-6">
+							<h3>Menu</h3>
+							<hr />
+							<div class="pre-scrollable">
+								<div
+									ivh-treeview-expand-to-depth="-1"
+								   	ivh-treeview="vm.roleMenuList"
+								   	ivh-treeview-id-attribute="'ID'"
+								   	ivh-treeview-label-attribute="'TITLE'"
+								   	ivh-treeview-selected-attribute="'SELECTED'"
+								   	ivh-treeview-expanded-attribute="'EXPANDED'"
+									>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<h3>Step</h3>
+							<hr />
+							<div dynamic="vm.roleStepHtml" class="pre-scrollable"></div>
+						</div>
+					</div>
+				</div><!-- box body -->
+				<div class="box-footer with-border">
+					<div class="row">
+						<div class="col-sm-6">
+							<button type="button" class="btn btn-primary btn-sm" ng-if="!vm.viewOnly" ng-click="vm.updateMenu()">Update Menu</button>
+						</div>
+						<div class="col-sm-6">
+							<button type="button" class="btn btn-primary btn-sm" ng-if="!vm.viewOnly" ng-click="vm.updateRoleStep()">Update Step</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</section>
+</div>

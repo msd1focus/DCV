@@ -1,0 +1,35 @@
+[
+  {
+    "PARAM_ID": "2019031400001",
+    "PARAM_NAME": "SpecialCharacter",
+    "PARAM_VALUE": "~!@#$%^&*()_+` <>?/'\";:{]}\\|.,[",
+    "PARAM_GROUP": "Transaksi",
+    "INSERT_CTL": "2019-04-22 19:47:47",
+    "INSERT_BY": null,
+    "UPDATE_CTL": "2019-03-14 17:08:34",
+    "UPDATE_BY": null,
+    "TOTAL": 102
+  },
+  {
+    "PARAM_ID": "2018100400081",
+    "PARAM_NAME": "LIMIT_MAX_OFFICER",
+    "PARAM_VALUE": "1000000",
+    "PARAM_GROUP": "AMOUNT_TRX",
+    "INSERT_CTL": "2018-10-04 14:59:50",
+    "INSERT_BY": "jisdor",
+    "UPDATE_CTL": "2018-10-04 14:59:50",
+    "UPDATE_BY": "Big Bos2",
+    "TOTAL": 102
+  },
+  {
+    "PARAM_ID": "2017061400042",
+    "PARAM_NAME": "SESSION_TIMEOUT",
+    "PARAM_VALUE": "600",
+    "PARAM_GROUP": "SECURITY_CONFIG",
+    "INSERT_CTL": "2019-07-01 11:35:10",
+    "INSERT_BY": "win",
+    "UPDATE_CTL": "2017-06-14 15:04:23",
+    "UPDATE_BY": "MOR001",
+    "TOTAL": 102
+  }
+]

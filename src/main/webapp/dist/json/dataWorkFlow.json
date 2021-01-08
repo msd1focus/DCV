@@ -1,0 +1,87 @@
+{
+	"dcv": [
+		{
+			"no": "1",
+			"step": "Submit DCV - Distributor",
+			"userName": "userDist",
+			"hari": "Kamis",
+			"tanggal": "03-jan-19",
+			"jam": "14:16:47",
+			"catatan": "",
+			"jmlHari": "",
+			"jmlJam": "",
+			"jmlMenit": "",
+			"jmlDetik": ""
+		},
+		{
+			"no": "2",
+			"step": "Disetujui - Sales",
+			"userName": "userSales",
+			"hari": "Jumat",
+			"tanggal": "04-jan-19",
+			"jam": "16:50:12",
+			"catatan": "",
+			"jmlHari": "01",
+			"jmlJam": "02",
+			"jmlMenit": "01",
+			"jmlDetik": "25"
+		},
+		{
+			"no": "3",
+			"step": "Disetujui - TC",
+			"userName": "userTC",
+			"hari": "Senin",
+			"tanggal": "07-jan-19",
+			"jam": "09:59:03",
+			"catatan": "",
+			"jmlHari": "02",
+			"jmlJam": "17",
+			"jmlMenit": "01",
+			"jmlDetik": "51"
+		},
+		{
+			"no": "4",
+			"step": "CM DCV - TC",
+			"userName": "userTC",
+			"hari": "Senin",
+			"tanggal": "03-jan-19",
+			"jam": "14:16:47",
+			"catatan": "",
+			"jmlHari": "00",
+			"jmlJam": "00",
+			"jmlMenit": "01",
+			"jmlDetik": "00"
+		}
+	],
+	"total_dcv": "XXXX",
+	"total_payment": "XXXX",
+	"sisa": "XXXX",
+	"detail": [
+		{
+			"no": "5",
+			"step": "Tunggu Apply Invoice - AR",
+			"userName": "XXXX",
+			"hari": "XXXX",
+			"tanggal": "XXXX",
+			"jam": "XXXX",
+			"catatan": "",
+			"jmlHari": "XXXX",
+			"jmlJam": "XXXX",
+			"jmlMenit": "XXXX",
+			"jmlDetik": "XXXX"
+		},
+		{
+			"no": "6",
+			"step": "Apply Invoice - AR",
+			"userName": "XXXX",
+			"hari": "XXXX",
+			"tanggal": "XXXX",
+			"jam": "XXXX",
+			"catatan": "",
+			"jmlHari": "XXXX",
+			"jmlJam": "XXXX",
+			"jmlMenit": "XXXX",
+			"jmlDetik": "XXXX"
+		}
+	]
+}

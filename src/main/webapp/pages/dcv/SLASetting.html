@@ -1,0 +1,49 @@
+<div ng-controller="SLASettingController as vm">
+	<br /><br />
+	<section class="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="box box-primary">
+						<div class="box-header with-border">
+			             	<h3 class="box-title">Setting SLA</h3>
+			           	</div>
+			           	<form name="formSetSLA" role="form" class="form-horizontal" novalidate>
+			           		<div class="box-header with-border">
+			           			<table>
+			           				<tr>
+			           					<td class="col-sm-6">
+				           					<button type="submit" class="btn btn-warning btn-sm pull-center" ng-click="vm.edit()">Edit SLA</button>
+				           				</td>
+				           			<tr>
+			           			</table>
+				            </div>
+			           		<div class="box-header with-border">
+			           			<table id="setSLA" class="table table-striped" datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" width="100%">
+			           				<thead>
+										<tr>
+											<th>Node Code</th>
+											<th>Bagian</th>
+											<th>Step</th>
+											<th>SLA-1</th>
+											<th hidden>SLA-2</th>
+										</tr>
+									</thead>
+									<tbody>
+									  	<tr ng-repeat="data in vm.dataDetail">
+									  		<td ng-bind="data.nodeCode"></td>
+									  		<td ng-bind="data.bagian"></td>
+									  		<td ng-bind="data.desc"></td>
+									  		<td ng-bind="data.sla1"></td>
+									  		<td ng-bind="data.sla2" hidden></td>
+									  	</tr>
+								  </tbody>
+			           			</table>
+			           		</div>
+			           	</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

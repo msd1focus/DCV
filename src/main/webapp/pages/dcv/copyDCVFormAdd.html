@@ -1,0 +1,39 @@
+<div ng-controller="CopyDCVFormAddController as vm">
+	<!-- <section class="content-header"></section> -->
+	<br /><br />
+	<section class="content">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+		             	<h3 class="box-title">Form DCV Baru dari Copy/Terminated</h3>
+		           	</div>
+		           	<form role="form" class="form-horizontal">
+		           		<div class="box-header with-border">
+		           			<table>
+		           				<tr>
+			           				<td class="col-sm-3">
+			           					<button type="button" id="checkDetail" class="btn btn-primary btn-sm pull-center" ng-click="vm.nextDetail()">Cek DCV</button>
+			           				</td>
+			           				<td class="col-sm-3"></td>
+			           				<td class="col-sm-3"></td>
+			           			<tr>
+		           			</table>
+		           		</div>
+		           		<div class="box-body">
+		           			<div class="text-center text-danger" ng-if="vm.error">
+			                    <span ng-bind="vm.message"></span>
+			                </div>
+			                <div class="form-group">
+			                  <label for="copyDCVForm_noPC" class="col-sm-3 control-label-custom2">No.DCV</label>
+			                  <div class="col-sm-6">
+			                  	<input type="input" ng-model="vm.dcvReq.noDCV" class="form-control input-sm" id="copyDCVFormAdd_noPC" placeholder="Masukkan No.DCV">
+			                  </div>
+			                </div>
+		           		</div>
+		           	</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

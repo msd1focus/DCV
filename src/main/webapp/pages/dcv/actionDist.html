@@ -1,0 +1,119 @@
+<div ng-controller="ActionDistributorController as vm">
+	<br /><br />
+	<section class="content">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+		             	<h3 class="box-title">Form Distributor Action</h3>
+		             	<span class="label label-danger pull-right" ng-click="vm.back()">Cancel</span></th>
+		           	</div>
+		           	<form name="acctDist" role="form" class="form-horizontal">
+						<div class="box-body">
+							<table>
+								<tr>
+									<td class="col-sm-5"></td>
+									<td class="col-sm-7">
+		           						<div class="form-group">
+		           							<label for="acctDistForm_last" class="col-sm-4 control-label-custom2">Last action</label>
+						                	<div class="col-sm-8" style="margin: 0 0 2px">
+						                  		<input type="text" ng-model="vm.distAcc.last" class="form-control input-sm" id="acctDistForm_last" readonly="true">
+						                	</div>
+						                	<label for="acctDistForm_curr" class="col-sm-4 control-label-custom2">Current action</label>
+						                	<div class="col-sm-8">
+						                  		<input type="text" ng-model="vm.distAcc.current" class="form-control input-sm" id="acctDistForm_curr" readonly="true">
+						                	</div>
+		           						</div>
+		           					</td>
+								</tr>
+								<tr>
+		           					<td class="col-sm-5">
+		           						<div class="form-group">
+		           							<label class="col-sm-5 control-label-custom2"><u>Upload Dokumen</u></label>
+						                	<div class="col-sm-7"></div>
+		           						</div>
+		           						<div class="form-group">
+		           							<label for="acctDistForm_jenis" class="col-sm-5 control-label-custom2">Jenis Dokumen</label>
+						                	<div class="col-sm-7" style="margin: 0 0 2px">
+						                  		<select name="selectParamJenis" class="form-control input-sm"
+													ng-model="vm.distAcc.jenis"
+													ng-options="param.docDesc for param in vm.jenisDoc track by param.docCode"
+													id="selectParamIdJenis">
+													<option value="" disabled>-- Pilih --</option>
+												</select>
+						                	</div>
+						                	<label for="acctDistForm_doc" class="col-sm-5 control-label-custom2">Browse Dokumen</label>
+						                	<div class="col-sm-7" style="margin: 0 0 2px">
+						                		<input type="file" class="form-control input-sm" name="uploadFile" 
+														id="uploadFileId" ngf-select ng-model="vm.distAcc.file" required />
+												<div ng-if="acctDist.uploadFile.$error.pattern">
+													<span class="text-danger">File tidak support</span>
+												</div>
+						                		<!-- <input type="file" class="form-control input-sm" name="uploadFile" 
+														id="uploadFileId" ngf-select ng-model="vm.distAcc.file" 
+														ngf-max-size="100MB" ngf-pattern="'.xls,.xlsx,.pdf,.rar,.zip,.jpg,.png'" required /> 
+												<div ng-if="acctDist.uploadFile.$error.pattern">
+													<span class="text-danger">File tidak support</span>
+												</div> -->
+						                	</div>
+						                	<div id="hiddenReadyFile" hidden>
+							                	<label class="col-sm-5 control-label-custom2"></label>
+							                	<div class="col-sm-7" style="margin: 0 0 2px">
+							                		<input type="text" id="readyFileUpload" class="form-control input-sm" disabled/>
+							                	</div>
+						                	</div>
+						                	<label for="acctDistForm_tgl" class="col-sm-5 control-label-custom2">Tgl.Dokumen</label>
+						                	<div class="col-sm-7" style="margin: 0 0 2px">
+					           					<px class="input-group">
+					           						<input type="text" class="form-control pull-right input-sm" 
+					           							uib-datepicker-popup="dd/MM/yyyy"
+					                               		ng-model="vm.distAcc.tgl"
+					                               		is-open="vm.popup.opened1" datepicker-options="vm.dateOptions" 
+					                               		show-button-bar="false" ng-click="vm.open('1')" placeholder="Masukkan tgl {{ vm.disclaimer }}"/>
+				                                   	<span class="input-group-btn">
+				                                   		<button type="button" class="btn btn-default btn-sm" 
+				                                   			ng-click="vm.open('1')"><i class="glyphicon glyphicon-calendar"></i>
+				                                   		</button>
+				                                   	</span>
+					           					</px>
+					           				 </div>
+						                	 <label for="acctDistForm_no" class="col-sm-5 control-label-custom2">No.Dokumen</label>
+						                	 <div class="col-sm-7" style="margin: 0 0 2px">
+						                  		<input type="text" ng-model="vm.distAcc.no" placeholder="Masukkan no {{ vm.disclaimer }}" class="form-control input-sm" id="acctDistForm_no">
+						                	 </div>
+		           						</div>
+		           					</td>
+		           					<td class="col-sm-7">
+		           						<div class="form-group">
+		           							<label for="acctDistForm_action" class="col-sm-4 control-label-custom2">Action</label>
+						                	<div class="col-sm-8" style="margin: 0 0 2px">
+												<select name="selectParamAc" class="form-control input-sm"
+													ng-model="vm.distAcc.action"
+													ng-options="param.description for param in vm.listAksi track by param.pilihan"
+													id="selectParamId">
+													<option value="" disabled>-- Pilih --</option>
+												</select>
+											</div>
+											<label for="acctDistForm_noteAcc" class="col-sm-4 control-label-custom2">Note Action</label>
+						                	<div class="col-sm-8" style="margin: 0 0 2px">
+						                  		<textarea class="form-control input-sm" id="acctDistForm_noteAcc" ng-model="vm.distAcc.noteAcc" rows="3" cols="45"></textarea>
+						                	</div>
+		           						</div>
+		           					</td>
+		           				</tr>
+		           				<tr>
+			           				<td class="col-sm-5">
+			           					<button id="update" type="button" class="btn btn-primary btn-sm pull-right" ng-click="vm.update()">Update</button>
+			           				</td>
+			           				<td class="col-sm-7">
+			           					<button id="goOn" type="button" class="btn btn-primary btn-sm pull-right" ng-click="vm.submit()">Submit Action</button>
+			           				</td>
+			           			<tr>
+							</table>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

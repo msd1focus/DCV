@@ -1,0 +1,21 @@
+<div>
+	<br />
+	<section class="content">
+		<div class="row">
+			<div class="col-md-12">
+				<form name="formDcvTrk" role="form" class="form-horizontal" novalidate>
+					<div class="box-header">
+						<h4 class="content-title">DCV Terkait</h4>
+						<div class="box-body">
+							<select name="selectDcvTrk" multiple 
+								ng-options="data.No_DCV for data in vm.dcvList"
+								ng-model="selectedItem"
+								ng-change="vm.clickOnData(selectedItem)" 
+								style="height:160px; width:200px" role="button"></select>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+</div>
