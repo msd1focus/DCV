@@ -1,0 +1,42 @@
+<div ng-controller="LookupCodeController as vm">
+	<br /><br />
+  	<section class="content">
+  		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="box box-primary">
+						<div class="box-header with-border">
+			             	<h3 class="box-title">Daftar LookUp Code</h3>
+			           	</div>
+		           		 <table datatable="ng" class="row-border hover table-striped" width="100%">
+							  <thead>
+							  	<tr>
+							      	<th width="5%" style="text-align:center" >No</th>
+							      	<th width="20%" style="text-align:center">Title</th>
+							      	<th width="35%" style="text-align:center">Value</th>
+							      	<th width="35%"style="text-align:center">Deskripsi</th>
+							      	<th width="5%"style="text-align:center">Aksi</th>
+							  	</tr>
+							  </thead>
+							  <tbody>
+							  	<tr ng-repeat="data in vm.lookupCodeList">
+		                            <td style="text-align:center" ng-bind="$index+1"></td>
+		                            <td style="text-align:left" ng-bind="data.title"></td>
+		                            <td style="text-align:left" ng-bind="data.value"></td>
+		                            <td style="text-align:left" ng-bind="data.desc"></td>
+		                            <td style="text-align:center">
+										<div>
+											<button class="btn btn-warning btn-sm pull-center" ng-click="vm.editLookupCode(data)">
+												<span class="glyphicon glyphicon-pencil"></span>
+											</button>						
+										</div>
+								    </td>
+		                        </tr>
+		                       </tbody>
+						</table>
+			        </div>
+			     </div>
+			  </div>
+		</div>
+	</section>
+</div>

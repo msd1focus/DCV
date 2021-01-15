@@ -512,6 +512,17 @@ App.config(['$stateProvider', '$urlRouterProvider', '$uiViewScrollProvider',
 		data : createMetaDataLink("holiday-edit","holiday-edit", false, false, false)
 	})
 	
+	.state('home.lookupcode',{
+		url: '/lookupcode',
+		templateUrl: 'pages/dcv/LookupCodeList.html',
+		resolve: {
+			ctrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+				return $ocLazyLoad.load('resource/controller/dcv/LookupCodeListCtrl.js');
+			}]
+		},
+		data : createMetaDataLink("lookupcode","lookupcode", false, false, false)
+	})
+	
 	.state('home.dcv-role',{
 		url: '/dcvrole',
 		templateUrl: 'pages/dcv/dcvRoleList.html',

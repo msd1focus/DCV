@@ -11,4 +11,8 @@ public interface LookupCodeRepo extends JpaRepository<LookupCode, Long> {
 	List<LookupCode> findByTitle(String title);
 	
 	LookupCode findByTitleAndValue(String title, String value);
+	
+	List<LookupCode> findAll();
+	
+	LookupCode save(LookupCode ookupCode);
 }
