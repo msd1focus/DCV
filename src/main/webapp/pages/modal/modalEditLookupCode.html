@@ -1,0 +1,48 @@
+<!--MODAL INFO-->
+
+<div class="modal-header" class="panel-heading">
+    <button type="button" data-dismiss="modal" aria-hidden="true" class="close" ng-click="cancelModal()">×</button>
+    <h3 id="myModalLabel" class="modal-title"><i class="fa fa-search"></i><span translate="promise.procurement.panitia.perencanaan.DETAIL.CARIMATERIAL.JUDUL"> Edit Data Lookup Code</span></h3>
+</div>
+<div class="modal-body">
+        <div class="panel panel-primary">
+            <h4 class="panel-heading"><em class="fa fa-archive">&nbsp;</em>
+   				<span translate="promise.procurement.panitia.perencanaan.DETAIL.CARIMATERIAL.DATAMETERIAL">Data Lookup Code</span>
+			</h4>
+            <div class="panel-body">
+                <div class="table-responsive table-bordered">
+                    <table id="table-ext-1" class="table table-bordered table-hover" width="100%">
+                        <tbody>
+                            <tr>
+                                <td style="text-align:left;vertical-align:top" width="30%">Title</td>
+								<td style="text-align:left;vertical-align:top" >:</td>
+                                <td style="text-align:left;vertical-align:top" width="70%">{{vm.dataLookupCode.title}}</td>
+                                
+                            </tr>
+                            <tr>
+                                <td style="text-align:left;vertical-align:top" width="30%">Value</td>
+								<td style="text-align:left;vertical-align:top" >:</td>
+                                <td style="text-align:left;vertical-align:top" width="70%">
+                                	<textarea class="form-control input-sm" rows="2" cols="89" ng-model="vm.dataLookupCode.value" ></textarea>
+                                	<p ng-show="lookupCodeValueError" style="color:red">Value Tidak Boleh Kosong !</p>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td style="text-align:left;vertical-align:top" width="30%">Deskripsi</td>
+								<td style="text-align:left;vertical-align:top" >:</td>
+                                <td style="text-align:left;vertical-align:top" width="70%">
+                                	<textarea class="form-control input-sm" rows="2" cols="89" ng-model="vm.dataLookupCode.desc" ></textarea>
+                                	<p ng-show="lookupCodeDescError" style="color:red">Deskripsi Tidak Boleh Kosong !</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer" style="background-color:#EEEEEE">
+    <button ng-click="cancelModal()" ripple="" class="mr mb-sm btn btn-default-back">Batal</button>
+    <button ng-click="save()" ripple="" class="mr mb-sm btn btn-primary">Simpan</button>
+</div>
