@@ -360,7 +360,7 @@ public class DataDCVServices {
 		data.setStatus("ON-PROGRESS");
 		data.setSubmitTime(new Date());
 		for(UiDcvRequestDetail dataDetail : dataDetails) {
-			value = value.add(dataDetail.getQyt());
+			value = value.add(dataDetail.getValExc());
 			valueExc = valueExc.add(dataDetail.getValExc());
 		}
 		data.setValue(value);
