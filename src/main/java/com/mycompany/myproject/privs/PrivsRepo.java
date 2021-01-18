@@ -1,10 +1,8 @@
-package com.mycompany.myproject.persist.repo;
+package com.mycompany.myproject.privs;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.mycompany.myproject.persist.entity.Privs;
 
 public interface PrivsRepo extends JpaRepository<Privs, String> {
 	

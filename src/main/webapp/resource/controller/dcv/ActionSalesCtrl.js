@@ -56,7 +56,7 @@ App.controller('ActionSalesController', ['CommonService', '$state', '$stateParam
 				nodeId : vm.salesAcc.action.nodeId,
 				pilihan : vm.salesAcc.action.pilihan
 			}
-			CommonService.doPost('/getReturnTask', paramTask)
+			CommonService.doPost('/wfroute/getReturnTask', paramTask)
 			.then(function(data){
 				console.log("Return Task : "+ data.returnTask);
 				if(data.returnTask == "Y" && (vm.salesAcc.noteAcc == undefined || vm.salesAcc.noteAcc == "")){

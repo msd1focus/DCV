@@ -39,53 +39,50 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.util.WeakReferenceMonitor.ReleaseListener;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.mycompany.myproject.lookupcode.LookupCode;
+import com.mycompany.myproject.lookupcode.LookupCodeRepo;
+import com.mycompany.myproject.menu.Menu;
+import com.mycompany.myproject.menu.MenuRepo;
 import com.mycompany.myproject.persist.entity.ActionList;
 import com.mycompany.myproject.persist.entity.AllUsers;
 import com.mycompany.myproject.persist.entity.DcvDokumen;
 import com.mycompany.myproject.persist.entity.DocumentAction;
 import com.mycompany.myproject.persist.entity.DokumenRealisasi;
 import com.mycompany.myproject.persist.entity.ExportExcel;
-import com.mycompany.myproject.persist.entity.Holiday;
-import com.mycompany.myproject.persist.entity.LookupCode;
 import com.mycompany.myproject.persist.entity.MasterCustomer;
-import com.mycompany.myproject.persist.entity.Menu;
 import com.mycompany.myproject.persist.entity.PPHList;
-import com.mycompany.myproject.persist.entity.Privs;
-import com.mycompany.myproject.persist.entity.Role;
-import com.mycompany.myproject.persist.entity.RoleMenu;
-import com.mycompany.myproject.persist.entity.RolePrivs;
 import com.mycompany.myproject.persist.entity.TcApproval;
 import com.mycompany.myproject.persist.entity.UiDcvRequest;
 import com.mycompany.myproject.persist.entity.UiDcvRequestDetail;
 import com.mycompany.myproject.persist.entity.WFNode;
-import com.mycompany.myproject.persist.entity.WFRoute;
 import com.mycompany.myproject.persist.entity.WFTask;
 import com.mycompany.myproject.persist.repo.ActionListRepo;
 import com.mycompany.myproject.persist.repo.AllUsersRepo;
 import com.mycompany.myproject.persist.repo.DcvDokumenRepo;
 import com.mycompany.myproject.persist.repo.DocumentActionRepo;
 import com.mycompany.myproject.persist.repo.DokumenRealisasiRepo;
-import com.mycompany.myproject.persist.repo.HolidayRepo;
-import com.mycompany.myproject.persist.repo.LookupCodeRepo;
 import com.mycompany.myproject.persist.repo.MasterCustomerRepo;
-import com.mycompany.myproject.persist.repo.MenuRepo;
 import com.mycompany.myproject.persist.repo.PPHListRepo;
-import com.mycompany.myproject.persist.repo.PrivsRepo;
-import com.mycompany.myproject.persist.repo.RoleMenuRepo;
-import com.mycompany.myproject.persist.repo.RolePrivsRepo;
-import com.mycompany.myproject.persist.repo.RoleRepo;
 import com.mycompany.myproject.persist.repo.TcApprovalRepo;
 import com.mycompany.myproject.persist.repo.TermRepo;
 import com.mycompany.myproject.persist.repo.UiDcvRequestDetailRepo;
 import com.mycompany.myproject.persist.repo.UiDcvRequestRepo;
 import com.mycompany.myproject.persist.repo.WFNodeRepo;
-import com.mycompany.myproject.persist.repo.WFRouteRepo;
 import com.mycompany.myproject.persist.repo.WFTaskRepo;
+import com.mycompany.myproject.privs.Privs;
+import com.mycompany.myproject.privs.PrivsRepo;
+import com.mycompany.myproject.role.Role;
+import com.mycompany.myproject.role.RoleRepo;
+import com.mycompany.myproject.rolemenu.RoleMenu;
+import com.mycompany.myproject.rolemenu.RoleMenuRepo;
+import com.mycompany.myproject.roleprivs.RolePrivs;
+import com.mycompany.myproject.roleprivs.RolePrivsRepo;
 import com.mycompany.myproject.service.dto.ActionListDto;
 import com.mycompany.myproject.service.dto.CopyDcvDto;
 import com.mycompany.myproject.service.dto.DcvListDto;
@@ -101,6 +98,8 @@ import com.mycompany.myproject.service.dto.ProsesPODto;
 import com.mycompany.myproject.service.dto.UomListDto;
 import com.mycompany.myproject.service.dto.UploadDocListDto;
 import com.mycompany.myproject.service.dto.WorkFlowDto;
+import com.mycompany.myproject.wfroute.WFRoute;
+import com.mycompany.myproject.wfroute.WFRouteRepo;
 
 @Service
 public class DataDCVServices {
@@ -163,8 +162,6 @@ public class DataDCVServices {
 	private RolePrivsRepo rolePrivsRepo;
 	@Autowired
 	private MasterCustomerRepo masterCustomerRepo;
-	@Autowired
-	private HolidayRepo holidayRepo;
 	
 	
 	public Map<String, Object> setForUserLogin(String userName, String password) {
@@ -500,21 +497,6 @@ public class DataDCVServices {
 //    	return postComments;
 //    }
     
-    // Example: Calling Store Procedure Oracle with Ref_CURSOR OUT
-	@SuppressWarnings("unchecked")
-    public List<Holiday> getHoliday() {
-    	List<Holiday> liburList = new ArrayList<Holiday>();
-    	StoredProcedureQuery proc = em.createNamedStoredProcedureQuery("collect_libur");
-    	proc.execute();
-
-    	List<Object[]> postComments = proc.getResultList();
-    	
-    	for(Object liburX: postComments) {
-    		liburList.add((Holiday) liburX);
-    	}
-    	
-    	return liburList;
-    }
     
     // Example: Calling Store Procedure Oracle with Multiple and Ref_CURSOR OUT
 	@SuppressWarnings("unchecked")
@@ -1847,22 +1829,7 @@ public class DataDCVServices {
     	return listData;
     }
     
-    // Get Return Task WFRoute
-    public WFRoute getReturnTask (Map<String, Object> param) {
-    	WFRoute result = new WFRoute();
-    	result = wfRouteRepo.findByNodeIdPilihan(param.get("nodeId").toString(), Integer.parseInt(param.get("pilihan").toString()));
-    	return result;
-    }
     
-	public Map<String, Object> getPrivs(@RequestBody Map<String, Object> param){
-		Map<String, Object> result = new HashMap<String, Object>();
-		List<Privs> privsList = privsRepo.findByPrivCode("TCAPPV");
-		
-		Privs privs = privsRepo.findOne("TCAPPV");
-		result.put("privs", privs);
-		return result;
-	}
-	
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> getPaymentSummary(String noDcv){
 		Map<String, Object> result = new HashMap<String, Object>();
@@ -2115,11 +2082,6 @@ public class DataDCVServices {
     	return  returnAll;
     }
 	
-	public Role getRole(String userRole) {
-		logger.info("Find data table Role by user role");
-		Role result = roleRepo.findByRoleCode(userRole);
-		return result;
-	}
 	
 	@SuppressWarnings("unchecked")
     public Map<String, Object> findUploadDocList(Map<String, Object> param) {
@@ -2179,91 +2141,6 @@ public class DataDCVServices {
 			}
 		}
     	result.put("result", "OK");
-    	return result;  
-    }
-	
-	public Map<String, Object> saveHoliday (Holiday param) {
-		Map<String, Object> result = new HashMap<String, Object>();
-    	try {
-    		holidayRepo.save(param);
-		} catch (Exception e) {
-			logger.error("Save Holiday Failed : ",e);
-		}
-    	
-    	result.put("result", "OK");
-    	return result;  
-    }
-	
-	public Map<String, Object> updateHoliday (Holiday param) {
-		Map<String, Object> result = new HashMap<String, Object>();
-    	try {
-    		holidayRepo.findOne(param.getId());
-    		holidayRepo.save(param);
-		} catch (Exception e) {
-			logger.error("Update Holiday Failed : ",e);
-		}
-    	
-    	result.put("result", "OK");
-    	return result;  
-    }
-	
-	public Map<String, Object> deleteHoliday (Holiday param) {
-		Map<String, Object> result = new HashMap<String, Object>();
-    	try {
-    		holidayRepo.findOne(param.getId());
-    		holidayRepo.delete(param);
-		} catch (Exception e) {
-			logger.error("Delete Holiday Failed : ",e);
-		}
-    	
-    	result.put("result", "OK");
-    	return result;  
-    }
-	
-	public List<Role> getDcvRole(){
-		List<Role> result = new ArrayList<>();
-		result = roleRepo.findAll();
-		return result;
-	}
-	
-	public Map<String, Object> saveRole (Role param) {
-		Map<String, Object> result = new HashMap<String, Object>();
-		Role role = roleRepo.findByRoleCode(param.getRoleCode());
-		if(role == null) {
-			try {
-	    		roleRepo.save(param);
-			} catch (Exception e) {
-				logger.error("Save DCV Role Failed : ",e);
-			}
-			result.put("result", "OK");
-		}else {
-			result.put("result", "FAILED");
-		}  	
-    	
-    	return result;  
-    }
-	
-	public Map<String, Object> updateRole (Role param) {
-		Map<String, Object> result = new HashMap<String, Object>(); 
-		try {
-			roleRepo.findByRoleCode(param.getRoleCode());
-    		roleRepo.save(param);
-		} catch (Exception e) {
-			logger.error("Update DCV Role Failed : ",e);
-		}
-		result.put("result", "OK");    	
-    	return result;  
-    }
-	
-	public Map<String, Object> deleteRole (Role param) {
-		Map<String, Object> result = new HashMap<String, Object>(); 
-		try {
-			roleRepo.findByRoleCode(param.getRoleCode());
-    		roleRepo.delete(param);
-		} catch (Exception e) {
-			logger.error("Delete DCV Role Failed : ",e);
-		}
-		result.put("result", "OK");    	
     	return result;  
     }
 	

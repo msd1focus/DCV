@@ -14,7 +14,7 @@ function($window, $state, $scope, $rootScope, CommonService, $uibModal, DTOption
 			$("#aksi-white").css("color","white");
 		}
 		
-		CommonService.doGET('/getListLookupCode')
+		CommonService.doGET('/lookupCode/getList')
 		.then(function(data){
 			
 			console.log(data);
@@ -86,7 +86,7 @@ function($window, $state, $scope, $rootScope, CommonService, $uibModal, DTOption
 		     
 			if($scope.validate()){
 				
-				CommonService.doPost('/saveLookupCode', vm.dataLookupCode)
+				CommonService.doPost('/lookupCode/save', vm.dataLookupCode)
 				.then(
 					function(data){
 						

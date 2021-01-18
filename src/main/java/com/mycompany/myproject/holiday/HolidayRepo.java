@@ -1,8 +1,6 @@
-package com.mycompany.myproject.persist.repo;
+package com.mycompany.myproject.holiday;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.mycompany.myproject.persist.entity.Holiday;
 
 public interface HolidayRepo extends JpaRepository<Holiday, Long> {
 

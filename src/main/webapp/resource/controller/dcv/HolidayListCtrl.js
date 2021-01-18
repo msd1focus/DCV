@@ -25,7 +25,7 @@ App.controller('HolidayListController', ['$window', '$state', '$scope', '$rootSc
 			$("#aksi-white").css("color","white");
 		}
 		
-		CommonService.doGET('/hariLibur/All')
+		CommonService.doGET('/holiday/getList')
 		.then(function(data){
 
 			table = $('#holiday').DataTable({
@@ -92,7 +92,7 @@ App.controller('HolidayListController', ['$window', '$state', '$scope', '$rootSc
 			        	var paramDelete = {
 			        			id : data.id
 			        	}
-			        	CommonService.doPost('/deleteHoliday', paramDelete)
+			        	CommonService.doPost('/holiday/delete', paramDelete)
 			        	.then(function(){
 			        		$window.location.reload();
 			        	});

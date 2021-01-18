@@ -21,8 +21,8 @@ import oracle.ucp.jdbc.PoolDataSourceFactory;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("com.mycompany.myproject.persist")
-@EnableJpaRepositories("com.mycompany.myproject.persist")
+@ComponentScan("com.mycompany.myproject")
+@EnableJpaRepositories("com.mycompany.myproject")
 @PropertySource({ "classpath:application.properties" })
 public class JPAConfig {
 	
@@ -71,7 +71,7 @@ public class JPAConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() throws SQLException {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource());
-        factoryBean.setPackagesToScan("com.mycompany.myproject.persist");
+        factoryBean.setPackagesToScan("com.mycompany.myproject");
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setShowSql(true);
         factoryBean.setJpaVendorAdapter(vendorAdapter);

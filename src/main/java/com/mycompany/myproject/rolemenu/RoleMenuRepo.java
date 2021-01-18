@@ -1,10 +1,8 @@
-package com.mycompany.myproject.persist.repo;
+package com.mycompany.myproject.rolemenu;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.mycompany.myproject.persist.entity.RoleMenu;
 
 public interface RoleMenuRepo extends JpaRepository<RoleMenu, Integer> {
 	

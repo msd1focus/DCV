@@ -1,12 +1,11 @@
-package com.mycompany.myproject.persist.repo;
+package com.mycompany.myproject.menu;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.mycompany.myproject.persist.entity.Menu;
-import com.mycompany.myproject.persist.entity.Role;
+import com.mycompany.myproject.role.Role;
 
 public interface MenuRepo extends JpaRepository<Menu, Integer> {
 	

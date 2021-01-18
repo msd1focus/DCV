@@ -1,11 +1,9 @@
-package com.mycompany.myproject.persist.repo;
+package com.mycompany.myproject.roleprivs;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.mycompany.myproject.persist.entity.RolePrivs;
 
 public interface RolePrivsRepo extends JpaRepository<RolePrivs, Integer> {
 	

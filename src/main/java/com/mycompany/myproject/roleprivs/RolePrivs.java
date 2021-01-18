@@ -1,4 +1,4 @@
-package com.mycompany.myproject.persist.entity;
+package com.mycompany.myproject.roleprivs;
 
 import java.math.BigDecimal;
 import java.util.List;

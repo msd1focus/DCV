@@ -171,7 +171,7 @@ App.controller('TerimaDokumenController', ['CommonService', '$state', '$log', 'D
 			});
 		},200);
 		
-		CommonService.doPost('/getRole', $rootScope.userProfile.userRole)
+		CommonService.doPost('/role/getRole', $rootScope.userProfile.userRole)
 		.then(function(data){
 			
 			CommonService.doPost('/getDocumentAction', data.bagian)

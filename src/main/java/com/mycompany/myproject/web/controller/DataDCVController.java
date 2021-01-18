@@ -29,26 +29,23 @@ import com.mycompany.myproject.persist.entity.DetailDCV;
 import com.mycompany.myproject.persist.entity.DocumentAction;
 import com.mycompany.myproject.persist.entity.DokumenRealisasi;
 import com.mycompany.myproject.persist.entity.ExportExcel;
-import com.mycompany.myproject.persist.entity.Holiday;
 import com.mycompany.myproject.persist.entity.InformationPC;
 import com.mycompany.myproject.persist.entity.MasterCustomer;
 import com.mycompany.myproject.persist.entity.NewDCVDetail;
 import com.mycompany.myproject.persist.entity.PPHList;
-import com.mycompany.myproject.persist.entity.Privs;
-import com.mycompany.myproject.persist.entity.Role;
 import com.mycompany.myproject.persist.entity.RoleTPS;
 import com.mycompany.myproject.persist.entity.TcApproval;
 import com.mycompany.myproject.persist.entity.UiDcvRequest;
 import com.mycompany.myproject.persist.entity.UiDcvRequestDetail;
 import com.mycompany.myproject.persist.entity.WFNode;
-import com.mycompany.myproject.persist.entity.WFRoute;
 import com.mycompany.myproject.persist.entity.WFTask;
 import com.mycompany.myproject.persist.repo.DetailDCVRepo;
 import com.mycompany.myproject.persist.repo.NewDCVDetailRepo;
-import com.mycompany.myproject.persist.repo.PrivsRepo;
 import com.mycompany.myproject.persist.repo.RoleTPSRepo;
-import com.mycompany.myproject.persist.repo.WFRouteRepo;
 import com.mycompany.myproject.persist.repo.WFTaskRepo;
+import com.mycompany.myproject.privs.Privs;
+import com.mycompany.myproject.privs.PrivsRepo;
+import com.mycompany.myproject.role.Role;
 import com.mycompany.myproject.service.DataDCVServices;
 import com.mycompany.myproject.service.dto.ActionListDto;
 import com.mycompany.myproject.service.dto.DcvListDto;
@@ -61,6 +58,8 @@ import com.mycompany.myproject.service.dto.ProsesPODto;
 import com.mycompany.myproject.service.dto.UomListDto;
 import com.mycompany.myproject.service.dto.UploadDocListDto;
 import com.mycompany.myproject.service.dto.WorkFlowDto;
+import com.mycompany.myproject.wfroute.WFRoute;
+import com.mycompany.myproject.wfroute.WFRouteRepo;
 
 import io.swagger.annotations.Api;
 
@@ -109,12 +108,6 @@ public class DataDCVController {
 		return allTimeServer;
 	}
 
-	/*Service 
-	 * Hari Libur DCV*/
-	@RequestMapping(value = "/hariLibur/All", method = RequestMethod.GET)
-	public @ResponseBody List<Holiday> listHariLibur() {
-		return dataDCVServices.getHoliday();
-	}
 	
 	/*Service 
 	 * Find Like for Action Privs DCV*/
@@ -130,12 +123,7 @@ public class DataDCVController {
 //		return prodUOMRepo.findProdUOMDistinct();
 //	}
 	
-	/*Service 
-	 * Find Like for Action from WF_Route*/
-	@RequestMapping(value = "/findWfRouteByNode", method = RequestMethod.POST)
-	public @ResponseBody List<WFRoute> findWfRouteByNode(@RequestBody String nodeId) {
-		return wFRouteRepo.findByNodeId(nodeId);
-	}
+	
 	
 	/*Service 
 	 * Find Like for Action from Action_List*/
@@ -144,12 +132,6 @@ public class DataDCVController {
 		return dataDCVServices.findActionListByDcvAndBagianAndNodeCode(actList);
 	}
 	
-	/*Service 
-	 * Find Return Task for Action from WFRoute*/
-	@RequestMapping(value = "/getReturnTask", method = RequestMethod.POST)
-	public @ResponseBody WFRoute getReturnTask(@RequestBody Map<String, Object> param) {
-		return dataDCVServices.getReturnTask(param);
-	}
 	
 	/*Service 
 	 * Find In for Action Privs DCV*/
@@ -466,10 +448,6 @@ public class DataDCVController {
 		return dataDCVServices.findActionList(param);
 	}
 	
-	@RequestMapping(value = "/getPrivs", method = RequestMethod.POST)
-	public @ResponseBody Map<String, Object> getPrivs(@RequestBody Map<String, Object> param){
-		return dataDCVServices.getPrivs(param);
-	}
 	
 	@RequestMapping(value = "/getPaymentSummary", method = RequestMethod.POST)
 	public @ResponseBody Map<String, Object> getPaymentSummary(@RequestBody String noDcv) {
@@ -517,11 +495,7 @@ public class DataDCVController {
 	public @ResponseBody Map<String, Object> getHeaderBodyListAfterAction(@RequestBody Map<String, Object> param) {
 		return dataDCVServices.getHeaderBodyListAfterAction(param);
 	}
-	
-	@RequestMapping(value = "/getRole", method = RequestMethod.POST)
-	public @ResponseBody Role getRole(@RequestBody String userRole) {
-		return dataDCVServices.getRole(userRole);
-	}
+
 	
 	@RequestMapping(value = "/getUploadDocList", method = RequestMethod.POST)
 	public @ResponseBody Map<String, Object> getUploadDocList(@RequestBody Map<String, Object> param) {
@@ -543,38 +517,5 @@ public class DataDCVController {
 		return dataDCVServices.updateWfNode(param);
 	}
 	
-	@RequestMapping(value = "/saveHoliday", method = RequestMethod.POST)
-	public @ResponseBody Map<String, Object> saveHoliday(@RequestBody Holiday param) {
-		return dataDCVServices.saveHoliday(param);
-	}
 	
-	@RequestMapping(value = "/updateHoliday", method = RequestMethod.POST)
-	public @ResponseBody Map<String, Object> updateHoliday(@RequestBody Holiday param) {
-		return dataDCVServices.updateHoliday(param);
-	}
-	
-	@RequestMapping(value = "/deleteHoliday", method = RequestMethod.POST)
-	public @ResponseBody Map<String, Object> deleteHoliday(@RequestBody Holiday param) {
-		return dataDCVServices.deleteHoliday(param);
-	}
-	
-	@RequestMapping(value = "/getDcvRole", method = RequestMethod.GET)
-	public @ResponseBody List<Role> getDcvRole() {
-		return dataDCVServices.getDcvRole();
-	}
-	
-	@RequestMapping(value = "/saveRole", method = RequestMethod.POST)
-	public @ResponseBody Map<String, Object> saveRole(@RequestBody Role param) {
-		return dataDCVServices.saveRole(param);
-	}
-	
-	@RequestMapping(value = "/updateRole", method = RequestMethod.POST)
-	public @ResponseBody Map<String, Object> updateRole(@RequestBody Role param) {
-		return dataDCVServices.updateRole(param);
-	}
-	
-	@RequestMapping(value = "/deleteRole", method = RequestMethod.POST)
-	public @ResponseBody Map<String, Object> deleteRole(@RequestBody Role param) {
-		return dataDCVServices.deleteRole(param);
-	}
 }

@@ -139,7 +139,7 @@ App.controller('ActionDistributorController', ['CommonService', '$state', '$stat
 				nodeId : vm.distAcc.action.nodeId,
 				pilihan : vm.distAcc.action.pilihan
 			}
-			CommonService.doPost('/getReturnTask', paramTask)
+			CommonService.doPost('/wfroute/getReturnTask', paramTask)
 			.then(function(data){
 				console.log("Return Task : "+ data.returnTask);
 				if(data.returnTask == "Y" && (vm.distAcc.noteAcc == undefined || vm.distAcc.noteAcc == "")){

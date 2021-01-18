@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Import({SecurityConfig.class})
 @EnableWebMvc
 @EnableSwagger2
-@ComponentScan(basePackages = { "com.mycompany.myproject.web.controller" })
+@ComponentScan(basePackages = { "com.mycompany.myproject" })
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
     @Bean

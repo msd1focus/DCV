@@ -1,8 +1,6 @@
-package com.mycompany.myproject.persist.repo;
+package com.mycompany.myproject.role;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.mycompany.myproject.persist.entity.Role;
 
 public interface RoleRepo extends JpaRepository<Role, String> {
 

@@ -17,7 +17,7 @@ App.controller('DcvRoleListController', ['$window', '$state', '$scope', 'CommonS
 	}
 	
 	function init() {		
-		CommonService.doGET('/getDcvRole')
+		CommonService.doGET('/role/getList')
 		.then(function(data){
 
 			table = $('#dcvRole').DataTable({
@@ -62,7 +62,7 @@ App.controller('DcvRoleListController', ['$window', '$state', '$scope', 'CommonS
 		        	var paramDelete = {
 		        			roleCode : data.roleCode
 		        	}
-		        	CommonService.doPost('/deleteRole', paramDelete)
+		        	CommonService.doPost('/role/delete', paramDelete)
 		        	.then(function(){
 		        		$window.location.reload();
 		        	});

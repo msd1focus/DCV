@@ -1,12 +1,9 @@
-package com.mycompany.myproject.service;
+package com.mycompany.myproject.lookupcode;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.mycompany.myproject.persist.entity.LookupCode;
-import com.mycompany.myproject.persist.repo.LookupCodeRepo;
 
 @Service
 public class LookupCodeService {

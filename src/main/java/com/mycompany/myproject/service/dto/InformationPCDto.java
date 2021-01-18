@@ -5,7 +5,7 @@ import java.util.Date;
 
 import org.dozer.Mapping;
 
-import com.mycompany.myproject.persist.entity.LookupCode;
+import com.mycompany.myproject.lookupcode.LookupCode;
 import com.mycompany.myproject.persist.entity.Term;
 
 public class InformationPCDto {

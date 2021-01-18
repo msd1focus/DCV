@@ -38,7 +38,7 @@ App.controller('DcvRoleEditController', ['CommonService', '$state', '$stateParam
 	        			roleName : vm.keterangan,
 	        			bagian : vm.bagian
 	        	}
-	        	CommonService.doPost('/updateRole', paramEdit)
+	        	CommonService.doPost('/role/update', paramEdit)
 	        	.then(function(){
 	        		$state.go('home.dcv-role');
 	        	});

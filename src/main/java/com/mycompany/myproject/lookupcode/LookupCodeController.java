@@ -1,4 +1,4 @@
-package com.mycompany.myproject.web.controller;
+package com.mycompany.myproject.lookupcode;
 
 import java.util.List;
 
@@ -12,17 +12,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mycompany.myproject.persist.entity.Holiday;
-import com.mycompany.myproject.persist.entity.LookupCode;
+import com.mycompany.myproject.holiday.Holiday;
 import com.mycompany.myproject.persist.entity.User;
 import com.mycompany.myproject.persist.repo.UserRepo;
 import com.mycompany.myproject.service.DataDCVServices;
-import com.mycompany.myproject.service.LookupCodeService;
 
 import io.swagger.annotations.Api;
 
 @RestController
 @Api(description = "DCV Management API")
+@RequestMapping("/lookupCode")
 public class LookupCodeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(LookupCodeController.class);
@@ -32,13 +31,13 @@ public class LookupCodeController {
 
 	/*Service
 	 *LookUp Code DCV*/	
-	@RequestMapping(value = "/getListLookupCode", method = RequestMethod.GET)
-	public @ResponseBody List<LookupCode> getListLookupCode() {
+	@RequestMapping(value = "/getList", method = RequestMethod.GET)
+	public @ResponseBody List<LookupCode> getList() {
 		return lookupService.findAll();
 	}
 	
-	@RequestMapping(value = "/saveLookupCode", method = RequestMethod.POST)
-	public @ResponseBody LookupCode saveLookupCode(@RequestBody LookupCode data) {
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public @ResponseBody LookupCode save(@RequestBody LookupCode data) {
 		return lookupService.save(data);
 	}
 }

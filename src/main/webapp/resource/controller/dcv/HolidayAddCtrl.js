@@ -37,7 +37,7 @@ App.controller('HolidayAddController', ['CommonService', '$state', '$stateParams
 	        			tglLibur : vm.tglLibur,
 	        			keterangan : vm.keterangan
 	        	}
-	        	CommonService.doPost('/saveHoliday', paramAdd)
+	        	CommonService.doPost('/holiday/save', paramAdd)
 	        	.then(function(){
 	        		$state.go('home.holiday');
 	        	});

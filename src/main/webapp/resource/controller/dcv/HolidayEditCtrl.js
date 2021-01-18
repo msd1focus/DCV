@@ -39,7 +39,7 @@ App.controller('HolidayEditController', ['CommonService', '$state', '$stateParam
 	        			tglLibur : vm.tglLibur,
 	        			keterangan : vm.keterangan
 	        	}
-	        	CommonService.doPost('/updateHoliday', paramEdit)
+	        	CommonService.doPost('/holiday/update', paramEdit)
 	        	.then(function(){
 	        		$state.go('home.holiday');
 	        	});

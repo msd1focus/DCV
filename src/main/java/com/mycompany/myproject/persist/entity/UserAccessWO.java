@@ -13,6 +13,8 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.mycompany.myproject.role.Role;
+
 @Entity
 @Table(name = "WO_USERS")
 public class UserAccessWO {

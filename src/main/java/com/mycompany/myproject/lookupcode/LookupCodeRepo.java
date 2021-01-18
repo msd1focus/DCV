@@ -1,10 +1,8 @@
-package com.mycompany.myproject.persist.repo;
+package com.mycompany.myproject.lookupcode;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.mycompany.myproject.persist.entity.LookupCode;
 
 public interface LookupCodeRepo extends JpaRepository<LookupCode, Long> {
 

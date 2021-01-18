@@ -123,7 +123,7 @@ App.controller('ActionTCController', ['CommonService', '$state', '$stateParams',
 				nodeId : vm.tcAcc.action.nodeId,
 				pilihan : vm.tcAcc.action.pilihan
 			}
-			CommonService.doPost('/getReturnTask', paramTask)
+			CommonService.doPost('/wfroute/getReturnTask', paramTask)
 			.then(function(data){
 				console.log("Return Task : "+ data.returnTask);
 				if(data.returnTask == "Y" && (vm.tcAcc.noteAcc == undefined || vm.tcAcc.noteAcc == "")){

@@ -38,7 +38,7 @@ App.controller('DcvRoleAddController', ['CommonService', '$state', '$stateParams
 	        			bagian : vm.bagian
 	        	}
 	        	console.log(paramAdd);
-	        	CommonService.doPost('/saveRole', paramAdd)
+	        	CommonService.doPost('/role/save', paramAdd)
 	        	.then(function(result){
 	        		if(result.result == "OK"){
 	        			$state.go('home.dcv-role');

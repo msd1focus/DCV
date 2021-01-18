@@ -1,4 +1,4 @@
-package com.mycompany.myproject.persist.entity;
+package com.mycompany.myproject.role;
 
 import java.util.List;
 
@@ -10,6 +10,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.mycompany.myproject.menu.Menu;
 
 @Entity
 @Table(name = "DCV_ROLE")

@@ -23,9 +23,9 @@ import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 import com.jcraft.jsch.SftpException;
-import com.mycompany.myproject.persist.entity.LookupCode;
+import com.mycompany.myproject.lookupcode.LookupCode;
+import com.mycompany.myproject.lookupcode.LookupCodeRepo;
 import com.mycompany.myproject.persist.entity.ParameterDCV;
-import com.mycompany.myproject.persist.repo.LookupCodeRepo;
 import com.mycompany.myproject.persist.repo.ParameterDCVRepo;
 
 @Service
