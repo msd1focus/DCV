@@ -149,7 +149,7 @@ App.controller('ActionTCController', ['CommonService', '$state', '$stateParams',
 			pUser : vm.userName,
 			pBagian : bagain
 		}
-		CommonService.doPost('/getActionList', prm)
+		CommonService.doPost('/actionlist/getActionList', prm)
 		.then(
 			function(data){
 				//console.log("Try Action List : ", data);
@@ -166,7 +166,7 @@ App.controller('ActionTCController', ['CommonService', '$state', '$stateParams',
 				pUser: vm.userName,
 				pNote: data.noteAcc
 		}
-		CommonService.doPost('/updateWFTaskFromAction', lempar)
+		CommonService.doPost('/wftask/updateWFTaskFromAction', lempar)
 		.then(function(dataresult){
 			if (dataresult.code == 0){
 				CommonService.modalAlert('Sukses',dataresult.message).then(function() { 

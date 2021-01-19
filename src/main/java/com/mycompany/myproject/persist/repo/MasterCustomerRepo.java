@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.mycompany.myproject.persist.entity.MasterCustomer;
-import com.mycompany.myproject.persist.entity.WFNode;
+import com.mycompany.myproject.wfnode.WFNode;
 
 public interface MasterCustomerRepo extends JpaRepository<MasterCustomer, Integer>{
 	

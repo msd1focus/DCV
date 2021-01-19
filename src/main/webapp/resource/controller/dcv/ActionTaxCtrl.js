@@ -141,7 +141,7 @@ App.controller('ActionTaxController', ['CommonService', '$state', '$stateParams'
 				pUser: vm.userName,
 				pNote: data.noteAcc
 		}
-		CommonService.doPost('/updateWFTaskFromAction', lempar)
+		CommonService.doPost('/wftask/updateWFTaskFromAction', lempar)
 		.then(
 			function(data){
 				if (data.code == 0){
@@ -216,7 +216,7 @@ App.controller('ActionTaxController', ['CommonService', '$state', '$stateParams'
 				pUser : vm.userName,
 				pBagian : bagianAction
 		}
-		CommonService.doPost('/getActionList', prm)
+		CommonService.doPost('/actionlist/getActionList', prm)
 		.then(
 			function(data){
 				vm.listAksi =  data;

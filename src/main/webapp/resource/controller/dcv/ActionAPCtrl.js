@@ -85,7 +85,7 @@ App.controller('ActionAPController', ['CommonService', '$state', '$stateParams',
 			pBagian : bagian
 		}
 		
-		CommonService.doPost('/getActionList', prm)
+		CommonService.doPost('/actionlist/getActionList', prm)
 		.then(
 			function(data){
 				vm.listAksi =  data;
@@ -101,7 +101,7 @@ App.controller('ActionAPController', ['CommonService', '$state', '$stateParams',
 			pUser: vm.userName,
 			pNote: data.noteAcc
 		}
-		CommonService.doPost('/updateWFTaskFromAction', lempar)
+		CommonService.doPost('/wftask/updateWFTaskFromAction', lempar)
 		.then(
 			function(data){
 				//console.log("YG DIPILIH = "+JSON.stringify(data.code));

@@ -15,7 +15,7 @@ import com.mycompany.myproject.service.DataDCVServices;
 @Service
 public class RoleService {
 	
-	private static final Logger logger = LoggerFactory.getLogger(DataDCVServices.class);
+	private static final Logger logger = LoggerFactory.getLogger(RoleService.class);
 	
 	@Autowired
 	private RoleRepo roleRepo;

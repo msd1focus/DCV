@@ -122,7 +122,7 @@ App.controller('HistoriTerimaDokumenController', ['$window', '$state', '$scope',
 	
 	function init() {
 		
-		CommonService.doPost('/getListActionDocBatch', userBagian)
+		CommonService.doPost('/dokumenaction/getListActionDocBatch', userBagian)
 		.then(
 			function(data){
 				vm.listAksi = data;

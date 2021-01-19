@@ -216,7 +216,7 @@ App.controller('ActionDistributorController', ['CommonService', '$state', '$stat
 				pUser : vm.userName,
 				pBagian : param.paramDcvListAfterAction.pBagian
 		}
-		CommonService.doPost('/getActionList', prm)
+		CommonService.doPost('/actionlist/getActionList', prm)
 		.then(
 			function(data){
 				vm.listAksi =  data;
@@ -294,7 +294,7 @@ App.controller('ActionDistributorController', ['CommonService', '$state', '$stat
 				pNote: data.noteAcc
 		}
 		
-		CommonService.doPost('/updateWFTaskFromAction', lempar)
+		CommonService.doPost('/wftask/updateWFTaskFromAction', lempar)
 		.then(function(dataresult){
 			if (dataresult.code == 0){
 				CommonService.modalAlert('Sukses',dataresult.message).then(function(){

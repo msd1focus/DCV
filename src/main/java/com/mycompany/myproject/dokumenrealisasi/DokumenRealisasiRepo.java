@@ -1,11 +1,9 @@
-package com.mycompany.myproject.persist.repo;
+package com.mycompany.myproject.dokumenrealisasi;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
-import com.mycompany.myproject.persist.entity.DokumenRealisasi;
 
 public interface DokumenRealisasiRepo extends JpaRepository<DokumenRealisasi, Long>{
 	

@@ -11,7 +11,7 @@ App.controller('SLASettingController', ['$window', '$state', '$scope', 'CommonSe
 	vm.dtOptions = DTOptionsBuilder.newOptions()
 			.withOption('paging', false)
 			.withOption('searching', false)
-			.withOption('scrollY', '200px')
+			.withOption('scrollY', '500px')
 		    .withOption('scrollCollapse', true)
 		    .withOption('sort', false)
 //		    .withOption('columnDefs', [
@@ -29,7 +29,7 @@ App.controller('SLASettingController', ['$window', '$state', '$scope', 'CommonSe
 	vm.simpan = function(data) {
 		CommonService.modalAlert('confirmation', 'Yakin menyimpan perubahan ?')
         .then(function() {
-        	CommonService.doPost('/updateWfNode', data).then(function(result){
+        	CommonService.doPost('/wfnode/updateWfNode', data).then(function(result){
         		
         		$state.go('home.sla-setting');
         	});
@@ -46,7 +46,7 @@ App.controller('SLASettingController', ['$window', '$state', '$scope', 'CommonSe
 //			vm.dataDetail = data.data;
 //		});
 		
-		CommonService.doPost('/getWfNode')
+		CommonService.doPost('/wfnode/getWfNode')
 		.then(
 			function(data){
 				console.log(data);

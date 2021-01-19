@@ -1,4 +1,4 @@
-package com.mycompany.myproject.persist.entity;
+package com.mycompany.myproject.dokumenaction;
 
 import java.math.BigDecimal;
 

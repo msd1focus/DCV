@@ -90,7 +90,7 @@ App.controller('ActionARController', ['CommonService', '$state', '$stateParams',
 				pDcvNo : param.header.noDcv,
 				pUser : vm.userName
 		}
-		CommonService.doPost('/getActionList', prm)
+		CommonService.doPost('/actionlist/getActionList', prm)
 		.then(
 			function(data){
 				console.log("Try Action List : ", data);
@@ -107,7 +107,7 @@ App.controller('ActionARController', ['CommonService', '$state', '$stateParams',
 				pUser: vm.userName,
 				pNote: data.noteAcc
 		}
-		CommonService.doPost('/updateWFTaskFromAction', lempar)
+		CommonService.doPost('/wftask/updateWFTaskFromAction', lempar)
 		.then(
 			function(data){
 				console.log("YG DIPILIH = "+JSON.stringify(data.code));

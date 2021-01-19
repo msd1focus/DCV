@@ -23,29 +23,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mycompany.myproject.persist.entity.ActionList;
+
 import com.mycompany.myproject.persist.entity.DcvDokumen;
 import com.mycompany.myproject.persist.entity.DetailDCV;
-import com.mycompany.myproject.persist.entity.DocumentAction;
-import com.mycompany.myproject.persist.entity.DokumenRealisasi;
 import com.mycompany.myproject.persist.entity.ExportExcel;
 import com.mycompany.myproject.persist.entity.InformationPC;
 import com.mycompany.myproject.persist.entity.MasterCustomer;
 import com.mycompany.myproject.persist.entity.NewDCVDetail;
 import com.mycompany.myproject.persist.entity.PPHList;
-import com.mycompany.myproject.persist.entity.RoleTPS;
 import com.mycompany.myproject.persist.entity.TcApproval;
 import com.mycompany.myproject.persist.entity.UiDcvRequest;
 import com.mycompany.myproject.persist.entity.UiDcvRequestDetail;
-import com.mycompany.myproject.persist.entity.WFNode;
-import com.mycompany.myproject.persist.entity.WFTask;
 import com.mycompany.myproject.persist.repo.DetailDCVRepo;
 import com.mycompany.myproject.persist.repo.NewDCVDetailRepo;
-import com.mycompany.myproject.persist.repo.RoleTPSRepo;
-import com.mycompany.myproject.persist.repo.WFTaskRepo;
 import com.mycompany.myproject.privs.Privs;
 import com.mycompany.myproject.privs.PrivsRepo;
 import com.mycompany.myproject.role.Role;
+import com.mycompany.myproject.roletps.RoleTPS;
+import com.mycompany.myproject.roletps.RoleTPSRepo;
 import com.mycompany.myproject.service.DataDCVServices;
 import com.mycompany.myproject.service.dto.ActionListDto;
 import com.mycompany.myproject.service.dto.DcvListDto;
@@ -58,8 +53,11 @@ import com.mycompany.myproject.service.dto.ProsesPODto;
 import com.mycompany.myproject.service.dto.UomListDto;
 import com.mycompany.myproject.service.dto.UploadDocListDto;
 import com.mycompany.myproject.service.dto.WorkFlowDto;
+import com.mycompany.myproject.wfnode.WFNode;
 import com.mycompany.myproject.wfroute.WFRoute;
 import com.mycompany.myproject.wfroute.WFRouteRepo;
+import com.mycompany.myproject.wftask.WFTask;
+import com.mycompany.myproject.wftask.WFTaskRepo;
 
 import io.swagger.annotations.Api;
 
@@ -124,27 +122,13 @@ public class DataDCVController {
 //	}
 	
 	
-	
-	/*Service 
-	 * Find Like for Action from Action_List*/
-	@RequestMapping(value = "/findActionListByDcvAndBagianAndNodeCode", method = RequestMethod.POST)
-	public @ResponseBody List<ActionList> findActionListByDcvAndBagianAndNodeCode(@RequestBody ActionList actList) {
-		return dataDCVServices.findActionListByDcvAndBagianAndNodeCode(actList);
-	}
-	
-	
 	/*Service 
 	 * Find In for Action Privs DCV*/
 //	@RequestMapping(value = "/privsForTerimaDok", method = RequestMethod.POST)
 //	public @ResponseBody List<Privs> getActionIn(@RequestBody List<String> privNames) {
 //		return dataDCVServices.getPrivDataForTerimaDok(privNames);
 //	}
-	
-	@RequestMapping(value = "/getListActionDocBatch", method = RequestMethod.POST)
-	public @ResponseBody List<DocumentAction> getListActionDocBatch(@RequestBody String bagian) {
-		return dataDCVServices.getListActionDocBatch(bagian);
-	}
-	
+
 	/*Service 
 	 * Find Prop_cust_mapping for no.PC new DCV*/
 	@RequestMapping(value = "/findNoPCByCustCode", method = RequestMethod.POST)
@@ -231,13 +215,6 @@ public class DataDCVController {
 		return dataDCVServices.findCopyDcvDetailByNoDcv(dcvReq.getNoDCV(), dcvReq.getCustCode());
 	}
 	
-	/*Service 
-	 * update WF_Task for submit Action*/
-	@RequestMapping(value = "/updateWFTaskFromAction", method = RequestMethod.POST)
-	public @ResponseBody Map<String, Object> updateWFTaskFromAction(@RequestBody Map<String, Object> param) {
-		return dataDCVServices.updateWFTaskFromAction(param);
-	}
-	
 	@RequestMapping(value = "/searchDocHistoryBySp", method = RequestMethod.POST) 
 	public @ResponseBody List<DocumentBatchDto> searchDocHistoryBySp(@RequestBody Map<String, Object> param) {
 		return dataDCVServices.searchDocHistoryBySp(param);
@@ -276,18 +253,6 @@ public class DataDCVController {
 	@RequestMapping(value = "/getDcvBodyListForViewWorflow", method = RequestMethod.POST)
 	public @ResponseBody Map<String, Object> getDcvBodyListForViewWorflow(@RequestBody String noDcv) {
 		return dataDCVServices.findWfByNoDcv(noDcv);
-	}
-	
-	/*Service 
-	 * get Work Flow Task by No.DCV for View Detail Action*/
-	@RequestMapping(value = "/getWfTaskByNoDcv", method = RequestMethod.POST)
-	public @ResponseBody WFTask getWfTaskByNoDcv(@RequestBody String noDcv) {
-		return dataDCVServices.getWfTaskByNoDcv(noDcv);
-	}
-	
-	@RequestMapping(value = "/getWfTaskByIdAndNoDcv", method = RequestMethod.POST)
-	public @ResponseBody WFTask getWfTaskByIdAndNoDcv(@RequestBody Map<String, Object> param) {
-		return dataDCVServices.getWfTaskByIdAndNoDcv(param);
 	}
 	
 	/*Service
@@ -372,12 +337,7 @@ public class DataDCVController {
 	public @ResponseBody Map<String, Object> generateGr(@RequestBody Map<String, Object> param) {
 		return dataDCVServices.generateGr(param);
 	}
-	
-	@RequestMapping(value = "/getDocumentAction", method = RequestMethod.POST)
-	public @ResponseBody List<DocumentAction> getDocumentAction(@RequestBody String bagian) {
-		return dataDCVServices.getDocumentAction(bagian);
-	}
-	
+
 	@RequestMapping(value = "/getDocumentBatchList", method = RequestMethod.POST)
 	public @ResponseBody List<DocumentBatchDto> getDocumentBatchList(@RequestBody Map<String, Object> param) {
 		return dataDCVServices.findDocumentBatchList(param);
@@ -432,22 +392,11 @@ public class DataDCVController {
 	public @ResponseBody List<ProsesPODto> getPoListByIdEx(@RequestBody List<LinkedHashMap<String, Object>> param){
 		return dataDCVServices.getPoListByidEx(param);
 	}
-	
-	@RequestMapping(value = "/getGRbyDcvhId", method = RequestMethod.POST)
-	public @ResponseBody DokumenRealisasi getGRbyDcvhId(@RequestBody DokumenRealisasi doc){
-		return dataDCVServices.getGRbyDcvhId(doc);
-	}
 
 	@RequestMapping(value = "/getUomByPpId", method = RequestMethod.POST)
 	public @ResponseBody List<String> getUomByPpId(@RequestBody Map<String, Object> param){
 		return dataDCVServices.getUomByPpId(param);
 	}
-	
-	@RequestMapping(value = "/getActionList", method = RequestMethod.POST)
-	public @ResponseBody List<ActionListDto> getActionList(@RequestBody Map<String, Object> param){
-		return dataDCVServices.findActionList(param);
-	}
-	
 	
 	@RequestMapping(value = "/getPaymentSummary", method = RequestMethod.POST)
 	public @ResponseBody Map<String, Object> getPaymentSummary(@RequestBody String noDcv) {
@@ -506,16 +455,5 @@ public class DataDCVController {
 	public @ResponseBody List<DcvDokumen> getDcvDocList(@RequestBody Map<String, Object> param) {
 		return dataDCVServices.getDcvDocList(param);
 	}
-	
-	@RequestMapping(value = "/getWfNode", method = RequestMethod.POST)
-	public @ResponseBody List<WFNode> getWfNode() {
-		return dataDCVServices.getWfNode();
-	}
-	
-	@RequestMapping(value = "/updateWfNode", method = RequestMethod.POST)
-	public @ResponseBody Map<String, Object> updateWfNode(@RequestBody List<LinkedHashMap<String, Object>> param) {
-		return dataDCVServices.updateWfNode(param);
-	}
-	
 	
 }

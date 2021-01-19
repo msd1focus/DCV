@@ -94,7 +94,7 @@ App.controller('ActionPromoController', ['CommonService', '$state', '$stateParam
 				pUser : vm.userName,
 				pBagian : bagian
 		}
-		CommonService.doPost('/getActionList', prm)
+		CommonService.doPost('/actionlist/getActionList', prm)
 		.then(
 			function(data){
 				vm.listAksi =  data;
@@ -104,7 +104,7 @@ App.controller('ActionPromoController', ['CommonService', '$state', '$stateParam
 		var dataInfoGR = {
 				dcvhId : param.header.dcvhId
 		}
-		CommonService.doPost('/getGRbyDcvhId', dataInfoGR)
+		CommonService.doPost('/dokumenrealisasi/getGRbyDcvhId', dataInfoGR)
 		.then(
 			function(data){
 				if(data.docNo != null ) {
@@ -129,7 +129,7 @@ App.controller('ActionPromoController', ['CommonService', '$state', '$stateParam
 				pUser: vm.userName,
 				pNote: data.noteAcc
 		}
-		CommonService.doPost('/updateWFTaskFromAction', lempar)
+		CommonService.doPost('/wftask/updateWFTaskFromAction', lempar)
 		.then(
 			function(dataresult){
 				if (dataresult.code == 0){

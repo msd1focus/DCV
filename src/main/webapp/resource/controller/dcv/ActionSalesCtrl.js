@@ -35,6 +35,10 @@ App.controller('ActionSalesController', ['CommonService', '$state', '$stateParam
 		}
 		CommonService.doPost('/getHeaderBodyListAfterAction', prmDcvList)
 		.then(function(data){
+			
+			console.log($stateParams.dataFromViewDetail);
+			console.log(data);
+			
 			param.header.currentStep = data.header[0].currentStep;
 			param.header.lasStep = data.header[0].lasStep;
 			param.header.taskId = data.header[0].taskId;
@@ -80,7 +84,7 @@ App.controller('ActionSalesController', ['CommonService', '$state', '$stateParam
 				pUser : vm.userName,
 				pBagian : bagian
 		}
-		CommonService.doPost('/getActionList', prm)
+		CommonService.doPost('/actionlist/getActionList', prm)
 		.then(
 			function(data){
 				vm.listAksi =  data;
@@ -96,7 +100,7 @@ App.controller('ActionSalesController', ['CommonService', '$state', '$stateParam
 				pUser: vm.userName,
 				pNote: data.noteAcc
 		}
-		CommonService.doPost('/updateWFTaskFromAction', lempar)
+		CommonService.doPost('/wftask/updateWFTaskFromAction', lempar)
 		.then(
 			function(data){
 				//console.log('Result after update WF_TASK : ',data);

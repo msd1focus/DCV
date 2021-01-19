@@ -19,7 +19,7 @@ import com.mycompany.myproject.service.DataDCVServices;
 @Service
 public class HolidayService {
 	
-	private static final Logger logger = LoggerFactory.getLogger(DataDCVServices.class);
+	private static final Logger logger = LoggerFactory.getLogger(HolidayService.class);
 	
 	@PersistenceContext
 	private EntityManager em;

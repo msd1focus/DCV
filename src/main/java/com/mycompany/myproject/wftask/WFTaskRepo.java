@@ -1,10 +1,8 @@
-package com.mycompany.myproject.persist.repo;
+package com.mycompany.myproject.wftask;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.mycompany.myproject.persist.entity.WFTask;
 
 public interface WFTaskRepo extends JpaRepository<WFTask, Long> {
 

@@ -45,36 +45,32 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.WeakReferenceMonitor.ReleaseListener;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.mycompany.myproject.actionlist.ActionList;
+import com.mycompany.myproject.actionlist.ActionListRepo;
+import com.mycompany.myproject.dokumenaction.DocumentAction;
+import com.mycompany.myproject.dokumenaction.DocumentActionRepo;
+import com.mycompany.myproject.dokumenrealisasi.DokumenRealisasi;
+import com.mycompany.myproject.dokumenrealisasi.DokumenRealisasiRepo;
 import com.mycompany.myproject.lookupcode.LookupCode;
 import com.mycompany.myproject.lookupcode.LookupCodeRepo;
 import com.mycompany.myproject.menu.Menu;
 import com.mycompany.myproject.menu.MenuRepo;
-import com.mycompany.myproject.persist.entity.ActionList;
 import com.mycompany.myproject.persist.entity.AllUsers;
 import com.mycompany.myproject.persist.entity.DcvDokumen;
-import com.mycompany.myproject.persist.entity.DocumentAction;
-import com.mycompany.myproject.persist.entity.DokumenRealisasi;
 import com.mycompany.myproject.persist.entity.ExportExcel;
 import com.mycompany.myproject.persist.entity.MasterCustomer;
 import com.mycompany.myproject.persist.entity.PPHList;
 import com.mycompany.myproject.persist.entity.TcApproval;
 import com.mycompany.myproject.persist.entity.UiDcvRequest;
 import com.mycompany.myproject.persist.entity.UiDcvRequestDetail;
-import com.mycompany.myproject.persist.entity.WFNode;
-import com.mycompany.myproject.persist.entity.WFTask;
-import com.mycompany.myproject.persist.repo.ActionListRepo;
 import com.mycompany.myproject.persist.repo.AllUsersRepo;
 import com.mycompany.myproject.persist.repo.DcvDokumenRepo;
-import com.mycompany.myproject.persist.repo.DocumentActionRepo;
-import com.mycompany.myproject.persist.repo.DokumenRealisasiRepo;
 import com.mycompany.myproject.persist.repo.MasterCustomerRepo;
 import com.mycompany.myproject.persist.repo.PPHListRepo;
 import com.mycompany.myproject.persist.repo.TcApprovalRepo;
 import com.mycompany.myproject.persist.repo.TermRepo;
 import com.mycompany.myproject.persist.repo.UiDcvRequestDetailRepo;
 import com.mycompany.myproject.persist.repo.UiDcvRequestRepo;
-import com.mycompany.myproject.persist.repo.WFNodeRepo;
-import com.mycompany.myproject.persist.repo.WFTaskRepo;
 import com.mycompany.myproject.privs.Privs;
 import com.mycompany.myproject.privs.PrivsRepo;
 import com.mycompany.myproject.role.Role;
@@ -98,8 +94,12 @@ import com.mycompany.myproject.service.dto.ProsesPODto;
 import com.mycompany.myproject.service.dto.UomListDto;
 import com.mycompany.myproject.service.dto.UploadDocListDto;
 import com.mycompany.myproject.service.dto.WorkFlowDto;
+import com.mycompany.myproject.wfnode.WFNode;
+import com.mycompany.myproject.wfnode.WFNodeRepo;
 import com.mycompany.myproject.wfroute.WFRoute;
 import com.mycompany.myproject.wfroute.WFRouteRepo;
+import com.mycompany.myproject.wftask.WFTask;
+import com.mycompany.myproject.wftask.WFTaskRepo;
 
 @Service
 public class DataDCVServices {
@@ -431,21 +431,6 @@ public class DataDCVServices {
 	public List<TcApproval> getTcApprovalById(Long dcvlId){
 		List<TcApproval> listTc = tcApprovalRepo.findByDcvlId(dcvlId);
 		return listTc;
-	}
-	
-	public WFTask getWfTaskByNoDcv(String noDcv) {
-		List<WFTask> wfTaskList = wfTaskRepo.findByNoDCVOrderByIdDesc(noDcv);
-		
-		return wfTaskList.get(0);
-	}
-	
-	public WFTask getWfTaskByIdAndNoDcv(Map<String, Object> param) {
-		WFTask wfTask = new WFTask();
-		Long id = Long.valueOf(param.get("pTaskId") != null ? param.get("pTaskId").toString() : "0");
-		String noDcv = param.get("pDcvNo")!= null ? param.get("pDcvNo").toString() : "";
-	    wfTask = wfTaskRepo.findByIdAndNoDCV(id, noDcv);
-		// TODO Auto-generated method stub
-		return wfTask;
 	}
 	
 	// Example: Calling Store Procedure Oracle with Multiple and Ref_CURSOR OUT
@@ -1084,20 +1069,6 @@ public class DataDCVServices {
 		
     }
     
-    public List<ActionList> findActionListByDcvAndBagianAndNodeCode(ActionList actList) {
-    	List<ActionList> hasil = new ArrayList<>();
-    	List<ActionList> termList = actionListRepo.findByNoDcvAndBagianAndNodeCode(actList.getNoDcv(), actList.getBagian(), actList.getNodeCode());
-    	
-    	for(int i=0; i<termList.size(); i++) {
-    		ActionList term = actionListRepo.findByPilihan(termList.get(i).getNoDcv(), termList.get(i).getBagian(), termList.get(i).getNodeCode(), new BigDecimal(i).add(new BigDecimal(1)));
-    		if(term != null) {
-    			hasil.add(term);
-    		}
-    	}
-    	
-    	return hasil;
-    }
-    
     @SuppressWarnings("unchecked")
     public List<String> findNoPCByCustCode(String custCode) {
     	List<String> hasil = new ArrayList<>();
@@ -1170,36 +1141,7 @@ public class DataDCVServices {
     	
     	return hasil;
     }
-    
-    public Map<String, Object> updateWFTaskFromAction(Map<String, Object> param) {
-    	Map<String, Object> hasil = new HashMap<>();
-    	
-    	/* Call @NamedStoredProcedureQuery at Model */
-		StoredProcedureQuery proc = em.createNamedStoredProcedureQuery("post_action");
-		
-		/* IN params */
-		/*proc.setParameter("pTaskId", Integer.valueOf(param.get("pTaskId").toString()));
-		proc.setParameter("pActionId", Integer.valueOf(param.get("pActionId").toString()));
-		proc.setParameter("pUser", param.get("pUser").toString());
-		proc.setParameter("pNote", param.get("pNote") != null ? param.get("pNote").toString() : "");*/
-		
-		proc.setParameter("pTaskId", Integer.valueOf(param.get("pTaskId").toString()));
-		proc.setParameter("pActionId",  param.get("pActionId") != null ? Integer.valueOf(param.get("pActionId").toString()) : 0);
-		proc.setParameter("pUser", param.get("pUser").toString());
-		proc.setParameter("pNote", param.get("pNote") != null ? param.get("pNote").toString() : "");
-		
-		proc.execute();
-		
-		/* OUT params */
-		Integer resCode = (Integer) proc.getOutputParameterValue("pResponseCode");
-		String resMsg = (String) proc.getOutputParameterValue("pResponseMsg");
-    	
-		hasil.put("code", resCode);
-		hasil.put("message", resMsg);
-//    	hasil.put("code", 0);
-//		hasil.put("message", "sukses");
-    	return hasil;
-    }
+   
 
 	public Map<String, Object> generateInvoice(Map<String, Object> param) {
 		Map<String, Object> hasil = new HashMap<>();
@@ -1244,14 +1186,7 @@ public class DataDCVServices {
 		return hasil;
 	}
 
-	public List<DocumentAction> getListActionDocBatch(String bagian) {
-		List<DocumentAction> dataListAction = new ArrayList<DocumentAction>();
-		
-		dataListAction = documentActionRepo.findByBagian(bagian);
-		
 	
-		return dataListAction;
-	}
 
 	public List<DocumentBatchDto> searchDocHistoryBySp(Map<String, Object> param) {
 		//Map<String, Object> hasil = new HashMap<>();
@@ -1299,16 +1234,7 @@ public class DataDCVServices {
 		return hasil;
 	}
 	
-	public List<DocumentAction> getDocumentAction(String bagian) {
-		List<DocumentAction> result = new ArrayList<DocumentAction>();
-		List<DocumentAction> dataDocAction = documentActionRepo.findByBagian(bagian);
-		if(dataDocAction.size() > 0) {
-			for(DocumentAction dataDoc: dataDocAction) {
-				result.add(dataDoc);
-			}
-		}
-		return result;
-	}
+	
 	
 	public List<DocumentBatchDto> findDocumentBatchList(Map<String, Object> param){
 		List<DocumentBatchDto> listDoc = new ArrayList<DocumentBatchDto>();
@@ -1755,16 +1681,6 @@ public class DataDCVServices {
     	return listData;
     }
 
-	public DokumenRealisasi getGRbyDcvhId(DokumenRealisasi doc) {
-	
-		List<DokumenRealisasi> dataDocInDb = dokumenRealisasiRepo.findByTahapanAndDcvhIdOrderByDocNo("GR",doc.getDcvhId());
-		
-		if(null != dataDocInDb && dataDocInDb.size() > 0){
-			return dataDocInDb.get(0);
-		}
-		
-		return null;
-	}
 
 	public List<NewDcvDetailDto> findDetailForNewDCVSP(Integer propId) throws SQLException, IOException {
 		// TODO Auto-generated method stub
@@ -1809,25 +1725,7 @@ public class DataDCVServices {
 		return resultListUom;
 	}
 	
-	// Get Action List
-    @SuppressWarnings("unchecked")
-    public List<ActionListDto> findActionList(Map<String, Object> param) {
-    	List<ActionListDto> listData 	= new ArrayList<>();
-    	
-    	StoredProcedureQuery proc = em.createNamedStoredProcedureQuery("show_action_list");
-    	proc.setParameter("pDcvNo", param.get("pDcvNo").toString());
-    	proc.setParameter("pUser", param.get("pUser").toString());
-    	proc.setParameter("pBagian", param.get("pBagian").toString());
-		proc.execute();
-		
-		List<Object[]> postComments = proc.getResultList();
-		for(Object[] dataProc: postComments) {
-			ActionListDto result = new ActionListDto(dataProc);
-			listData.add(result);
-		}
-    	
-    	return listData;
-    }
+	
     
     
 	@SuppressWarnings("unchecked")
@@ -2058,6 +1956,8 @@ public class DataDCVServices {
 		proc.setParameter("pJenis", jenisMap.get("PARAM_NAME"));
 		proc.setParameter("pPeriode1", tgl1);
 		proc.setParameter("pPeriode2", tgl2);
+		
+		/*
 		proc.execute();
 		
     	List<Object[]> postComments = proc.getResultList();
@@ -2072,9 +1972,11 @@ public class DataDCVServices {
     		if(dcvList.getNoDcv().equals(param.get("noDcv").toString())) {
     			headerList.add(dcvList);
     		}
-    	}
+    	}*/
     	
-    	// Get list body
+    	
+		// Get list body
+		//UiDcvRequest dcvReq = uiDcvRequestRepo.findByNoDCV(param.get("noDcv").toString());
     	bodyList = getBodyFromDcvReq(param);
     	
     	returnAll.put("header",headerList);
@@ -2118,30 +2020,5 @@ public class DataDCVServices {
     	return result; 
     }
 	
-	public List<WFNode> getWfNode(){
-		List<WFNode> result = wFNodeRepo.findByType("Human");
-		return result;
-	}
-	
-	public Map<String, Object> updateWfNode (List<LinkedHashMap<String, Object>> param) {
-		String nodeCode = "";
-		BigDecimal sla1 = new BigDecimal(0);
-		Map<String, Object> result = new HashMap<String, Object>();
-    	
-    	for (LinkedHashMap<String, Object> dataParam : param) {
-    		nodeCode = dataParam.get("nodeCode").toString();
-    		sla1 = dataParam.get("sla1") != null ? new BigDecimal(dataParam.get("sla1").toString()) : null;
-        	try {
-        		WFNode wfNode = new WFNode(); 
-            	wfNode = wFNodeRepo.findByNodeCode(nodeCode);
-            	wfNode.setSla1(sla1);
-            	wFNodeRepo.save(wfNode);
-			} catch (Exception e) {
-				logger.error("Update WF NODE Failed : ",e);
-			}
-		}
-    	result.put("result", "OK");
-    	return result;  
-    }
 	
 }

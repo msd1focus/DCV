@@ -1,8 +1,6 @@
-package com.mycompany.myproject.persist.repo;
+package com.mycompany.myproject.roletps;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.mycompany.myproject.persist.entity.RoleTPS;
 
 public interface RoleTPSRepo extends JpaRepository<RoleTPS, String> {
 

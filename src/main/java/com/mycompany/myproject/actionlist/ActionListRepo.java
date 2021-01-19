@@ -1,12 +1,10 @@
-package com.mycompany.myproject.persist.repo;
+package com.mycompany.myproject.actionlist;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
-import com.mycompany.myproject.persist.entity.ActionList;
 
 public interface ActionListRepo extends JpaRepository<ActionList, Long> {
 	

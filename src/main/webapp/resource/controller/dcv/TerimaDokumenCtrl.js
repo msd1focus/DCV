@@ -174,7 +174,7 @@ App.controller('TerimaDokumenController', ['CommonService', '$state', '$log', 'D
 		CommonService.doPost('/role/getRole', $rootScope.userProfile.userRole)
 		.then(function(data){
 			
-			CommonService.doPost('/getDocumentAction', data.bagian)
+			CommonService.doPost('/dokumenaction/getDocumentAction', data.bagian)
 			.then(
 				function(dataDoc){
 					vm.listAksi = dataDoc;

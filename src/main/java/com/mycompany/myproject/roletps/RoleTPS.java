@@ -1,4 +1,4 @@
-package com.mycompany.myproject.persist.entity;
+package com.mycompany.myproject.roletps;
 
 import java.sql.Timestamp;
 

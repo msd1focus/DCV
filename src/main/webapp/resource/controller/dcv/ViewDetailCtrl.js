@@ -196,7 +196,7 @@ App.controller('ViewDetailController', ['$http', '$q','$window', '$state', 'Comm
 	
 	function getWfTaskByNoDcv(noDcv, url) {
 		//console.log(noDcv+' '+url);
-		CommonService.doPost('/getWfTaskByNoDcv', noDcv)
+		CommonService.doPost('/wftask/getWfTaskByNoDcv', noDcv)
 		.then(
 			function(data){
 				param.wfTask = data;				
@@ -210,7 +210,7 @@ App.controller('ViewDetailController', ['$http', '$q','$window', '$state', 'Comm
 			pDcvNo : noDcv
 		}
 		
-		CommonService.doPost('/getWfTaskByIdAndNoDcv', lempar) 
+		CommonService.doPost('/wftask/getWfTaskByIdAndNoDcv', lempar) 
 		.then(
 			function(data){
 				param.wfTask = data;				
@@ -257,7 +257,7 @@ App.controller('ViewDetailController', ['$http', '$q','$window', '$state', 'Comm
 			pDcvNo : param.header.noDcv
 		}
 		
-		CommonService.doPost('/getWfTaskByIdAndNoDcv', prmWfTask) 
+		CommonService.doPost('/wftask/getWfTaskByIdAndNoDcv', prmWfTask) 
 		.then(function(data){
 				param.wfTask = data;				
 			});
