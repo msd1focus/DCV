@@ -218,7 +218,7 @@ App.config(['$stateProvider', '$urlRouterProvider', '$uiViewScrollProvider',
 		templateUrl: 'pages/dcv/staticDashboard.html',
 		resolve: {
 			ctrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-				return $ocLazyLoad.load('resource/controller/dcv/StaticDashboradCtrl.js');
+				return $ocLazyLoad.load('resource/controller/dcv/StaticDashboardCtrl.js');
 			}]
 		},
 		data : createMetaDataLink("static-dashboard","static-dashboard", false, false, false)

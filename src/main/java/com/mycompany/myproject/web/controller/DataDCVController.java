@@ -373,6 +373,11 @@ public class DataDCVController {
 		return dataDCVServices.getUrlLinkExternal(param);
 	}
 	
+	@RequestMapping(value = "/getUrlLinkExternalKwitansi", method = RequestMethod.POST)
+	public @ResponseBody Map<String, Object> getUrlLinkExternalKwitansi(@RequestBody Map<String, Object> param) {
+		return dataDCVServices.getUrlLinkExternalKwitansi(param);
+	}
+	
 	@RequestMapping(value = "/getDataKwitansi", method = RequestMethod.POST)
 	public @ResponseBody Map<String, Object> getDataKwitansi(@RequestBody Map<String, Object> param) {
 		return dataDCVServices.getDataKwitansi(param);

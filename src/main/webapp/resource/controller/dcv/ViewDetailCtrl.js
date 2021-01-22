@@ -61,6 +61,22 @@ App.controller('ViewDetailController', ['$http', '$q','$window', '$state', 'Comm
 		vm.dataId = item.id;
 	}
 	
+	vm.linkCetakKwitansit = function() {
+		if(param.header.appvValue == null || param.header.appvValue == undefined){
+			CommonService.modalAlert('warning', 'Saat ini Anda Tidak bisa Cetak Kwitansi!')
+		}else{
+			var lempar = {
+				dcvhId : param.header.dcvhId
+		}
+		
+		CommonService.doPost('/getUrlLinkExternalKwitansi', lempar) 
+		.then(
+			function(data){
+				window.open(data.urlExt,'_blank');
+			});
+		}
+		
+	}
 	vm.linkReport = function() {
 		var lempar = {
 				dcvhId : param.header.dcvhId

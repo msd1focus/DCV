@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller('StaticDashboradController', ['$window', '$state', '$scope', 'CommonService', 'DTColumnDefBuilder', 'DTOptionsBuilder', 'DTColumnBuilder', '$uibModal', '$rootScope', '$stateParams',
+App.controller('StaticDashboardController', ['$window', '$state', '$scope', 'CommonService', 'DTColumnDefBuilder', 'DTOptionsBuilder', 'DTColumnBuilder', '$uibModal', '$rootScope', '$stateParams',
 				function($window, $state, $scope, CommonService, DTColumnDefBuilder, DTOptionsBuilder, DTColumnBuilder, $uibModal, $rootScope, $localStorage) {
 	
 	var vm = this;

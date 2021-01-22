@@ -1486,6 +1486,69 @@ public class DataDCVServices {
 		
 		return hasil;
 	}
+	
+	public Map<String, Object> getUrlLinkExternalKwitansi(Map<String, Object> param) {
+		Map<String, Object> hasil = new HashMap<String, Object>();
+		List<LookupCode> dataLookUpList = new ArrayList<LookupCode>();
+		String urlData = "";
+		
+		UiDcvRequest dataDcvReq = uiDcvRequestRepo.findOne(Long.valueOf(param.get("dcvhId").toString()));
+		
+		dataLookUpList = lookupCodeRepo.findByTitle("KWITANSI.CETAK");
+		
+		if(null != dataLookUpList && dataLookUpList.size() > 0){
+			LookupCode data = dataLookUpList.get(0);
+			urlData = data.getValue();
+			
+			String terima = "";
+			String terbilang = "";
+			String desc = "";
+			String jumlah = "";
+			String materai = "";
+			
+			if(null != dataDcvReq){
+				if(null != dataDcvReq.getAppvValue()){
+					StoredProcedureQuery proc = em.createNamedStoredProcedureQuery("terbilang");
+					proc.setParameter("angka", dataDcvReq.getAppvValue());	
+					 proc.execute();	 
+					 terbilang = (String) proc.getOutputParameterValue("dataOut");
+					 if(dataDcvReq.getAppvValue().compareTo(new BigDecimal("1000000")) >= 0){
+						materai = "materai Rp.6000,-"; 
+					 } else if (dataDcvReq.getAppvValue().compareTo(new BigDecimal("1000000")) == -1){
+						 materai = "materai Rp.3000,-";
+					 } else {
+						 materai = "materai ";
+					 }
+					 
+					 List<LookupCode> dataLookupList = lookupCodeRepo.findByTitle("KWITANSI.DARI");
+					 for (LookupCode lookupCode : dataLookupList) {
+						 terima = lookupCode.getValue().toString();
+					 }
+					
+					 DecimalFormat kurIndo = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+					 DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+					 formatRp.setCurrencySymbol("Rp. ");
+					 formatRp.setMonetaryDecimalSeparator(',');
+					 formatRp.setGroupingSeparator('.');
+					 kurIndo.setDecimalFormatSymbols(formatRp);
+					 jumlah = kurIndo.format(dataDcvReq.getAppvValue());
+					 desc = dataDcvReq.getKetrKwitansi() != null ? dataDcvReq.getKetrKwitansi() : "";
+				}
+				
+			}
+
+			urlData = urlData.replace("ParamCompanyName", terima);
+			urlData = urlData.replace("ParamTerbilang", terbilang);
+			urlData = urlData.replace("ParamDesc", desc);
+			urlData = urlData.replace("ParamCustName", dataDcvReq.getCustName());
+			urlData = urlData.replace("ParamJumlah", jumlah);	
+
+		}
+		
+		hasil.put("urlExt", urlData);
+		
+		return hasil;
+	}
 
 	public Map<String, Object> getDataKwitansi(Map<String, Object> param) {
 		Map<String, Object> hasil = new HashMap<String, Object>();
