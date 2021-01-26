@@ -74,6 +74,8 @@ App.controller('NewDCVFormAddController', ['CommonService', '$rootScope', '$stat
 								periodPCTo	: data.periodPCTo,
 								term1		: data.term1,
 								term2		: data.term2,
+								syarat1		: data.syarat1,
+								syarat2		: data.syarat2,
 								modifiedBy	: vm.userName,
 								company		: vm.userDivision,
 								location	: vm.userLocation,

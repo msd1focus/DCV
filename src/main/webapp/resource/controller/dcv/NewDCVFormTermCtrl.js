@@ -35,7 +35,7 @@ App.controller('NewDCVFormTermController', ['CommonService', '$state', '$log', '
 		if(vm.syarat1 && vm.syarat2 && vm.syarat3) {
 			//console.log(JSON.stringify(vm.doc.file.name));
 			var lanjut = false;
-			if(vm.formAdd.term2.termId == 2 && vm.doc2.file == undefined) {
+			if(vm.formAdd.syarat1 == 2 && vm.doc2.file == undefined) {
 				CommonService.modalAlert('warning', 'File Berita Acara belum terupload')
 		        .then(function(result) {
 		        	lanjut = false;
@@ -76,6 +76,8 @@ App.controller('NewDCVFormTermController', ['CommonService', '$state', '$log', '
 					periodPCTo	: vm.formAdd.periodPCTo,
 					term1		: vm.formAdd.term1,
 					term2		: vm.formAdd.term2,
+					syarat1		: vm.formAdd.syarat1,
+					syarat2		: vm.formAdd.syarat2,
 					syarat3		: vm.syarat3,
 					custCode	: vm.formAdd.modifiedBy,
 					modifiedBy	: vm.formAdd.modifiedBy,
@@ -117,11 +119,11 @@ App.controller('NewDCVFormTermController', ['CommonService', '$state', '$log', '
 			tipePC		: vm.formAdd.tipePC,
 			periodPCFrom: CommonService.parsingDateOnlyInd(tglPCFrom),
 			periodPCTo	: CommonService.parsingDateOnlyInd(tglPCTo),
-			syarat1		: vm.formAdd.term1.desc,
-			syarat2		: vm.formAdd.term2.desc
+			//syarat1		: vm.formAdd.term1.desc,
+			//syarat2		: vm.formAdd.term2.desc
 		}
 		
-		if(vm.display.syarat1 != undefined) {
+		if(vm.formAdd.syarat1 != undefined) {
 			vm.syarat1 	= true;
 		} else {
 			vm.syarat1 	= false;
@@ -129,7 +131,7 @@ App.controller('NewDCVFormTermController', ['CommonService', '$state', '$log', '
 	        .then(function(result) {});
 		}
 		
-		if(vm.formAdd.term2.value == 3) {
+		if(vm.formAdd.syarat2 == 3) {
 			vm.syarat2 	= true;
 			vm.showBtnSyarat2 = true;
 		} else {

@@ -460,8 +460,8 @@ public class DataDCVServices {
 	    		hasilQuery = new InformationPCDto(infPC);
 	    		/*hasilQuery.setTerm1(termRepo.findOne(Integer.parseInt(hasilQuery.getSyarat1())));
 	    		hasilQuery.setTerm2(termRepo.findOne(hasilQuery.getSyarat2().intValue()));*/
-	    		hasilQuery.setTerm1(lookupCodeRepo.findByTitleAndValue("TERM", hasilQuery.getSyarat1()));
-	    		hasilQuery.setTerm2(lookupCodeRepo.findByTitleAndValue("TERM", hasilQuery.getSyarat2()));
+	    		//hasilQuery.setTerm1(lookupCodeRepo.findByTitleAndValue("TERM", hasilQuery.getSyarat1()));
+	    		//hasilQuery.setTerm2(lookupCodeRepo.findByTitleAndValue("TERM", hasilQuery.getSyarat2()));
 	    	}
 		} else {
 			hasilQuery.setResponse(res1);
