@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.mycompany.myproject.role.Role;
+
 @Entity
 @Table(name = "USER_ACCESS") /*Table VIEW*/
 public class AllUsers {
