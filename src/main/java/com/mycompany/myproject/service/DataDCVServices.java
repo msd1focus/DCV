@@ -1527,7 +1527,7 @@ public class DataDCVServices {
 					
 					 DecimalFormat kurIndo = (DecimalFormat) DecimalFormat.getCurrencyInstance();
 					 DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
-					 formatRp.setCurrencySymbol("Rp. ");
+					 formatRp.setCurrencySymbol(" ");
 					 formatRp.setMonetaryDecimalSeparator(',');
 					 formatRp.setGroupingSeparator('.');
 					 kurIndo.setDecimalFormatSymbols(formatRp);
