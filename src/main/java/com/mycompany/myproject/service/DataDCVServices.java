@@ -2019,8 +2019,6 @@ public class DataDCVServices {
 		proc.setParameter("pJenis", jenisMap.get("PARAM_NAME"));
 		proc.setParameter("pPeriode1", tgl1);
 		proc.setParameter("pPeriode2", tgl2);
-		
-		/*
 		proc.execute();
 		
     	List<Object[]> postComments = proc.getResultList();
@@ -2035,11 +2033,9 @@ public class DataDCVServices {
     		if(dcvList.getNoDcv().equals(param.get("noDcv").toString())) {
     			headerList.add(dcvList);
     		}
-    	}*/
+    	}
     	
-    	
-		// Get list body
-		//UiDcvRequest dcvReq = uiDcvRequestRepo.findByNoDCV(param.get("noDcv").toString());
+    	// Get list body
     	bodyList = getBodyFromDcvReq(param);
     	
     	returnAll.put("header",headerList);
