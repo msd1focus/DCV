@@ -628,37 +628,6 @@ App.controller('ViewDetailController', ['$http', '$q','$window', '$state', 'Comm
 		)
 	}
 	
-	function showModalKwitansi(nama, jumlah, terbilang, description , materai, penerima) {
-		var modalInstance = $uibModal.open({
-			animation: true,
-			ariaLabelledBy: 'modal-title',
-			ariaDescribedBy: 'modal-body',
-			templateUrl: 'pages/modal/modalKwitansi1.html',
-			controller: 'ModalKwitansiCtrl',
-			controllerAs : 'vm',
-			size: 'lg',
-			resolve : {
-				nama : function(){
-	        		return nama;
-	        	},
-	        	jumlah : function(){
-	        		return jumlah;
-	        	},
-	        	terbilang : function(){
-	        		return terbilang;
-	        	},
-	        	description : function(){
-	        		return description;
-	        	},materai : function(){
-	        		return materai;
-	        	},penerima : function(){
-	        		return penerima;
-	        	}
-			}
-		});
-		
-		modalInstance.result;
-	}
 	
 	function deleteModalAdjustment(data){
 		var dcvId = data.id;
@@ -857,31 +826,6 @@ App.controller('UpdatePPHCtrl', function ($state, $uibModalInstance, $rootScope,
 		$uibModalInstance.close(detail);
 
 	}
-	
-	vm.backToIndex = function(){
-		dismiss();
-	}
-	
-	function dismiss(){
-		$uibModalInstance.dismiss('cancel');
-	}
-});
-
-/**MODAL CONTROLLER FOR KWITANSI**/
-App.controller('ModalKwitansiCtrl', function ($uibModalInstance, CommonService, nama, jumlah, terbilang, description, materai, penerima){
-	var vm = this;
-	if(nama == 'FDI'){
-		vm.nama = 'PT Focus DIstribusi Indonesia';
-	}else if(nama == 'FDN'){
-		vm.nama = 'PT Focus Distribusi Nusantara';
-	}else{
-		vm.nama = nama;
-	}
-	vm.jumlah = jumlah;
-	vm.terbilang = terbilang;
-	vm.description = description;
-	vm.materai = materai;
-	vm.penerima = penerima;
 	
 	vm.backToIndex = function(){
 		dismiss();

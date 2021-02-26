@@ -1520,9 +1520,15 @@ public class DataDCVServices {
 						 materai = "materai ";
 					 }
 					 
-					 List<LookupCode> dataLookupList = lookupCodeRepo.findByTitle("KWITANSI.DARI");
+					 List<LookupCode> dataLookupList = lookupCodeRepo.findByTitle("COMPANY");
 					 for (LookupCode lookupCode : dataLookupList) {
-						 terima = lookupCode.getValue().toString();
+						 
+						 if(lookupCode.getValue().toString().equals("FDN")) {
+							 terima = "Focus Distribusi Nusantara";
+						 }else {
+							 terima = "Focus Distribusi Indonesia";
+						 }
+						 
 					 }
 					
 					 DecimalFormat kurIndo = (DecimalFormat) DecimalFormat.getCurrencyInstance();
