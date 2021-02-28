@@ -1524,9 +1524,9 @@ public class DataDCVServices {
 					 for (LookupCode lookupCode : dataLookupList) {
 						 
 						 if(lookupCode.getValue().toString().equals("FDN")) {
-							 terima = "Focus Distribusi Nusantara";
+							 terima = "PT. Focus Distribusi Nusantara";
 						 }else {
-							 terima = "Focus Distribusi Indonesia";
+							 terima = "PT. Focus Distribusi Indonesia";
 						 }
 						 
 					 }
