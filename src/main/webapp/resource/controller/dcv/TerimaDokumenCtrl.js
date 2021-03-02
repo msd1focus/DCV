@@ -1,7 +1,7 @@
 'use strict';
 
-App.controller('TerimaDokumenController', ['CommonService', '$state', '$log', 'DTColumnBuilder', 'DTOptionsBuilder', '$uibModal', '$window', '$rootScope', '$location',
-				function(CommonService, $state, $log, DTColumnBuilder, DTOptionsBuilder, $uibModal, $window, $rootScope, $location) {
+App.controller('TerimaDokumenController', ['CommonService', '$state', '$filter', '$log', 'DTColumnBuilder', 'DTOptionsBuilder', '$uibModal', '$window', '$rootScope', '$location',
+				function(CommonService, $state, $filter, $log, DTColumnBuilder, DTOptionsBuilder, $uibModal, $window, $rootScope, $location) {
 	var vm = this;
 	
 	/*--- Variables ---*/
@@ -120,7 +120,8 @@ App.controller('TerimaDokumenController', ['CommonService', '$state', '$log', 'D
 					'<div><label class="control-label-custom">'+data[i].area+'</label></div>',
 					'<div><label class="control-label-custom">'+data[i].location+'</label></div>',
 					'<div><label class="control-label-custom">'+data[i].noPc+'</label></div>',
-					'<div><label class="control-label-custom">'+formatRupiah(data[i].appvVal)+'</label></div>',
+					/*'<div><label class="control-label-custom">'+formatRupiah(data[i].appvVal)+'</label></div>',*/
+					'<div style="text-align: right;" ><label class="control-label-custom">'+replaceNbr($filter('currency')(data[i].appvVal,'',2))+'</label></div>',
 					'<div><label class="control-label-custom">'+data[i].noKwitansi+'</label></div>',
 					'<div><label class="control-label-custom">'+data[i].noFp+'</label></div>',
 					'<div><label class="control-label-custom">'+data[i].poNo+'</label></div>',
@@ -138,6 +139,15 @@ App.controller('TerimaDokumenController', ['CommonService', '$state', '$log', 'D
 //	function resetDataInput(data) {
 //		data.note = null;
 //	}
+
+	function replaceNbr(number){
+		
+		var nbr = number.toString().replaceAll(",","-");
+		    nbr = nbr.toString().replaceAll(".",",");
+			nbr = nbr.toString().replaceAll("-",".");
+			
+			return nbr;
+	}
 	
 	// Format Number to Rupiah
 	function formatRupiah(number){
