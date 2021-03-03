@@ -13,7 +13,7 @@ App.controller('ViewWorkflowController', ['$window', '$state', 'CommonService', 
 	/*--- Function-function ---*/
 	$timeout(function() {
 		init();
-	}, 10);
+	}, 500);
 	
 	vm.back = function() {
 		$state.go(urlBefore);
@@ -107,12 +107,7 @@ App.controller('ViewWorkflowController', ['$window', '$state', 'CommonService', 
 			"sort": false,
 			"scrollX": true,
 			"autoWidth" : true,
-			"fnInitComplete": function(oSettings) {
-                        $( window ).resize();
-             },
-			"fnDrawCallback": function(oSettings) {
-			      $( window ).trigger('resize');
-			 },
+			"responsive": true,
 			"rowCallback": function( row, data, index ) {
 			  if(parseFloat(data.processDate) > parseFloat(data.targetDate)){
 				  $('td', row).css('color', '#dd4b39');
