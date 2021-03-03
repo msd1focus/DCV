@@ -1,7 +1,7 @@
 'use strict';
 
-App.controller('ViewWorkflowController', ['$window', '$state', 'CommonService', 'DTOptionsBuilder', '$stateParams',
-				function($window, $state, CommonService, DTOptionsBuilder, $stateParams) {
+App.controller('ViewWorkflowController', ['$window', '$state', 'CommonService', 'DTOptionsBuilder', '$stateParams', '$timeout',
+				function($window, $state, CommonService, DTOptionsBuilder, $stateParams,$timeout) {
 	
 	var vm = this;
 	
@@ -11,7 +11,9 @@ App.controller('ViewWorkflowController', ['$window', '$state', 'CommonService', 
 	vm.viewWf = {};
 	
 	/*--- Function-function ---*/
-	init();
+	$timeout(function() {
+		init();
+	}, 10);
 	
 	vm.back = function() {
 		$state.go(urlBefore);
@@ -57,6 +59,14 @@ App.controller('ViewWorkflowController', ['$window', '$state', 'CommonService', 
 			"searching": false,
 			"info": false,
 			"sort": false,
+			"scrollX": true,
+			"autoWidth" : true,
+			"fnInitComplete": function(oSettings) {
+                        $( window ).resize();
+             },
+			"fnDrawCallback": function(oSettings) {
+			      $( window ).trigger('resize');
+			 },
 			"rowCallback": function( row, data, index ) {
 			  if(parseFloat(data.processDate) > parseFloat(data.targetDate)){
 				  $('td', row).css('color', '#dd4b39');
@@ -100,6 +110,14 @@ App.controller('ViewWorkflowController', ['$window', '$state', 'CommonService', 
 			"searching": false,
 			"info": false,
 			"sort": false,
+			"scrollX": true,
+			"autoWidth" : true,
+			"fnInitComplete": function(oSettings) {
+                        $( window ).resize();
+             },
+			"fnDrawCallback": function(oSettings) {
+			      $( window ).trigger('resize');
+			 },
 			"rowCallback": function( row, data, index ) {
 			  if(parseFloat(data.processDate) > parseFloat(data.targetDate)){
 				  $('td', row).css('color', '#dd4b39');
