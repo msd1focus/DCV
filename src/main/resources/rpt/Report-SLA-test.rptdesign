@@ -1,0 +1,2243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.8.0.v201806261756</property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="pperiodtype" id="383">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">PELUNASAN</value>
+            </simple-property-list>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="pperiod" id="384">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">202009</value>
+            </simple-property-list>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="pdivisi" id="385">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">ALL</value>
+            </simple-property-list>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="pcust1" id="386">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">GTH00101</value>
+            </simple-property-list>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="pcust2" id="387">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">GTH00101</value>
+            </simple-property-list>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="report_type" id="391">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">EKSTERNAL</value>
+            </simple-property-list>
+            <list-property name="selectionList">
+                <structure>
+                    <property name="value">EKSTERNAL</property>
+                    <property name="label">EKSTERNAL</property>
+                </structure>
+                <structure>
+                    <property name="value">INTERNAL</property>
+                    <property name="label">INTERNAL</property>
+                </structure>
+            </list-property>
+            <property name="paramType">simple</property>
+            <property name="controlType">radio-button</property>
+            <property name="fixedOrder">true</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="DataSource-UATDCV" id="7">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">oracle.jdbc.OracleDriver</property>
+            <property name="odaURL">jdbc:oracle:thin:@192.168.201.38:1543:UATFDN</property>
+            <property name="odaUser">focusdcv</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">Zm9jdXNkY3Y=</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="DataSet-Header" id="392">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">PERIODE</property>
+                    <property name="alias">PERIODE</property>
+                    <property name="analysis">measure</property>
+                </structure>
+                <structure>
+                    <property name="columnName">CUST_CODE</property>
+                    <property name="alias">CUST_CODE</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">CUST_NAME</property>
+                    <property name="alias">CUST_NAME</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">periodtype</property>
+                    <property name="paramName">pperiodtype</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">0</property>
+                    <property name="position">1</property>
+                    <property name="isOptional">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">period</property>
+                    <property name="paramName">pperiod</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">0</property>
+                    <property name="position">2</property>
+                    <property name="isOptional">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">divisi</property>
+                    <property name="paramName">pdivisi</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">0</property>
+                    <property name="position">3</property>
+                    <property name="isOptional">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">cust1</property>
+                    <property name="paramName">pcust1</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">0</property>
+                    <property name="position">4</property>
+                    <property name="isOptional">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">cust2</property>
+                    <property name="paramName">pcust2</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">0</property>
+                    <property name="position">5</property>
+                    <property name="isOptional">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">PERIODE</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">CUST_CODE</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">CUST_NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">DataSource-UATDCV</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">PERIODE</property>
+                    <property name="nativeName">PERIODE</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">CUST_CODE</property>
+                    <property name="nativeName">CUST_CODE</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">CUST_NAME</property>
+                    <property name="nativeName">CUST_NAME</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select periode, custcode as cust_code, custname as cust_name from table(rpt_pkg.get_sla_rpt
+               						(pperiodtype=>?,
+                                        pperiode=>to_number(?),
+                                        pdivisi=>?,
+                                        pcust1=>?,
+                                        pcust2=>?,
+                                        pregion=>'',
+                                        parea=>'',
+                                        plocation=>''))]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="DataSet-Body" id="393">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">PERIODE</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">PERIODE</text-property>
+                    <text-property name="heading">PERIODE</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">CUST_CODE</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">CUST_CODE</text-property>
+                    <text-property name="heading">CUST_CODE</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">CUST_NAME</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">CUST_NAME</text-property>
+                    <text-property name="heading">CUST_NAME</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">NO_DCV</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">NO_DCV</text-property>
+                    <text-property name="heading">NO_DCV</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TGL_DCV</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">TGL_DCV</text-property>
+                    <text-property name="heading">TGL_DCV</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">DUE_DT</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">DUE_DT</text-property>
+                    <text-property name="heading">DUE_DT</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">LAST_PYMT_DT</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">LAST_PYMT_DT</text-property>
+                    <text-property name="heading">LAST_PYMT_DT</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">LATE_DAYS</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">LATE_DAYS</text-property>
+                    <text-property name="heading">LATE_DAYS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">REMAIN_PYMT</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">REMAIN_PYMT</text-property>
+                    <text-property name="heading">REMAIN_PYMT</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TOTAL_PINALTY</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">TOTAL_PINALTY</text-property>
+                    <text-property name="heading">TOTAL_PINALTY</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">DISTRIBUTOR_DUE_DAYS</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">DISTRIBUTOR_DUE_DAYS</text-property>
+                    <text-property name="heading">DISTRIBUTOR_DUE_DAYS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">DISTRIBUTOR_PINALTY</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">DISTRIBUTOR_PINALTY</text-property>
+                    <text-property name="heading">DISTRIBUTOR_PINALTY</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">SALES_DUE_DAYS</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">SALES_DUE_DAYS</text-property>
+                    <text-property name="heading">SALES_DUE_DAYS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">SALES_PINALTY</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">SALES_PINALTY</text-property>
+                    <text-property name="heading">SALES_PINALTY</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TC_DUE_DAYS</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">TC_DUE_DAYS</text-property>
+                    <text-property name="heading">TC_DUE_DAYS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TC_PINALTY</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">TC_PINALTY</text-property>
+                    <text-property name="heading">TC_PINALTY</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TAX_DUE_DAYS</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">TAX_DUE_DAYS</text-property>
+                    <text-property name="heading">TAX_DUE_DAYS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TAX_PINALTY</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">TAX_PINALTY</text-property>
+                    <text-property name="heading">TAX_PINALTY</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">PROMO_DUE_DAYS</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">PROMO_DUE_DAYS</text-property>
+                    <text-property name="heading">PROMO_DUE_DAYS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">PROMO_PINALTY</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">PROMO_PINALTY</text-property>
+                    <text-property name="heading">PROMO_PINALTY</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">FOCUS_HARI</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">FOCUS_HARI</text-property>
+                    <text-property name="heading">FOCUS_HARI</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">FOCUS_DENDA</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">FOCUS_DENDA</text-property>
+                    <text-property name="heading">FOCUS_DENDA</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">FIN_DUE_DAYS</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">FIN_DUE_DAYS</text-property>
+                    <text-property name="heading">FIN_DUE_DAYS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">FIN_PINALTY</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">FIN_PINALTY</text-property>
+                    <text-property name="heading">FIN_PINALTY</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">periodtype</property>
+                    <property name="paramName">pperiodtype</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">0</property>
+                    <property name="position">1</property>
+                    <property name="isOptional">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">period</property>
+                    <property name="paramName">pperiod</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">0</property>
+                    <property name="position">2</property>
+                    <property name="isOptional">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">divisi</property>
+                    <property name="paramName">pdivisi</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">0</property>
+                    <property name="position">3</property>
+                    <property name="isOptional">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">cust1</property>
+                    <property name="paramName">pcust1</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">0</property>
+                    <property name="position">4</property>
+                    <property name="isOptional">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">cust2</property>
+                    <property name="paramName">pcust2</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">0</property>
+                    <property name="position">5</property>
+                    <property name="isOptional">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">PERIODE</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">CUST_CODE</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">CUST_NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">NO_DCV</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">TGL_DCV</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">DUE_DT</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">LAST_PYMT_DT</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">LATE_DAYS</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">REMAIN_PYMT</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">TOTAL_PINALTY</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">DISTRIBUTOR_DUE_DAYS</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">DISTRIBUTOR_PINALTY</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">SALES_DUE_DAYS</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">SALES_PINALTY</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">TC_DUE_DAYS</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">TC_PINALTY</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">TAX_DUE_DAYS</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">18</property>
+                        <property name="name">TAX_PINALTY</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">19</property>
+                        <property name="name">PROMO_DUE_DAYS</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">20</property>
+                        <property name="name">PROMO_PINALTY</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">21</property>
+                        <property name="name">FOCUS_HARI</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">22</property>
+                        <property name="name">FOCUS_DENDA</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">23</property>
+                        <property name="name">FIN_DUE_DAYS</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">24</property>
+                        <property name="name">FIN_PINALTY</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">DataSource-UATDCV</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">PERIODE</property>
+                    <property name="nativeName">PERIODE</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">CUST_CODE</property>
+                    <property name="nativeName">CUST_CODE</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">CUST_NAME</property>
+                    <property name="nativeName">CUST_NAME</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">NO_DCV</property>
+                    <property name="nativeName">NO_DCV</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">TGL_DCV</property>
+                    <property name="nativeName">TGL_DCV</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">DUE_DT</property>
+                    <property name="nativeName">DUE_DT</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">LAST_PYMT_DT</property>
+                    <property name="nativeName">LAST_PYMT_DT</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">LATE_DAYS</property>
+                    <property name="nativeName">LATE_DAYS</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">REMAIN_PYMT</property>
+                    <property name="nativeName">REMAIN_PYMT</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">TOTAL_PINALTY</property>
+                    <property name="nativeName">TOTAL_PINALTY</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">DISTRIBUTOR_DUE_DAYS</property>
+                    <property name="nativeName">DISTRIBUTOR_DUE_DAYS</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">DISTRIBUTOR_PINALTY</property>
+                    <property name="nativeName">DISTRIBUTOR_PINALTY</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">SALES_DUE_DAYS</property>
+                    <property name="nativeName">SALES_DUE_DAYS</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">SALES_PINALTY</property>
+                    <property name="nativeName">SALES_PINALTY</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">TC_DUE_DAYS</property>
+                    <property name="nativeName">TC_DUE_DAYS</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">16</property>
+                    <property name="name">TC_PINALTY</property>
+                    <property name="nativeName">TC_PINALTY</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">17</property>
+                    <property name="name">TAX_DUE_DAYS</property>
+                    <property name="nativeName">TAX_DUE_DAYS</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">18</property>
+                    <property name="name">TAX_PINALTY</property>
+                    <property name="nativeName">TAX_PINALTY</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">19</property>
+                    <property name="name">PROMO_DUE_DAYS</property>
+                    <property name="nativeName">PROMO_DUE_DAYS</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">20</property>
+                    <property name="name">PROMO_PINALTY</property>
+                    <property name="nativeName">PROMO_PINALTY</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">21</property>
+                    <property name="name">FOCUS_HARI</property>
+                    <property name="nativeName">FOCUS_HARI</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">22</property>
+                    <property name="name">FOCUS_DENDA</property>
+                    <property name="nativeName">FOCUS_DENDA</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">23</property>
+                    <property name="name">FIN_DUE_DAYS</property>
+                    <property name="nativeName">FIN_DUE_DAYS</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">24</property>
+                    <property name="name">FIN_PINALTY</property>
+                    <property name="nativeName">FIN_PINALTY</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select periode, custcode as cust_code, custname as cust_name, no_dcv, tgl_dcv,due_dt as due_dt, 
+               last_pymt as last_pymt_dt, od_num as late_days, sisa_bayar as remain_pymt,nilai_denda as total_pinalty,
+               distr_hari as distributor_due_days, distr_denda as distributor_pinalty,
+               sales_hari as sales_due_days, sales_denda as sales_pinalty,
+               tc_hari as tc_due_days, tc_denda as tc_pinalty,
+               tax_hari as tax_due_days, tax_denda as tax_pinalty,
+               promo_hari as promo_due_days, promo_denda as promo_pinalty, focus_hari, focus_denda,
+               ap_hari as fin_due_days, ap_denda as fin_pinalty from table(rpt_pkg.get_sla_rpt
+               						(pperiodtype=>?,
+                                   pperiode=>to_number(?),
+                                        pdivisi=>?,
+                                        pcust1=>?,
+                                        pcust2=>?,
+                                        pregion=>'',
+                                        parea=>'',
+                                        plocation=>''))]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab-cell" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="type">a4</property>
+            <property name="orientation">landscape</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <table id="334">
+            <property name="pageBreakAfter">always</property>
+            <property name="pageBreakBefore">always</property>
+            <property name="width">12.447916666666666in</property>
+            <property name="dataSet">DataSet-Header</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">PERIODE</property>
+                    <text-property name="displayName">PERIODE</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["PERIODE"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">CUST_CODE</property>
+                    <text-property name="displayName">CUST_CODE</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["CUST_CODE"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">CUST_NAME</property>
+                    <text-property name="displayName">CUST_NAME</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["CUST_NAME"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="pageBreakInterval">1</property>
+            <column id="353">
+                <property name="width">1.21875in</property>
+            </column>
+            <column id="354">
+                <property name="width">11.229166666666666in</property>
+            </column>
+            <detail>
+                <row id="341">
+                    <cell id="342">
+                        <property name="colSpan">2</property>
+                        <property name="rowSpan">1</property>
+                        <property name="pageBreakAfter">always</property>
+                        <property name="pageBreakBefore">always</property>
+                        <label id="413">
+                            <property name="fontSize">14pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">center</property>
+                            <text-property name="text">Report SLA Keterlambatan TEST</text-property>
+                        </label>
+                    </cell>
+                </row>
+                <row id="344">
+                    <cell id="345">
+                        <property name="pageBreakAfter">always</property>
+                        <property name="pageBreakBefore">always</property>
+                        <label id="302">
+                            <text-property name="text">Customer</text-property>
+                        </label>
+                    </cell>
+                    <cell id="346">
+                        <property name="pageBreakAfter">always</property>
+                        <property name="pageBreakBefore">always</property>
+                        <data id="362">
+                            <property name="textAlign">left</property>
+                            <property name="whiteSpace">nowrap</property>
+                            <property name="resultSetColumn">CUST_NAME</property>
+                        </data>
+                    </cell>
+                </row>
+                <row id="363">
+                    <cell id="364">
+                        <property name="pageBreakAfter">always</property>
+                        <property name="pageBreakBefore">always</property>
+                        <label id="329">
+                            <text-property name="text">Periode Cut-Off</text-property>
+                        </label>
+                        <label id="375">
+                            <text-property name="text">Periode Type</text-property>
+                        </label>
+                    </cell>
+                    <cell id="365">
+                        <property name="pageBreakAfter">always</property>
+                        <property name="pageBreakBefore">always</property>
+                        <data id="411">
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">pperiod</property>
+                                    <expression name="expression" type="javascript">params["pperiod"]</expression>
+                                    <property name="dataType">string</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">pperiod</property>
+                        </data>
+                        <data id="412">
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">pperiodtype</property>
+                                    <expression name="expression" type="javascript">params["pperiodtype"]</expression>
+                                    <property name="dataType">string</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">pperiodtype</property>
+                        </data>
+                    </cell>
+                </row>
+                <row id="366">
+                    <cell id="367">
+                        <property name="pageBreakAfter">always</property>
+                        <property name="pageBreakBefore">always</property>
+                        <label id="376"/>
+                    </cell>
+                    <cell id="368">
+                        <property name="pageBreakAfter">always</property>
+                        <property name="pageBreakBefore">always</property>
+                        <label id="378"/>
+                    </cell>
+                </row>
+                <row id="347">
+                    <cell id="348">
+                        <property name="colSpan">2</property>
+                        <property name="rowSpan">1</property>
+                        <property name="pageBreakAfter">always</property>
+                        <property name="pageBreakBefore">always</property>
+                        <table id="145">
+                            <property name="width">70%</property>
+                            <property name="dataSet">DataSet-Body</property>
+                            <list-property name="paramBindings">
+                                <structure>
+                                    <property name="paramName">cust1</property>
+                                    <simple-property-list name="expression">
+                                        <value type="javascript">row["CUST_CODE"]</value>
+                                    </simple-property-list>
+                                </structure>
+                                <structure>
+                                    <property name="paramName">cust2</property>
+                                    <simple-property-list name="expression">
+                                        <value type="javascript">row["CUST_CODE"]</value>
+                                    </simple-property-list>
+                                </structure>
+                            </list-property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">PERIODE</property>
+                                    <text-property name="displayName">PERIODE</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["PERIODE"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">CUST_CODE</property>
+                                    <text-property name="displayName">CUST_CODE</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["CUST_CODE"]</expression>
+                                    <property name="dataType">string</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">CUST_NAME</property>
+                                    <text-property name="displayName">CUST_NAME</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["CUST_NAME"]</expression>
+                                    <property name="dataType">string</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">NO_DCV</property>
+                                    <text-property name="displayName">NO_DCV</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["NO_DCV"]</expression>
+                                    <property name="dataType">string</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">TGL_DCV</property>
+                                    <text-property name="displayName">TGL_DCV</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["TGL_DCV"]</expression>
+                                    <property name="dataType">date-time</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">DUE_DT</property>
+                                    <text-property name="displayName">DUE_DT</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["DUE_DT"]</expression>
+                                    <property name="dataType">date-time</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">LAST_PYMT_DT</property>
+                                    <text-property name="displayName">LAST_PYMT_DT</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["LAST_PYMT_DT"]</expression>
+                                    <property name="dataType">date-time</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">LATE_DAYS</property>
+                                    <text-property name="displayName">LATE_DAYS</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["LATE_DAYS"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">REMAIN_PYMT</property>
+                                    <text-property name="displayName">REMAIN_PYMT</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["REMAIN_PYMT"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">TOTAL_PINALTY</property>
+                                    <text-property name="displayName">TOTAL_PINALTY</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["TOTAL_PINALTY"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">DISTRIBUTOR_DUE_DAYS</property>
+                                    <text-property name="displayName">DISTRIBUTOR_DUE_DAYS</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["DISTRIBUTOR_DUE_DAYS"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">DISTRIBUTOR_PINALTY</property>
+                                    <text-property name="displayName">DISTRIBUTOR_PINALTY</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["DISTRIBUTOR_PINALTY"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">SALES_DUE_DAYS</property>
+                                    <text-property name="displayName">SALES_DUE_DAYS</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["SALES_DUE_DAYS"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">SALES_PINALTY</property>
+                                    <text-property name="displayName">SALES_PINALTY</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["SALES_PINALTY"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">TC_DUE_DAYS</property>
+                                    <text-property name="displayName">TC_DUE_DAYS</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["TC_DUE_DAYS"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">TC_PINALTY</property>
+                                    <text-property name="displayName">TC_PINALTY</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["TC_PINALTY"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">TAX_DUE_DAYS</property>
+                                    <text-property name="displayName">TAX_DUE_DAYS</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["TAX_DUE_DAYS"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">TAX_PINALTY</property>
+                                    <text-property name="displayName">TAX_PINALTY</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["TAX_PINALTY"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">PROMO_DUE_DAYS</property>
+                                    <text-property name="displayName">PROMO_DUE_DAYS</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["PROMO_DUE_DAYS"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">PROMO_PINALTY</property>
+                                    <text-property name="displayName">PROMO_PINALTY</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["PROMO_PINALTY"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">FIN_DUE_DAYS</property>
+                                    <text-property name="displayName">FIN_DUE_DAYS</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["FIN_DUE_DAYS"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">FIN_PINALTY</property>
+                                    <text-property name="displayName">FIN_PINALTY</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["FIN_PINALTY"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">Hari_internal</property>
+                                    <text-property name="displayName">Hari_internal</text-property>
+                                    <property name="dataType">float</property>
+                                    <property name="aggregateFunction">SUM</property>
+                                    <list-property name="arguments">
+                                        <structure>
+                                            <property name="name">Expression</property>
+                                            <expression name="value" type="javascript">add(dataSetRow["FIN_DUE_DAYS"],dataSetRow["SALES_DUE_DAYS"],dataSetRow["PROMO_DUE_DAYS"],dataSetRow["SALES_DUE_DAYS"],dataSetRow["TAX_DUE_DAYS"],dataSetRow["TC_DUE_DAYS"])</expression>
+                                        </structure>
+                                    </list-property>
+                                </structure>
+                                <structure>
+                                    <property name="name">hari_focus</property>
+                                    <expression name="expression" type="javascript">dataSetRow["hari_focus"]</expression>
+                                    <property name="dataType">integer</property>
+                                    <property name="allowExport">true</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">denda_focus</property>
+                                    <text-property name="displayName">denda_focus</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["denda_focus"]</expression>
+                                    <property name="dataType">integer</property>
+                                    <property name="allowExport">true</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">FOCUS_HARI</property>
+                                    <text-property name="displayName">FOCUS_HARI</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["FOCUS_HARI"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">FOCUS_DENDA</property>
+                                    <text-property name="displayName">FOCUS_DENDA</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["FOCUS_DENDA"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                            </list-property>
+                            <column id="215">
+                                <property name="width">1in</property>
+                            </column>
+                            <column id="216">
+                                <property name="width">0.75in</property>
+                            </column>
+                            <column id="217">
+                                <property name="width">0.71875in</property>
+                            </column>
+                            <column id="218">
+                                <property name="width">0.719in</property>
+                            </column>
+                            <column id="219">
+                                <property name="width">0.4895833333333333in</property>
+                            </column>
+                            <column id="220">
+                                <property name="width">0.7708333333333334in</property>
+                            </column>
+                            <column id="221">
+                                <property name="width">0.5416666666666666in</property>
+                            </column>
+                            <column id="222">
+                                <property name="width">0.5in</property>
+                            </column>
+                            <column id="223">
+                                <property name="width">0.5in</property>
+                            </column>
+                            <column id="224">
+                                <list-property name="visibility">
+                                    <structure>
+                                        <property name="format">all</property>
+                                        <expression name="valueExpr" type="javascript">params["report_type"].value == 'EKSTERNAL'</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="width">0.5in</property>
+                            </column>
+                            <column id="225">
+                                <list-property name="visibility">
+                                    <structure>
+                                        <property name="format">all</property>
+                                        <expression name="valueExpr" type="javascript">params["report_type"].value == 'EKSTERNAL'</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="width">0.5in</property>
+                            </column>
+                            <column id="226">
+                                <list-property name="visibility">
+                                    <structure>
+                                        <property name="format">all</property>
+                                        <expression name="valueExpr" type="javascript">params["report_type"].value == 'EKSTERNAL'</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="width">0.5in</property>
+                            </column>
+                            <column id="227">
+                                <list-property name="visibility">
+                                    <structure>
+                                        <property name="format">all</property>
+                                        <expression name="valueExpr" type="javascript">params["report_type"].value == 'EKSTERNAL'</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="width">0.5in</property>
+                            </column>
+                            <column id="228">
+                                <list-property name="visibility">
+                                    <structure>
+                                        <property name="format">all</property>
+                                        <expression name="valueExpr" type="javascript">params["report_type"].value == 'EKSTERNAL'</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="width">0.5in</property>
+                            </column>
+                            <column id="229">
+                                <list-property name="visibility">
+                                    <structure>
+                                        <property name="format">all</property>
+                                        <expression name="valueExpr" type="javascript">params["report_type"].value == 'EKSTERNAL'</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="width">0.5in</property>
+                            </column>
+                            <column id="230">
+                                <list-property name="visibility">
+                                    <structure>
+                                        <property name="format">all</property>
+                                        <expression name="valueExpr" type="javascript">params["report_type"].value == 'EKSTERNAL'</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="width">0.5in</property>
+                            </column>
+                            <column id="231">
+                                <list-property name="visibility">
+                                    <structure>
+                                        <property name="format">all</property>
+                                        <expression name="valueExpr" type="javascript">params["report_type"].value == 'EKSTERNAL'</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="width">0.5in</property>
+                            </column>
+                            <column id="232">
+                                <list-property name="visibility">
+                                    <structure>
+                                        <property name="format">all</property>
+                                        <expression name="valueExpr" type="javascript">params["report_type"].value == 'EKSTERNAL'</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="width">0.5in</property>
+                            </column>
+                            <column id="233">
+                                <list-property name="visibility">
+                                    <structure>
+                                        <property name="format">all</property>
+                                        <expression name="valueExpr" type="javascript">params["report_type"].value == 'EKSTERNAL'</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="width">0.5in</property>
+                            </column>
+                            <column id="398">
+                                <list-property name="visibility">
+                                    <structure>
+                                        <property name="format">all</property>
+                                        <expression name="valueExpr" type="javascript">params["report_type"].value == 'INTERNAL'</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="width">0.5in</property>
+                            </column>
+                            <column id="402">
+                                <list-property name="visibility">
+                                    <structure>
+                                        <property name="format">all</property>
+                                        <expression name="valueExpr" type="javascript">params["report_type"].value == 'INTERNAL'</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="width">0.5in</property>
+                            </column>
+                            <header>
+                                <row id="146">
+                                    <cell id="147">
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="290">
+                                            <property name="textAlign">left</property>
+                                            <text-property name="text">No</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="148">
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="289">
+                                            <property name="textAlign">left</property>
+                                            <text-property name="text">Tanggal</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="149">
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="288">
+                                            <property name="textAlign">left</property>
+                                            <text-property name="text">Due</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="150">
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="287">
+                                            <property name="textAlign">left</property>
+                                            <text-property name="text">Tgl Bayar</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="151">
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="286">
+                                            <property name="textAlign">left</property>
+                                            <text-property name="text">Hari</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="152">
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="285">
+                                            <property name="textAlign">left</property>
+                                            <text-property name="text">Sisa</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="153">
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="291">
+                                            <property name="textAlign">left</property>
+                                            <text-property name="text">Nilai</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="154">
+                                        <property name="colSpan">2</property>
+                                        <property name="rowSpan">1</property>
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="267">
+                                            <text-property name="text">Distributor</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="156">
+                                        <property name="colSpan">2</property>
+                                        <property name="rowSpan">1</property>
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="270">
+                                            <text-property name="text">TC</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="158">
+                                        <property name="colSpan">2</property>
+                                        <property name="rowSpan">1</property>
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="281">
+                                            <text-property name="text">Promo</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="160">
+                                        <property name="colSpan">2</property>
+                                        <property name="rowSpan">1</property>
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="282">
+                                            <text-property name="text">Sales</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="162">
+                                        <property name="colSpan">2</property>
+                                        <property name="rowSpan">1</property>
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="283">
+                                            <text-property name="text">Tax</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="164">
+                                        <property name="colSpan">2</property>
+                                        <property name="rowSpan">1</property>
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="284">
+                                            <text-property name="text">Finance</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="395">
+                                        <property name="colSpan">2</property>
+                                        <property name="rowSpan">1</property>
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="403">
+                                            <text-property name="text">Focus</text-property>
+                                        </label>
+                                    </cell>
+                                </row>
+                                <row id="237">
+                                    <cell id="238">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <label id="260">
+                                            <property name="textAlign">left</property>
+                                            <text-property name="text">DCV</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="239">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <label id="261">
+                                            <property name="textAlign">left</property>
+                                            <text-property name="text">DCV</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="240">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <label id="262">
+                                            <property name="textAlign">left</property>
+                                            <text-property name="text">Date</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="241">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <label id="263">
+                                            <property name="textAlign">left</property>
+                                            <text-property name="text">Terakhir</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="242">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <label id="264">
+                                            <property name="textAlign">left</property>
+                                            <text-property name="text">Telat</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="243">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <label id="265">
+                                            <property name="textAlign">left</property>
+                                            <text-property name="text">Pemabayaran</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="244">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <label id="266">
+                                            <property name="textAlign">left</property>
+                                            <text-property name="text">Denda</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="245">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="268">
+                                            <text-property name="text">Hari</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="246">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="269">
+                                            <text-property name="text">Denda</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="247">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="271">
+                                            <text-property name="text">Hari</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="248">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="272">
+                                            <text-property name="text">Denda</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="249">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="277">
+                                            <text-property name="text">Hari</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="250">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="273">
+                                            <text-property name="text">Denda</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="251">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="278">
+                                            <text-property name="text">Hari</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="252">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="274">
+                                            <text-property name="text">Denda</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="253">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="279">
+                                            <text-property name="text">Hari</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="254">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="275">
+                                            <text-property name="text">Denda</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="255">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="280">
+                                            <text-property name="text">Hari</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="256">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="276">
+                                            <text-property name="text">Denda</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="396">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="404">
+                                            <text-property name="text">Hari</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="400">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="405">
+                                            <text-property name="text">Denda</text-property>
+                                        </label>
+                                    </cell>
+                                </row>
+                            </header>
+                            <detail>
+                                <row id="169">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <cell id="170">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <data id="106">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">NO_DCV</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="171">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <data id="108">
+                                            <structure name="dateTimeFormat">
+                                                <property name="category">Custom</property>
+                                                <property name="pattern">dd-MM-yyyy</property>
+                                            </structure>
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">TGL_DCV</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="172">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <data id="112">
+                                            <structure name="dateTimeFormat">
+                                                <property name="category">Custom</property>
+                                                <property name="pattern">dd-MM-yyyy</property>
+                                            </structure>
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">DUE_DT</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="173">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <data id="114">
+                                            <structure name="dateTimeFormat">
+                                                <property name="category">Custom</property>
+                                                <property name="pattern">dd-MM-yyyy</property>
+                                            </structure>
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">LAST_PYMT_DT</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="174">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <data id="116">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">LATE_DAYS</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="175">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <data id="118">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">REMAIN_PYMT</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="176">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <data id="120">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">TOTAL_PINALTY</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="177">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <data id="122">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">DISTRIBUTOR_DUE_DAYS</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="178">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <data id="124">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">DISTRIBUTOR_PINALTY</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="179">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <data id="130">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">TC_DUE_DAYS</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="180">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <data id="132">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">TC_PINALTY</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="181">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <data id="138">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">PROMO_DUE_DAYS</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="182">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <data id="140">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">PROMO_PINALTY</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="183">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <data id="126">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">SALES_DUE_DAYS</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="184">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <data id="128">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">SALES_PINALTY</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="185">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <data id="134">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">TAX_DUE_DAYS</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="186">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <data id="136">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">TAX_PINALTY</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="187">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <data id="142">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">FIN_DUE_DAYS</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="188">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <data id="144">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">FIN_PINALTY</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="397">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <data id="414">
+                                            <property name="resultSetColumn">FOCUS_HARI</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="401">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <data id="415">
+                                            <property name="resultSetColumn">FOCUS_DENDA</property>
+                                        </data>
+                                    </cell>
+                                </row>
+                            </detail>
+                        </table>
+                    </cell>
+                </row>
+                <row id="369">
+                    <cell id="370">
+                        <property name="pageBreakAfter">always</property>
+                        <property name="pageBreakBefore">always</property>
+                        <label id="379"/>
+                    </cell>
+                    <cell id="371">
+                        <property name="pageBreakAfter">always</property>
+                        <property name="pageBreakBefore">always</property>
+                        <label id="381"/>
+                    </cell>
+                </row>
+                <row id="372">
+                    <cell id="373">
+                        <property name="pageBreakAfter">always</property>
+                        <property name="pageBreakBefore">always</property>
+                        <label id="380"/>
+                    </cell>
+                    <cell id="374">
+                        <property name="pageBreakAfter">always</property>
+                        <property name="pageBreakBefore">always</property>
+                        <label id="382"/>
+                    </cell>
+                </row>
+            </detail>
+        </table>
+    </body>
+</report>
