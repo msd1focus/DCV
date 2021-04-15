@@ -78,14 +78,10 @@ AS
     noPc dcv_request.dcvh_no_pc%TYPE;
     propNo dcv_request.dcvh_no_pp%TYPE;
     add_pcno VARCHAR2(50);
-    add_ppId NUMBER;
+    add_propid NUMBER;
+--    add_ppId NUMBER;
     ppidList pp_typ_tab := pp_typ_tab();
 BEGIN
---    SELECT dcv.dcvh_no_dcv, dcv.dcvh_no_pc, dcv.dcvh_no_pp
---    INTO noDcv, noPc, propNo
---    FROM request_dtl dtl, dcv_request dcv
---    WHERE dtl.dcvh_id = dcv.dcvh_id
---    AND dcvl_promo_product_id = ppid;
     SELECT DECODE(p.addendum_ke, null,p.confirm_no, confirm_no||'-'||p.addendum_ke), p.proposal_no
     INTO noPc, propNo
     FROM focuspp.promo_produk pp
@@ -94,16 +90,23 @@ BEGIN
 
     --cari pc pengganti
     BEGIN
-        SELECT p.confirm_no, pp.promo_produk_id 
-        INTO add_pcno, add_ppId
-        FROM focuspp.promo_produk pp
-        JOIN focuspp.proposal p ON p.proposal_id = pp.proposal_id
+        SELECT p.confirm_no, p.proposal_id 
+        INTO add_pcno, add_propid
+        FROM focuspp.proposal p
         WHERE p.copy_type = 'PENGGANTI'
         AND p.proposal_reference = propNo;
-        ppidList.EXTEND;
-        ppidList(ppIdList.LAST).no_pc := add_pcno;
-        ppidList(ppIdList.LAST).promo_produk_id := add_ppId;
-        ppidList(ppIdList.LAST).jns_pc := 'PENGGANTI';
+        
+        FOR cPgt IN (
+                SELECT pp.promo_produk_id 
+                FROM focuspp.promo_produk pp
+                WHERE pp.proposal_id = add_propid) 
+        LOOP
+            ppidList.EXTEND;
+            ppidList(ppIdList.LAST).no_pc := add_pcno;
+            ppidList(ppIdList.LAST).promo_produk_id := cPgt.promo_produk_id;
+            ppidList(ppIdList.LAST).jns_pc := 'PENGGANTI';
+        END LOOP;
+        
     EXCEPTION 
     WHEN NO_DATA_FOUND THEN 
         ppidList.EXTEND;
@@ -417,10 +420,6 @@ BEGIN
     dbms_output.put_line('Jumlah : ');
     supplierList := get_vendors(pCustCode);
 
-    vPo.po_id := 0;
-    vPo.no_po := 'SUKSES';
-    PIPE ROW (vpo);  
-
     FOR i IN vPpIdList.FIRST..vPpIdList.LAST LOOP
 
         fcs_dcv_generate_gr_pkg.get_po_list (vPpIdList(i).promo_produk_id, cList);
@@ -575,24 +574,6 @@ EXCEPTION WHEN NO_DATA_FOUND THEN
            FROM dual WHERE ROWNUM<1;    
            pList := c_list;
 END payment_summary;
-
---PROCEDURE payment_hist (pDcvNo IN VARCHAR2, pList OUT SYS_REFCURSOR) AS
---        c_list SYS_REFCURSOR;
---BEGIN
---        SELECT * INTO vDcv FROM dcv_request WHERE dcvh_no_dcv = pDcvNo;
---        OPEN c_list FOR
---           SELECT 'INVOICE' jns_trx, 
---                    'INV001' no_trx, 
---                    SYSDATE - 20 tgl_trx, 
---                    100000 nilai_trx, 
---                    100000 nilai_sisa, 
---                    'Keterangan disini' ketr_trx
---           FROM dual ;
---        pList := c_list;
---
---EXCEPTION WHEN NO_DATA_FOUND THEN 
---    pList := null;
---END payment_hist;
 
 PROCEDURE payment_ebs_hist (pDcvNo IN VARCHAR2, pList OUT SYS_REFCURSOR) AS
     c_list SYS_REFCURSOR;
