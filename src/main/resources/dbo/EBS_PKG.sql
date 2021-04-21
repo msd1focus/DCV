@@ -273,6 +273,9 @@ BEGIN
 
     dbms_output.put_line('dapat no gr: '|| vGrNo);
 
+    INSERT INTO dokumen_realisasi (id, dcvh_id, tahapan_realisasi, doc_no, doc_dt, descr, create_dt)
+    VALUES (dcv_seq.nextval, vDcv.dcvh_id, 'GR', vGrNo, SYSDATE, 'Create GR', sysdate);
+
 --c. insert ke table staging
     FOR i IN cta (vDcv.dcvh_id) LOOP 
         -- ini untuk kasus jika unit price diubah jadi 1
@@ -299,9 +302,6 @@ BEGIN
 --d. call init_concurrent
     fcs_dcv_generate_gr_pkg.call_concurrent(vDcv.dcvh_id);
     dbms_output.put_line('sudah call concurrent');
-
-    INSERT INTO dokumen_realisasi (id, dcvh_id, tahapan_realisasi, doc_no, doc_dt, descr)
-    VALUES (dcv_seq.nextval, vDcv.dcvh_id, 'GR', vGrNo, SYSDATE, 'Create GR');
 
     grNo := vGrNo;
 
