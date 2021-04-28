@@ -129,6 +129,7 @@ FUNCTION post_action (pTask_id NUMBER, pAction_id NUMBER, pPesan VARCHAR2)
     post_script_error exception;
     row_locked exception;
     pragma   exception_init(row_locked, -54); 
+    PRAGMA EXCEPTION_INIT(too_large_column, -12899);
 
 BEGIN
 
@@ -256,8 +257,14 @@ BEGIN
 EXCEPTION 
 WHEN row_locked THEN
 dbms_output.put_line('DCV tersebut sedang di-update orang lain');
+    ROLLBACK;
     RETURN (-1);
-WHEN post_script_error THEN RETURN (-2);
+WHEN too_large_column THEN 
+    ROLLBACK;
+    RETURN (-3);
+WHEN post_script_error THEN
+    ROLLBACK;
+	RETURN (-2);
 END post_action;
 
 PROCEDURE post_action (pTaskId IN NUMBER, pActionId IN NUMBER, pUser IN VARCHAR2,
@@ -318,18 +325,27 @@ BEGIN
 
     IF vNewTask > 0 THEN
         vResponseMsg := 'Current Status: '|| bvDcvRequest.dcvh_current_step;
+        pResponseCode := 0;
 
     ELSIF vNewTask = 0 THEN
         vResponseMsg := 'Sukses: '|| vTask.tahapan;
+        pResponseCode := 0;
 
     ELSIF vNewTask = -1 THEN
-        vResponseMsg := 'No DCV '|| vTask.no_dcv || ' sedang diupdate orang lain.';
+        rollback;
+        pResponseCode := -6;
+        vResponseMsg := 'Error: No DCV '|| vTask.no_dcv || ' sedang diupdate orang lain.';
     ELSIF vNewTask = -2 THEN
-        vResponseMsg := 'No DCV '|| vTask.no_dcv || ' ada error post_script.';
+        pResponseCode := -7;
+        vResponseMsg := 'Error: No DCV '|| vTask.no_dcv || ' ada error post_script.';
+        rollback;
+    ELSIF vNewTask = -3 THEN
+        rollback;
+        pResponseCode := -3;
+        vResponseMsg := 'Error: Panjang NOTES tidak boleh lebih dari 250 karakter';
    END IF;
 
     pResponseMsg := vResponseMsg;
-    pResponseCode := 0;
 
 EXCEPTION 
 WHEN NO_DATA_FOUND THEN
@@ -340,7 +356,7 @@ WHEN no_open_task THEN
     pResponseCode := -4;
 WHEN empty_note THEN
     pResponseMsg := 'Notes harus diisi';
-    pResponseCode := -3;
+    pResponseCode := -5;
 WHEN invalid_validation THEN
     pResponseMsg := vErrMsg;
     pResponseCode := -2;
