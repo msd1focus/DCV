@@ -82,7 +82,21 @@ App.controller('ActionDistributorController', ['CommonService', '$state', '$stat
 //				lanjutUpdate = true;
 //			}
 		} else {
-			lanjutUpdate = true;
+			
+			 var jenisDokumen = vm.distAcc.jenis.docCode;
+			
+			if(jenisDokumen == 'FP'){
+				 var noDokumen =  vm.distAcc.no;
+				 if(noDokumen.length != 19){
+					CommonService.modalAlert('warning', 'Nomor Faktur Pajak Kurang !')
+	        		.then(function(result) {});
+				 }else{
+					lanjutUpdate = true;
+				}
+			}else{
+				lanjutUpdate = true;
+			}
+			
 		}
 		
 		if(lanjutUpdate) {
@@ -131,6 +145,48 @@ App.controller('ActionDistributorController', ['CommonService', '$state', '$stat
 		}
 	}
 	
+	vm.changeNo=function(){
+
+		  var jenisDokumen = vm.distAcc.jenis;
+		  var noDokumen =  vm.distAcc.no;
+
+		  if(jenisDokumen != undefined){
+			
+			 if(jenisDokumen.docCode == 'FP'){
+				
+				var parsedValue = noDokumen.toString()
+					.replace(/[^0-9.\-]/g, '')
+		            .replace(/[^\dA-Za-z]/g, '')
+		            .replace(/-$/, '');
+					
+					if(parsedValue.length  > 3){
+						
+						parsedValue = [parsedValue.slice(0, 3), '.', parsedValue.slice(3)].join('');
+					}
+					
+					if(parsedValue.length  > 7){
+						
+						parsedValue = [parsedValue.slice(0, 7), '-', parsedValue.slice(7)].join('');
+					}
+					
+					if(parsedValue.length  > 10){
+						
+						parsedValue = [parsedValue.slice(0, 10), '.', parsedValue.slice(10)].join('');
+					}
+				
+				if(parsedValue.length  < 20){
+					
+					vm.distAcc.no = parsedValue;
+				 }else{
+
+					parsedValue = parsedValue.slice(0, -1);
+					vm.distAcc.no = parsedValue;
+				}
+			  }
+		  }
+		  
+    }
+	
 	vm.submit = function() {
 		if(vm.distAcc.action == undefined) {
 			CommonService.modalAlert('warning', 'Action belum dipilih').then(function() {});
@@ -158,6 +214,7 @@ App.controller('ActionDistributorController', ['CommonService', '$state', '$stat
 	
 	// On Change Jenis Dokumen
 	$('#selectParamIdJenis').on('change', function () {
+		
 		// Dcv doc list
 		var paramDocList = {
 				dcvhId : param.header.dcvhId,
@@ -200,6 +257,9 @@ App.controller('ActionDistributorController', ['CommonService', '$state', '$stat
 //			}
 //		);
 		// upload doc list
+		
+		
+		
 		var paramDoc = {
 				pTaskId : param.wfTask.id,
 				pBagian : param.paramDcvListAfterAction.pBagian
