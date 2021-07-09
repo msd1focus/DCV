@@ -81,9 +81,15 @@
   -moz-border-radius: 6px 0 6px 6px;
   border-radius: 6px 0 6px 6px;
 }
+
+.td-small {
+  width: 40px;
+  max-width: 40px;
+}
+
 #copyDCV_wrapper .DTFC_RightBodyLiner {
   overflow-y: hidden !important; 
-  width: 427px !important;
+  /* width: 427px !important; */
 }
 textarea {
    resize: none;
