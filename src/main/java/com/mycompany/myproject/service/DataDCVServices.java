@@ -1460,7 +1460,27 @@ public class DataDCVServices {
 		
 		return hasil;
 	}
-
+	
+	public Map<String, Object> getUrlLinkExternalReport(Map<String, Object> param) {
+		Map<String, Object> hasil = new HashMap<String, Object>();
+		List<LookupCode> dataLookUpList = new ArrayList<LookupCode>();
+		String urlData = "";
+		String result = "";
+		String propId = param.get("ppId").toString();
+		
+		dataLookUpList = lookupCodeRepo.findByTitle("REPORT.EXT");
+		
+		if(null != dataLookUpList && dataLookUpList.size() > 0){
+			LookupCode data = dataLookUpList.get(0);
+			urlData = data.getValue();
+			result = urlData.replace("PARAM", propId);
+		}
+		
+		hasil.put("urlExt", result);
+		
+		return hasil;
+	}
+	
 	public Map<String, Object> getUrlLinkExternal(Map<String, Object> param) {
 		Map<String, Object> hasil = new HashMap<String, Object>();
 		List<LookupCode> dataLookUpList = new ArrayList<LookupCode>();

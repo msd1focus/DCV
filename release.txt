@@ -4,3 +4,6 @@ Release 2.0.1
 
 New Features
 30 May 2021: Otomatis Input validate Format Tax di Action Distributor
+
+09 Juli 2021
+Update Pc List

@@ -43,6 +43,14 @@ import com.mycompany.myproject.service.dto.PropCustMappingDto;
 			}
 	),
 	@NamedStoredProcedureQuery(
+			name = "populate_pc_list", procedureName = "populate_pc_list",
+			parameters = {
+					@StoredProcedureParameter(mode = ParameterMode.IN, name = "username", type = String.class),
+					@StoredProcedureParameter(mode = ParameterMode.IN, name = "periode", type = Integer.class),
+					@StoredProcedureParameter(mode = ParameterMode.OUT, name = "contextId", type = String.class)
+			}		
+	),
+	@NamedStoredProcedureQuery(
 		name = "DCV_TASK_LIST", procedureName = "dcv_pkg.DCV_TASK_LIST",
 		parameters = {
 				@StoredProcedureParameter(mode = ParameterMode.IN, name = "pBagian", type = String.class),

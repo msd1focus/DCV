@@ -212,6 +212,18 @@ App.config(['$stateProvider', '$urlRouterProvider', '$uiViewScrollProvider',
 		data : createMetaDataLink("reset_password","reset_password", false, false, true)
 	})
 	
+	//For Pc List
+	.state('home.daftarPc', {
+		url: '/daftarPc',
+		templateUrl: 'pages/dcv/daftarPc.html',
+		resolve: {
+			ctrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+				return $ocLazyLoad.load('resource/controller/dcv/DaftarPcCtrl.js');
+			}]
+		},
+		data : createMetaDataLink("daftarPc","daftarPc", false, false, false)
+	})
+	
 	//For DCV Static
 	.state('home.staticDashboard', {
 		url: '/staticDashboard',

@@ -1,0 +1,74 @@
+<div ng-controller="DaftarPcController as vm">
+	<!-- <section class="content-header"></section> -->
+	<br /><br />
+  	<section class="content">
+  		<div class="box box-primary">
+  		<form name="formMonitoring" role="form" class="form-horizontal" novalidate>
+  			<div class="box-header with-border">
+				<h3 class="box-title">Daftar Pc</h3>
+			</div>
+  			<div class="box-body">
+  				<div class="row">
+	            	<div class="col-sm-12">
+	            		
+            			<div class="box-body">
+            				<table>
+            					<tr>
+            						<td class="col-sm-10">
+            							<div class="form-group">
+            								<label class="col-sm-5 control-label-custom2">Periode</label>
+						                	<div class="col-sm-7" style="margin: 0 0 2px">
+					           					<px class="input-group">
+					           						<input type="text" class="form-control pull-right input-sm" 
+					           							uib-datepicker-popup="MM-yyyy"
+					                               		ng-model="vm.periode"
+					                               		is-open="vm.popup.opened1" datepicker-options="{minMode: 'month'}" datepicker-mode="'month'" clearBtn="true"
+					                               		show-button-bar="false" ng-click="vm.open('1')" placeholder="Filter Periode"/>
+				                                   	<span class="input-group-btn">
+				                                   		<button type="button" class="btn btn-default btn-sm" 
+				                                   			ng-click="vm.open('1')"><i class="glyphicon glyphicon-calendar"></i>
+				                                   		</button>
+				                                   	</span>
+					           					</px>
+					           				 </div>
+										</div>
+            						</td>
+            						<td class="col-sm-2">
+            							<div class="form-group">
+            								<div class="col-sm-6">
+				           						<button ng-click="vm.buttonSearch()" class="btn btn-primary btn-sm pull-center" >
+					            					<span class="fa fa-search"></span>&nbsp; <span>Go</span>
+					            				</button>
+					            				
+				           					</div>
+            							</div>
+            						</td>
+            					</tr>
+            				</table>
+            			</div>
+	            		
+  					</div>
+  				</div>
+
+  				<table id="dataTableListPc" class="table table-striped" cellspacing="0" width="100%">
+				  <thead>
+				    <tr>
+				      <th>#</th>
+				      <th>No PC</th>
+				      <th>Tanggal Distribusi</th>
+				      <th>Periode</th>
+				      <th>Periode End</th>
+				      <th>Kategory</th>
+				      <th>Tipe</th>
+				      <th>Claim</th>
+				      <th>Mekanisme Penagihan</th>
+				      <th>Program Promo</th>
+				      <th>Status </th>
+				    </tr>
+				  </thead>
+				</table>
+  			</div>
+  		</form>
+  		</div>
+  	</section>
+</div>
