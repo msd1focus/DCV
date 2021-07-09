@@ -1,0 +1,11 @@
+* HOTFIX
+
+20-Apr-2021 : SP EBS_PKG.generate_gr
+	diubah urutan insert supaya insert ke table DOKUMEN_REALISASI dulu baru insert ke table staging fcs_rcv_dcv_stg.
+	Tujuannya untuk kasus kirim GR 2x ke staging, bisa dihindari dengan unique constraint di table DOKUMEN_REALISASI.
+	
+27-April-2021 : SP WF_PKG.POST_ACTION
+	jika value too larget for column (NOTE) maka dimunculkan sebagai error (pResponseCode = -3)
+	Tambah Lebar field TMP_PROCESSING_RPT.NOTE VARCHAR2(250)
+
+27-Juni-2021 : perbaikan layar Copy-DCV

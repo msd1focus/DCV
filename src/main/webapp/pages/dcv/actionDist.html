@@ -1,5 +1,6 @@
 <div ng-controller="ActionDistributorController as vm">
 	<br /><br />
+	
 	<section class="content">
 		<div class="row">
 			<div class="col-md-9">
@@ -79,7 +80,7 @@
 					           				 </div>
 						                	 <label for="acctDistForm_no" class="col-sm-5 control-label-custom2">No.Dokumen</label>
 						                	 <div class="col-sm-7" style="margin: 0 0 2px">
-						                  		<input type="text" ng-model="vm.distAcc.no" placeholder="Masukkan no {{ vm.disclaimer }}" class="form-control input-sm" id="acctDistForm_no">
+						                  		<input type="text" ng-model="vm.distAcc.no" ng-keyup="vm.changeNo()" placeholder="Masukkan no {{ vm.disclaimer }}" class="form-control input-sm" id="acctDistForm_no">
 						                	 </div>
 		           						</div>
 		           					</td>
