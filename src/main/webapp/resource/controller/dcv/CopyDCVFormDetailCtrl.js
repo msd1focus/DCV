@@ -1,7 +1,7 @@
 'use strict';
 
-App.controller('CopyDCVFormDetailController', ['$http', '$q', 'CommonService', '$state', '$log', '$stateParams', '$scope', 'DTColumnBuilder', 'DTOptionsBuilder', '$uibModal', '$window', '$location', '$localStorage', '$rootScope',
-				function($http, $q, CommonService, $state, $log, $stateParams, $scope, DTColumnBuilder, DTOptionsBuilder, $uibModal, $window, $location, $localStorage, $rootScope) {
+App.controller('CopyDCVFormDetailController', ['$http', '$q', 'CommonService', '$state', '$log', '$stateParams', '$scope', 'DTColumnBuilder', 'DTOptionsBuilder', '$uibModal', '$window','$timeout', '$location', '$localStorage', '$rootScope',
+				function($http, $q, CommonService, $state, $log, $stateParams, $scope, DTColumnBuilder, DTOptionsBuilder, $uibModal, $window,$timeout, $location, $localStorage, $rootScope) {
 	
 	var vm = this;
 	
@@ -37,7 +37,9 @@ App.controller('CopyDCVFormDetailController', ['$http', '$q', 'CommonService', '
 			};*/
 	
 	//Initiate for Angular-DataTable
-	vm.dtOptions = DTOptionsBuilder.newOptions()
+	
+	$timeout(function() {
+		vm.dtOptions = DTOptionsBuilder.newOptions()
 					.withOption('paging', false)
 					.withPaginationType('simple_numbers')
 					.withOption('searching', false)
@@ -45,10 +47,13 @@ App.controller('CopyDCVFormDetailController', ['$http', '$q', 'CommonService', '
 					.withDisplayLength(5)
         			.withOption('scrollY', '350px')
 				    .withOption('scrollX', '100%')
+					.withOption('responsive', true)
 				    .withFixedColumns({
 			    		leftColumns: 0,
 			            rightColumns: 4
 			        });
+	}, 100);
+	
 	
 	
 	/*--- Function-function ---*/
