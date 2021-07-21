@@ -43,6 +43,7 @@ App.controller('DaftarPcController', ['$window', '$state', '$timeout', '$scope',
 	vm.loadingModalUi = function() {
 		modalInstance = $uibModal.open({
 			animation: true,
+			backdrop: 'static',
 			scope: $scope,
 			ariaLabelledBy: 'modal-title',
 			ariaDescribedBy: 'modal-body',
@@ -59,6 +60,8 @@ App.controller('DaftarPcController', ['$window', '$state', '$timeout', '$scope',
 		
 	}
 	
+	vm.loadingModalUi();
+	
 	
 	/*--- Function-function ---*/
 	init();
@@ -68,7 +71,7 @@ App.controller('DaftarPcController', ['$window', '$state', '$timeout', '$scope',
 	}
 
 	function loadDataTable() {
-		
+
 		var yesterday = '';
 		
 		/*CommonService.doGET('/holiday/getYesterday')
