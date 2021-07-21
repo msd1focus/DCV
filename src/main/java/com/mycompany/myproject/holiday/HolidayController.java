@@ -1,5 +1,10 @@
 package com.mycompany.myproject.holiday;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +36,60 @@ public class HolidayController {
 	@RequestMapping(value = "/getList", method = RequestMethod.GET)
 	public @ResponseBody List<Holiday> getListHoliday() {
 		return holidayService.getListHoliday();
+	}
+	
+	@RequestMapping(value = "/getYesterday", method = RequestMethod.GET)
+	public @ResponseBody Holiday getYesterday() throws ParseException {
+		
+		Date date = new Date();
+
+		Date yesterday = this.cekYesterday(date);
+		
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");  
+        String strDate = dateFormat.format(yesterday);  
+		
+        Holiday holiday =  new Holiday();
+        holiday.setKeterangan(strDate);
+		return holiday;
+	}
+	
+	public Boolean cekHoliday(Date date) {
+		
+		List<Holiday> holidayList = holidayService.getListHoliday();
+        
+        for(Holiday data:holidayList) {
+        	
+        	if(data.getTglLibur().compareTo(date) == 0) {
+        		return true;
+        	}
+        }
+        return false;
+		
+	}
+	
+	public Date cekYesterday(Date date) {
+		
+		Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, Integer.valueOf(-1));
+
+        Date yesterday = cal.getTime();
+		
+        Integer day = yesterday.getDay();
+        
+        if(day != 6 && day != 0) {
+        	Boolean holidayStaus = this.cekHoliday(yesterday);
+        	
+        	if(holidayStaus) {
+        		return this.cekYesterday(yesterday);
+        	}else {
+        		return yesterday;
+        	}
+        }else {
+        	return this.cekYesterday(yesterday);
+        }
+
+		
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)

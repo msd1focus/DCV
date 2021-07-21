@@ -1,7 +1,7 @@
 'use strict';
 
-App.controller('DaftarPcController', ['$window', '$state', '$scope', '$filter', 'CommonService', 'DTColumnDefBuilder', 'DTOptionsBuilder', 'DTColumnBuilder', '$uibModal', '$rootScope', '$stateParams',
-				function($window, $state, $scope, $filter, CommonService, DTColumnDefBuilder, DTOptionsBuilder, DTColumnBuilder, $uibModal, $rootScope, $localStorage) {
+App.controller('DaftarPcController', ['$window', '$state', '$timeout', '$scope', '$filter', 'CommonService', 'DTColumnDefBuilder', 'DTOptionsBuilder', 'DTColumnBuilder', '$uibModal', '$rootScope', '$stateParams',
+				function($window, $state, $timeout, $scope, $filter, CommonService, DTColumnDefBuilder, DTOptionsBuilder, DTColumnBuilder, $uibModal, $rootScope, $localStorage) {
 	
 	var vm = this;
 	
@@ -11,7 +11,10 @@ App.controller('DaftarPcController', ['$window', '$state', '$scope', '$filter', 
 	vm.userType = $rootScope.userProfile.userType;
 	vm.userDivision = $rootScope.userProfile.role.bagian;
 	
+	vm.loading = false;
 	vm.periode = new Date();
+	
+	var modalInstance = null;
 	
 	vm.popup = {};
 	
@@ -33,6 +36,30 @@ App.controller('DaftarPcController', ['$window', '$state', '$scope', '$filter', 
 		
 	}
 	
+	$scope.cancelForm = function () {
+		   
+	};
+	
+	vm.loadingModalUi = function() {
+		modalInstance = $uibModal.open({
+			animation: true,
+			scope: $scope,
+			ariaLabelledBy: 'modal-title',
+			ariaDescribedBy: 'modal-body',
+			templateUrl: '/loadingModal.html',
+			controller: 'LoadingModalCtrl',
+			controllerAs : 'vm',
+			size: 'sm',
+			
+		});
+		
+		$scope.cancelForm = function () {
+		    modalInstance.close();
+		};
+		
+	}
+	
+	
 	/*--- Function-function ---*/
 	init();
 	
@@ -42,13 +69,13 @@ App.controller('DaftarPcController', ['$window', '$state', '$scope', '$filter', 
 
 	function loadDataTable() {
 		
-		/*var yesterday = '';
+		var yesterday = '';
 		
-		CommonService.doGET('/holiday/getYesterday')
+		/*CommonService.doGET('/holiday/getYesterday')
 		.then(function(data){
 			
 			yesterday = data.keterangan;
-			console.log(data.keterangan);	*/
+			//console.log(data.keterangan);*/
 			
 			var new_row = $("<tr class='search-header'/>");
 			$('#dataTableListPc thead th').each(function(i) {
@@ -58,10 +85,10 @@ App.controller('DaftarPcController', ['$window', '$state', '$scope', '$filter', 
 	
 				if(i!=0){
 					  if(i==2) {
-						 $(new_th).append('<input type="text" name="searchTxt" id="tglDistribusi" ng-keyup="vm.buttonSearch()" class="form-control pull-center input-sm" size="15" placeholder="' + 
+						 $(new_th).append('<input type="text"  name="searchTxt" id="tglDistribusi" class="form-control pull-center input-sm" /*value="'+yesterday+'"*/ size="15" placeholder="' + 
 								  title + '" data-index="'+i+'"/>');
 					  } else {
-						  $(new_th).append('<input type="text" name="searchTxt" ng-keyup="vm.buttonSearch()" class="form-control pull-center input-sm" size="15" placeholder="' + 
+						  $(new_th).append('<input type="text" name="searchTxt" class="form-control pull-center input-sm" size="15" placeholder="' + 
 								  title + '" data-index="'+i+'"/>');
 					  }
 				  }else{
@@ -104,7 +131,7 @@ App.controller('DaftarPcController', ['$window', '$state', '$scope', '$filter', 
 						dto.userName = vm.userName;/*"S0037";*/
 						dto.userType = vm.userType;
 						
-						console.log(dto);
+						//console.log(dto);
 	                    return JSON.stringify(dto);
 	                }
 	            },
@@ -116,6 +143,9 @@ App.controller('DaftarPcController', ['$window', '$state', '$scope', '$filter', 
 				"paging"	: true,
 				"order": [[ 1, "asc" ]],
 				"searching": true,
+				"drawCallback": function(settings) {
+				  	$scope.cancelForm();
+				},
 				/*"fixedColumns" : {
 		            "leftColumns": 1,
 		            "rightColumns": 0
@@ -181,17 +211,22 @@ App.controller('DaftarPcController', ['$window', '$state', '$scope', '$filter', 
 				
 	        });
 	
-			var input_filter_timeout;
+			var search_timeout;
 			var that;
 			
 			// Filter event handler
 			$(table.table().container() ).on( 'keyup', 'thead input', function (e) { 
-		         that = this
-				 if(e.keyCode != 13) {
-					table
-				      .column($(that).parent().index() + ':visible')
+				if(search_timeout != undefined) {
+					clearTimeout(search_timeout);
+				}
+				
+				that = this;
+				table.column($(that).parent().index() + ':visible')
 				      .search(that.value);
-				  }
+	
+				search_timeout = setTimeout(function() {
+					  vm.search();	
+				}, 1000);
 			});
 			
 			$('#dataTableListPc tbody').on( 'click', '.report', function () {
@@ -217,9 +252,24 @@ App.controller('DaftarPcController', ['$window', '$state', '$scope', '$filter', 
 	loadDataTable();
 	
 	vm.buttonSearch = function() {
+		vm.loadingModalUi();
 		table.ajax.reload();
+		
 	}
 	
-	
-	
+	vm.search = function() {
+		table.ajax.reload();
+		
+	}
+		
 }]);
+
+/**MODAL CONTROLLER**/
+App.controller('LoadingModalCtrl', function ($uibModalInstance, CommonService){
+	var vm = this;
+	var listOfSearch = [];
+	
+	function dismiss(){
+		$uibModalInstance.dismiss('cancel');
+	}
+});

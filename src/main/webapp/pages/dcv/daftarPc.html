@@ -1,9 +1,11 @@
 <div ng-controller="DaftarPcController as vm">
 	<!-- <section class="content-header"></section> -->
 	<br /><br />
+
+	</script>
   	<section class="content">
   		<div class="box box-primary">
-  		<form name="formMonitoring" role="form" class="form-horizontal" novalidate>
+  			<form name="formMonitoring" role="form" class="form-horizontal" novalidate>
   			<div class="box-header with-border">
 				<h3 class="box-title">Daftar Pc</h3>
 			</div>
@@ -39,7 +41,8 @@
 				           						<button ng-click="vm.buttonSearch()" class="btn btn-primary btn-sm pull-center" >
 					            					<span class="fa fa-search"></span>&nbsp; <span>Go</span>
 					            				</button>
-					            				
+					            				<div class="spinner-border m-5">
+										</div>
 				           					</div>
             							</div>
             						</td>
@@ -49,14 +52,14 @@
 	            		
   					</div>
   				</div>
-
+				
   				<table id="dataTableListPc" class="table table-striped" cellspacing="0" width="100%">
 				  <thead>
 				    <tr>
 				      <th>#</th>
 				      <th>No PC</th>
 				      <th>Tanggal Distribusi</th>
-				      <th>Periode</th>
+				      <th>Periode Start</th>
 				      <th>Periode End</th>
 				      <th>Kategory</th>
 				      <th>Tipe</th>
@@ -68,7 +71,22 @@
 				  </thead>
 				</table>
   			</div>
-  		</form>
+  			</form>
   		</div>
   	</section>
 </div>
+<!-- <img id="loading-custom" src="resource/images/loading.gif"/></div> -->
+<script type="text/ng-template" id="/loadingModal.html">
+	<div  id="loading-custom" tabindex="-1">
+		.
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<img src="resource/images/loading.gif"/></div>
+	</div>
+</script>
