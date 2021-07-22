@@ -94,6 +94,16 @@ App.controller('StaticDashboardController', ['$window', '$state', '$scope', 'Com
 		CommonService.getMenuManual('./dist/json/param.json')
 		.then(function(data){
 			vm.paramList = data.data;
+			
+			$rootScope.yesterday = undefined;
+			
+			CommonService.doGET('/holiday/getYesterday')
+			.then(function(data){
+				
+				$rootScope.yesterday = data.keterangan;
+
+					
+			});
 		});
 	}
 	

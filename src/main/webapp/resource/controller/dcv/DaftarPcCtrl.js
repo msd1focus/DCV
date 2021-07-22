@@ -10,14 +10,16 @@ App.controller('DaftarPcController', ['$window', '$state', '$timeout', '$scope',
 	vm.userName = $rootScope.userProfile.userName;
 	vm.userType = $rootScope.userProfile.userType;
 	vm.userDivision = $rootScope.userProfile.role.bagian;
+	var yesterday = $rootScope.yesterday;
 	
 	vm.loading = false;
 	vm.periode = new Date();
 	
 	var modalInstance = null;
-	
 	vm.popup = {};
 	
+	console.log($rootScope);
+	console.log($scope);
 	function init() {
 		vm.paramList = [
 						  {
@@ -33,6 +35,21 @@ App.controller('DaftarPcController', ['$window', '$state', '$timeout', '$scope',
 						    "PARAM_VALUE": "3"
 						  }
 						];
+			if($rootScope.yesterday == undefined){
+				CommonService.doGET('/holiday/getYesterday')
+				.then(function(data){
+					
+					$rootScope.yesterday = data.keterangan;
+					yesterday = data.keterangan;
+					//console.log(data.keterangan);*/
+					loadDataTable();
+						
+				});
+			}else{
+				loadDataTable();
+			}
+			
+			
 		
 	}
 	
@@ -59,26 +76,16 @@ App.controller('DaftarPcController', ['$window', '$state', '$timeout', '$scope',
 		};
 		
 	}
-	
-	vm.loadingModalUi();
-	
-	
+
 	/*--- Function-function ---*/
 	init();
 	
 	vm.open = function(numberOrder) {
 		CommonService.openDatePicker(numberOrder, vm.popup);		
 	}
+	
 
 	function loadDataTable() {
-
-		var yesterday = '';
-		
-		/*CommonService.doGET('/holiday/getYesterday')
-		.then(function(data){
-			
-			yesterday = data.keterangan;
-			//console.log(data.keterangan);*/
 			
 			var new_row = $("<tr class='search-header'/>");
 			$('#dataTableListPc thead th').each(function(i) {
@@ -88,7 +95,7 @@ App.controller('DaftarPcController', ['$window', '$state', '$timeout', '$scope',
 	
 				if(i!=0){
 					  if(i==2) {
-						 $(new_th).append('<input type="text"  name="searchTxt" id="tglDistribusi" class="form-control pull-center input-sm" /*value="'+yesterday+'"*/ size="15" placeholder="' + 
+						 $(new_th).append('<input type="text"  name="searchTxt" id="tglDistribusi" class="form-control pull-center input-sm" value="'+yesterday+'" size="15" placeholder="' + 
 								  title + '" data-index="'+i+'"/>');
 					  } else {
 						  $(new_th).append('<input type="text" name="searchTxt" class="form-control pull-center input-sm" size="15" placeholder="' + 
@@ -104,6 +111,8 @@ App.controller('DaftarPcController', ['$window', '$state', '$timeout', '$scope',
 			
 			var targetURL ='/daftarpc/getList';
 			var url = CommonService.translateUrl(targetURL);
+			
+			vm.loadingModalUi();
 			
 			table = $('table#dataTableListPc').DataTable({
 	            ajax: {
@@ -139,7 +148,7 @@ App.controller('DaftarPcController', ['$window', '$state', '$timeout', '$scope',
 	                }
 	            },
 	            serverSide: true,
-				"processing": true,
+				/*"processing": true,*/
 	 			"lengthChange" : true,
 				"sDom"		 : 'lrtip',
 				"scrollX": true,
@@ -248,11 +257,11 @@ App.controller('DaftarPcController', ['$window', '$state', '$timeout', '$scope',
 					});
 		    } );
 			
-		/*});*/
+		
 		
 	}
 	
-	loadDataTable();
+	
 	
 	vm.buttonSearch = function() {
 		vm.loadingModalUi();
@@ -261,6 +270,7 @@ App.controller('DaftarPcController', ['$window', '$state', '$timeout', '$scope',
 	}
 	
 	vm.search = function() {
+		vm.loadingModalUi();
 		table.ajax.reload();
 		
 	}
