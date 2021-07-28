@@ -7,3 +7,6 @@ New Features
 
 09 Juli 2021
 Update Pc List
+
+Release 2.0.2
+28 Juli 2021 : Menu PC List
