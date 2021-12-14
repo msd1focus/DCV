@@ -1543,10 +1543,10 @@ public class DataDCVServices {
 					 List<LookupCode> dataLookupList = lookupCodeRepo.findByTitle("COMPANY");
 					 for (LookupCode lookupCode : dataLookupList) {
 						 
-						 if(lookupCode.getValue().toString().equals("FDN")) {
-							 terima = "PT. Focus Distribusi Nusantara";
+						 if(lookupCode.getValue().toString().equals("FRN")) {
+							 terima = "PT. Fokus Retail Nusaprima";
 						 }else {
-							 terima = "PT. Focus Distribusi Indonesia";
+							 terima = "PT. Fokus Retail Indoprima";
 						 }
 						 
 					 }

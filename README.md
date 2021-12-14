@@ -1,5 +1,5 @@
 # Aplikasi DCV
-Ini adalah source code dari aplikasi DCV untuk PT Focus Distribusi Nusantara
+Ini adalah source code dari aplikasi DCV untuk PT Fokus Retail Nusaprima
 
 
 
