@@ -16,6 +16,7 @@
         <org.springframework-version>4.2.1.RELEASE</org.springframework-version>
         <org.slf4j-version>1.6.6</org.slf4j-version>
         <springfox-version>2.2.2</springfox-version>
+	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
 
@@ -111,12 +112,12 @@
      
 
         <!-- hsql -->
-        <dependency>
+<!--         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>2.3.0</version>
         </dependency>
-
+ -->
         <!-- Apache -->
         <dependency>
             <groupId>net.sf.dozer</groupId>
@@ -144,11 +145,6 @@
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.5</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.0</version>
 		</dependency>
 
         <!-- Servlet -->
@@ -254,7 +250,7 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.10-FINAL</version>
 		</dependency>
-		<dependency>
+<!-- 		<dependency>
 		    <groupId>org.postgresql</groupId>
 		    <artifactId>postgresql</artifactId>
 		    <version>42.2.6</version>
@@ -274,7 +270,15 @@
 		  <artifactId>ucp</artifactId>
 		  <version>12.2.0.1</version>
 		</dependency>
-		<dependency>
+ -->		
+ 	<!-- https://mvnrepository.com/artifact/com.oracle.jdbc/ojdbc8 -->
+	<dependency>
+	    <groupId>com.oracle.jdbc</groupId>
+	    <artifactId>ojdbc8</artifactId>
+	    <version>12.2.0.1</version>
+	</dependency>
+	 	
+ 	<dependency>
 		    <groupId>org.webjars</groupId>
 		    <artifactId>font-awesome</artifactId>
 		    <version>4.7.0</version>

@@ -603,7 +603,8 @@ public class DataDCVServices {
 		proc.execute();
     	
 		/* Ref_CURSOR OUT params */
-    	List<Object[]> postComments = proc.getResultList();
+    	@SuppressWarnings("unchecked")
+		List<Object[]> postComments = proc.getResultList();
     	for(Object[] dataDcv: postComments) {
     		ProsesPODto hasil = new ProsesPODto(dataDcv);
     		
