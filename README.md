@@ -12,3 +12,7 @@ https://github.com/msd1focus/dcv.git
 
 Pindah ke BitBucket cloud : 24 Maret 2021
 https://fransmii@bitbucket.org/DBP_DevOps/fcs-dcv.git
+
+
+Kembali Pindah ke Github  : 10 Juni 2022
+https://github.com/msd1focus/DCV.git
