@@ -115,7 +115,7 @@
                 </ex-property>
             </list-property>
             <property name="odaDriverClass">oracle.jdbc.OracleDriver</property>
-            <property name="odaURL">jdbc:oracle:thin:@192.168.201.38:1543:UATFDN</property>
+            <property name="odaURL">jdbc:oracle:thin:@192.168.201.38:1543:UATFRN</property>
             <property name="odaUser">focusdcv</property>
             <encrypted-property name="odaPassword" encryptionID="base64">Zm9jdXNkY3Y=</encrypted-property>
         </oda-data-source>
@@ -1492,7 +1492,7 @@
                                         <property name="borderTopStyle">solid</property>
                                         <property name="borderTopWidth">thin</property>
                                         <label id="403">
-                                            <text-property name="text">Focus</text-property>
+                                            <text-property name="text">Fokus</text-property>
                                         </label>
                                     </cell>
                                 </row>

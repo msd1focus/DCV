@@ -173,8 +173,8 @@ AS
 
             IF (vc.bracket = 'F-F-F') THEN
                 vstart := NVL(vend, vc.assign_time);
-                vtahapan := 'Proses Internal Focus';
-                vUser := 'Focus';
+                vtahapan := 'Proses Internal Fokus';
+                vUser := 'Fokus';
             ELSE
                 vstart := vc.assign_time;
                 vend := vc.process_time;
@@ -196,7 +196,7 @@ AS
 
         vend := vLastDate;
         FOR i IN c2 LOOP
-            IF (i.tahapan = 'Proses Internal Focus') THEN
+            IF (i.tahapan = 'Proses Internal Fokus') THEN
                 UPDATE tmp_processing_rpt SET process_date = vend 
                 WHERE context_id = vcontextId
                 AND task_id = i.task_id;
@@ -206,11 +206,11 @@ AS
 
         first:=true;
         FOR i IN c2 LOOP
-            IF (first AND (i.tahapan = 'Proses Internal Focus')) THEN
+            IF (first AND (i.tahapan = 'Proses Internal Fokus')) THEN
                 first := false;
-            ELSIF NOT first AND (i.tahapan = 'Proses Internal Focus') THEN
+            ELSIF NOT first AND (i.tahapan = 'Proses Internal Fokus') THEN
                DELETE tmp_processing_rpt WHERE context_id = vcontextId AND task_id = i.task_id;
-             ELSIF NOT first AND (i.tahapan != 'Proses Internal Focus') THEN
+             ELSIF NOT first AND (i.tahapan != 'Proses Internal Fokus') THEN
                first := true;
           END IF;
         END LOOP;    
@@ -299,7 +299,7 @@ AS
         null submit_date,
         null target_date,
         null process_date,
-        DECODE(rownum,1,'Total Durasi - Distributor ', 'Total Durasi - Focus') note,
+        DECODE(rownum,1,'Total Durasi - Distributor ', 'Total Durasi - Fokus') note,
         null target_sla,
         CASE ROWNUM 
             WHEN 1 THEN totDaysDist + EXTRACT(DAY FROM NUMTODSINTERVAL(totSecsDist, 'SECOND')) 

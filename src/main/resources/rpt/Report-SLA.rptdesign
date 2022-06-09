@@ -116,12 +116,12 @@
             <property name="dataType">string</property>
             <property name="distinct">true</property>
             <simple-property-list name="defaultValue">
-                <value type="constant">Focus</value>
+                <value type="constant">Fokus</value>
             </simple-property-list>
             <list-property name="selectionList">
                 <structure>
-                    <property name="value">Focus</property>
-                    <property name="label">Focus</property>
+                    <property name="value">Fokus</property>
+                    <property name="label">Fokus</property>
                 </structure>
                 <structure>
                     <property name="value">Distributor</property>
@@ -170,7 +170,7 @@
                 </ex-property>
             </list-property>
             <property name="odaDriverClass">oracle.jdbc.OracleDriver</property>
-            <property name="odaURL">jdbc:oracle:thin:@192.168.201.37:1523:PRODFDN</property>
+            <property name="odaURL">jdbc:oracle:thin:@192.168.201.37:1523:PRODFRN</property>
             <property name="odaUser">focusdcv</property>
             <encrypted-property name="odaPassword" encryptionID="base64">Zm9jdXNkY3Y=</encrypted-property>
         </oda-data-source>
@@ -1623,7 +1623,7 @@
                                         <property name="borderTopStyle">solid</property>
                                         <property name="borderTopWidth">thin</property>
                                         <label id="403">
-                                            <text-property name="text">Focus</text-property>
+                                            <text-property name="text">Fokus</text-property>
                                         </label>
                                     </cell>
                                 </row>
